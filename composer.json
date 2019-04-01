@@ -1,9 +1,11 @@
 {
 	"autoload": {
 		"classmap": [
-			"config",
-			"app/objects"
-		]
+		],
+        "psr-4": {
+            "App\\": "app/",
+			"Config\\": "config/"
+        }
 	},
 	"require": {
 		"vlucas/phpdotenv": "^3.3"
