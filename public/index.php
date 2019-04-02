@@ -44,7 +44,7 @@
       	.topBar a {
   			float: right;
   			color: #f2f2f2;
-  			background-color: #dd4b39;
+  			
   			text-align: center;
   			padding: 14px 16px;
   			text-decoration: none;
@@ -104,16 +104,15 @@
  			z-index: 1;
   			top: 0;
   			left: 0;
-  			background-color: #111;
+  			background-color: #222;
   			overflow-x: hidden;
-  			padding-top: 20px;
 		}
 
 		.sidenav a, .dropdown-btn {
-  			padding: 6px 8px 6px 16px;
+  			padding: 16px 8px 14px 16px;
   			text-decoration: none;
-  			font-size: 20px;
-  			color: #818181;
+  			font-size: 14px;
+  			color: white;
   			display: block;
   			border: none;
   			background: none;
@@ -123,8 +122,8 @@
   			outline: none;
 		}
 
-		.sidenav a:hover, .dropdown-btn:hover {
-  			color: #f1f1f1;
+		.sidenav a:hover {
+  			color: #aaa;
 		}
 
 		.main {
@@ -134,7 +133,7 @@
 		}
 
 		.active {
-  			background-color: green;
+  			background-color: #dd4b39;
   			color: white;
 		}
 
@@ -176,7 +175,7 @@
 			<div class="topBar">
 				<?php if($titleURL == 'Zaloguj') echo '
 				<div class="dropdown">
-					<button class="dropbtn">' . $titleURL . '
+					<button class="dropbtn">' . $titleURL . ' 
 						<i class="fa fa-caret-down"></i>
 					</button>
 					<div class="dropdown-content">
@@ -197,7 +196,7 @@
 			echo '
 			<section class="userList" id="userList">
   				<div class="sidenav">
-  					<button class="dropdown-btn">Dropdown 
+  					<button class="dropdown-btn"> Lista użytkowników 
     					<i class="fa fa-caret-down"></i>
   					</button>
   					<div class="dropdown-container">';
