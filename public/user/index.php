@@ -17,10 +17,9 @@
 		$result = $user->by_id();
  	}
 	else
-		die;
-	$num = $result->rowCount();
+		die;	
 
-	if($num > 0)
+	if($result != null)
 	{
 		echo json_encode($result);
 	}

@@ -33,17 +33,22 @@
 		}
 		function by_id()
 		{
-			$query = "SELECT Name, Email, Image, created_at, statuses.Name, privileges.Name, privileges.Tier" .
+			$query = "SELECT users.Name as Name, users.Email as Email, users.Image as Image, users.created_at as createdAt, statuses.Name as Status, privileges.Name as Privielege, privileges.Tier as Tier" .
 					" FROM " . $this->tableName .
 					" LEFT JOIN statuses" .
 					" ON statuses.idStatus = " . $this->tableName . ".idStatus" .
 					" LEFT JOIN privileges" .
 					" ON privileges.idPrivilege = " . $this->tableName . ".idPrivilege" .
-					" WHERE users.id=:id";
+					" WHERE users.id=:idUser";
 			$stmt = $this->dbConnection->prepare($query);
-			$stmt->bindParam(":id", $this->id);
-			$stmt->execute();
-			return $stmt;
+			$stmt->bindParam(":idUser", $this->id);
+			if($stmt->execute())
+			{
+				$row = $stmt->fetch(PDO::FETCH_ASSOC);
+				return $row;
+			}
+			else
+				return false;
 		}
 
 		function verify()
