@@ -100,7 +100,7 @@
 
       	.topBar a {
       		float: right;
-  			color: #222;
+  			color: #dd4b39;
   			text-align: center;
   			padding: 14px 16px;
   			text-decoration: none;
@@ -109,7 +109,7 @@
 
 		.topBar p {
       		float: left;
-  			color: #222;
+  			color: #dd4b39;
   			text-align: center;
   			padding: 14px 16px;
   			text-decoration: none;
@@ -183,7 +183,7 @@
   			padding: 16px 8px 14px 16px;
   			text-decoration: none;
   			font-size: 14px;
-  			color: white;
+  			color: #dd4b39;
   			display: block;
   			border: none;
   			background: none;
