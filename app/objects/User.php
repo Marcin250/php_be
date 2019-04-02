@@ -31,6 +31,21 @@
 			$stmt->execute();
 			return $stmt;
 		}
+		function by_id()
+		{
+			$query = "SELECT Name, Email, Image, created_at, statuses.Name, privileges.Name, privileges.Tier" .
+					" FROM " . $this->tableName .
+					" LEFT JOIN statuses" .
+					" ON statuses.idStatus = " . $this->tableName . ".idStatus" .
+					" LEFT JOIN privileges" .
+					" ON privileges.idPrivilege = " . $this->tableName . ".idPrivilege" .
+					" WHERE users.id=:id";
+			$stmt = $this->dbConnection->prepare($query);
+			$stmt->bindParam(":id", $this->id);
+			$stmt->execute();
+			return $stmt;
+		}
+
 		function verify()
 		{
 			$query = "SELECT count(id) as userCount" .

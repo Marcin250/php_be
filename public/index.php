@@ -200,7 +200,7 @@
 		<header id="header">
 			<div class="topBar">
 				<?php 
-				$url = 'https://api-portalw.herokuapp.com/user/index.php';
+				$url = 'https://api-portalw.herokuapp.com/user/list.php';
 				$data = get_content($url);
 				$dane = json_decode($data);
 				if (is_array($dane) || is_object($dane))

@@ -9,20 +9,26 @@
 	$dbConnection = new DatabaseConnection();
 	$connetion = $dbConnection->getConnection();
  
-	$user = new User($connetion);
+	$users = new User($connetion);
  
- 	if(isset($_GET['id']))
- 	{
- 		$user->id = $_GET['id'];
-		$result = $user->by_id();
- 	}
-	else
-		die;
+	$result = $users->index();
 	$num = $result->rowCount();
 
 	if($num > 0)
 	{
-		echo json_encode($result);
+		$usersArray = array();
+		$usersArray["data"] = array();
+		while($row = $result->fetch(PDO::FETCH_ASSOC))
+		{
+			extract($row);
+			$user = array(
+				"id" => $id,
+				"name" => $Name,
+				"createdAt" => $created_at
+			);
+			array_push($usersArray["data"], $user);
+		}
+		echo json_encode($usersArray);
 	}
 	else
 		echo json_encode(array("message" => "Błąd wyszukiwania."));
