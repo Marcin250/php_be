@@ -234,7 +234,9 @@
 	<body>
 		<header id="header">
 			<div class="topBar">
-				<?php if($titleURL == 'Zaloguj') echo '
+				<?php if(isset($_SESSION['email'])) 
+					echo '<a href="#">' . $_SESSION['email'] . '</a>';
+				if($titleURL == 'Zaloguj') echo '
 				<div class="dropdown">
 					<button class="dropbtn">' . $titleURL . '
 						<i class="fas fa-sign-in-alt"></i>
@@ -272,24 +274,8 @@
   				</div>
   			</section>';
   		}?>
-		<section id="userData">
+		<section id="main">
 			<div class="main">
-				<?php 
-				if(isset($_SESSION['token'])) echo '
-				<h2>Dane użytkownika:</h2>
-				<table>
-  					<tr>
-  						<th>Name</th>
-    					<th>Email</th>
-    					<th>Token</th>
-    				</tr>
-  					<tr>
-    					<td>' . $_SESSION['name'] . '</td>
-   	 					<td>' . $_SESSION['email'] . '</td>
-    					<td>' . $_SESSION['token']['access_token'] . '</td>
-  					</tr>
-  				</table>';
-  				?>
   			</div>
   		</section>
   	<script>
