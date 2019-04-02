@@ -93,7 +93,6 @@
 		}
 
 		.topBar {
-			margin-left: 230px;
   			overflow: hidden;
  			background: #ececec;
 		}
@@ -133,10 +132,6 @@
   			.topBar a {background-color: grey;}
 		}
 
-		.topBar .dropdown.left {
- 			float: left;
-		}
-
 		.topBar a:hover {
   			background-color: #dd4b39;
 		}
@@ -167,52 +162,6 @@
   			display: block;
 		}
 
-		.sidenav {
-  			height: 100%;
-  			width: 230px;
-  			position: fixed;
- 			z-index: 1;
-  			top: 0;
-  			left: 0;
-  			background-color: #ececec;
-  			overflow-x: hidden;
-		}
-
-		.sidenav a, .dropdown-btn {
-  			padding: 16px 8px 14px 16px;
-  			text-decoration: none;
-  			font-size: 14px;
-  			color: #dd4b39;
-  			display: block;
-  			border: none;
-  			background: none;
-  			width: 100%;
-  			text-align: left;
-  			cursor: pointer;
-  			outline: none;
-		}
-
-		.sidenav a:hover {
-  			color: #aaa;
-		}
-
-		.main {
-  			margin-left: 230px;
-  			font-size: 20px; 
-  			padding: 0px 10px;
-		}
-
-		.active {
-  			background-color: #dd4b39;
-  			color: white;
-		}
-
-		.dropdown-container {
-  			display: none;
-  			background-color: #262626;
-  			padding-left: 8px;
-		}
-
 		.fa-caret-down {
   			float: right;
   			padding-right: 8px;
@@ -234,6 +183,13 @@
   			background-color: #f2f2f2
 		}
 
+		hr {
+	    	border: 1px solid #f1f1f1;
+	    	margin-bottom: 25px;
+		}
+
+
+
       	@media screen and (max-width: 500px) {
       		.topBar {margin: 0px; margin-left: 0px;} 
       		.topBar a {float: none; display: block; text-align: left; background-color: #333; text-align: center;} 
@@ -243,14 +199,30 @@
 	<body>
 		<header id="header">
 			<div class="topBar">
-				<div class="dropdown.left">
-					<button class="dropbtn"> Asd
-						<i class="fas fa-sign-in-alt"></i>
+				<?php 
+				$url = 'https://api-portalw.herokuapp.com/user/index.php';
+				$data = get_content($url);
+				$dane = json_decode($data);
+				if (is_array($dane) || is_object($dane))
+				{
+				echo '
+				<div class="dropdown" style="float: left">
+					<button class="dropbtn">
+						<i class="fas fa-users"></i>
+  						Lista użytkowników
+						<i class="fa fa-caret-down"></i>
 					</button>
-					<div class="dropdown-content">
-      					<a href="' . $loginURL . '"> Asd1 </a>
+					<div class="dropdown-content">';
+						foreach ($dane->data as $item)
+						{
+						echo '
+      					<a href="' . $item->id . '">' . $item->name . '</a>';
+      					}
+      					echo '
     				</div>
-				</div>'
+				</div>';
+				}
+				?>
 				<?php 
 				if($titleURL == 'Zaloguj') echo '
 				<div class="dropdown">
@@ -276,34 +248,10 @@
 				?>
 			</div>
 		</header>
-		<?php 
-		$url = 'https://api-portalw.herokuapp.com/user/index.php';
-		$data = get_content($url);
-		$dane = json_decode($data);
-		if (is_array($dane) || is_object($dane))
-		{ 
-			echo '
-			<section id="userList">
-  				<div class="sidenav">
-  					<button class="dropdown-btn">
-  						<i class="fas fa-users"></i>
-  						Lista użytkowników
-    					<i class="fa fa-caret-down"></i>
-  					</button>
-  					<div class="dropdown-container">';
-					foreach ($dane->data as $item)
-					{
-						echo '<a href="#">' . $item->login . '</a>';
-					}
-					echo '
-					</div>
-  				</div>
-  			</section>';
-  		}?>
-		<section id="main">
-			<div class="main">
-  			</div>
-  		</section>
+		<div class="w3-container w3-center w3-animate-top">
+  			<h1>Projektowanie</h1>
+  			<p>Stan aplikacji:</p>
+		</div>
   	<script>
 		var dropdown = document.getElementsByClassName("dropdown-btn");
 		var i;

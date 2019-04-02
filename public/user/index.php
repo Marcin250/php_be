@@ -23,7 +23,7 @@
 			extract($row);
 			$user = array(
 				"id" => $id,
-				"login" => $Name,
+				"name" => $Name,
 				"createdAt" => $created_at
 			);
 			array_push($usersArray["data"], $user);

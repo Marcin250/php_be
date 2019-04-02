@@ -6,9 +6,14 @@
 		private $dbConnection;
 		private $tableName = "users";		
 		public $id;
-		public $login;
+		public $name;
+		public $email;
+		public $provider;
 		public $providerId;
+		public $image
 		public $createdAt;
+		public $status;
+		public $privilege;
 		
 		public function __construct($connection)
 		{
@@ -37,6 +42,27 @@
 				return true;
 			else
 				return false;
+		}
+		function store()
+		{
+			$query = "insert into " . $this->table_name . " SET Name=:name, Email=:email, Image=:image, provider=:provider, provider_id=:providerId, created_at=NOW()";
+			$stmt = $this->db_connection->prepare($query);
+			$stmt->bindParam(":name", $this->name);
+			$stmt->bindParam(":email", $this->email);
+			$stmt->bindParam(":image", $this->image);
+			$stmt->bindParam(":provider", $this->provider);
+			$stmt->bindParam(":providerId", $this->providerId);
+			if($stmt->execute())
+				return true;
+			return false;
+		}
+		function update()
+		{
+
+		}
+		function delete()
+		{
+			
 		}
 	}
 ?>

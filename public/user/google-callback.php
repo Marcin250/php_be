@@ -12,10 +12,7 @@
 	$dbConnection = new DatabaseConnection();
 	$connetion = $dbConnection->getConnection();
  
-	$users = new User($connetion);
- 
-	$result = $users->index();
-	$num = $result->rowCount();
+	$user = new User($connetion);
 
 	$googleClient = new GoogleClient();
 	$client = $googleClient->getClient();
@@ -27,6 +24,14 @@
 
 		$oAuthData = new Google_Service_Oauth2($client);
 		$userData = $oAuthData->userinfo_v2_me->get();
+
+		$user->name = $userData->name;
+		$user->email = $userData->email;
+		$user->provider = 'GOOGLE';
+		$user->providerId = $userData->id;
+		$user->image = $userData->picture;
+		if($user->verify() == false)
+			$user->store();
 
 		$_SESSION['name'] = $userData->name;
 		$_SESSION['email'] = $userData->email;
