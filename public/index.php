@@ -70,7 +70,8 @@
 				</div>
 			</div>
 		</header>
-		<?php if(isset($_SESSION['token'])) echo '
+		<?php 
+		if(isset($_SESSION['token'])) echo '
 		<section class="userData" id="userData">
 			<div>
 				<h2>Dane użytkownika:</h2>
@@ -87,18 +88,21 @@
   					</tr>
   				</table>
   			</div>
-  		</section>'?>
-  		<div>
-  			<select name="userList">
-			<?php
-				$url = 'https://api-portalw.herokuapp.com/user/index.php';
-				$data = get_content($url);
-				$dane = json_decode($data);
-				if (is_array($dane) || is_object($dane)){
-					foreach ($dane->data as $item) {?>
-					<option value="<?php echo $item->id;?>"> <?php echo $item->login;?> </option>
-			<?php }}?>
+  		</section>'
+  		$url = 'https://api-portalw.herokuapp.com/user/index.php';
+		$data = get_content($url);
+		$dane = json_decode($data);
+		if (is_array($dane) || is_object($dane))
+		{ 
+			echo "
+  			<div>
+  				<select name="userList">";
+					foreach ($dane->data as $item)
+					{
+						echo '
+						<option value="' . $item->id . '">' .$item->login .'> </option>
 			</select> 
-  		</div>
+  		</div>';
+  		?>
 	</body>
 </html>
