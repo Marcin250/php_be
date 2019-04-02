@@ -18,7 +18,7 @@
 			$this->$client->setClientId(getenv('GOOGLE_ID'));
 			$this->$client->setClientSecret(getenv('GOOGLE_SECRET'));
 			$this->$client->setRedirectUri(getenv('APP_URL') . '/user/google-callback');
-			$this->$client->addScope("https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email")
+			$this->$client->addScope("https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email");
 			return $this->client;
 		}
 	}
