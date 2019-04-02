@@ -32,6 +32,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<style>
 		body {
 			margin: 0;
@@ -98,7 +99,7 @@
 
       	.topBar a {
   			float: right;
-  			color: #f2f2f2;
+  			color: #222;
   			text-align: center;
   			padding: 14px 16px;
   			text-decoration: none;
@@ -187,8 +188,8 @@
 		}
 
 		.main {
-  			margin-left: 230px; /* Same as the width of the sidenav */
-  			font-size: 20px; /* Increased text to enable scrolling */
+  			margin-left: 230px;
+  			font-size: 20px; 
   			padding: 0px 10px;
 		}
 
@@ -254,7 +255,7 @@
 		if (is_array($dane) || is_object($dane))
 		{ 
 			echo '
-			<section class="userList" id="userList">
+			<section id="userList">
   				<div class="sidenav">
   					<button class="dropdown-btn">
   						<i class="fas fa-users"></i>
@@ -271,7 +272,7 @@
   				</div>
   			</section>';
   		}?>
-		<section class="userData" id="userData">
+		<section id="userData">
 			<div class="main">
 				<?php 
 				if(isset($_SESSION['token'])) echo '
