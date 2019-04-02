@@ -23,7 +23,6 @@
 				$this->client->setRedirectUri(getenv('APP_URL') . '/user/google-callback.php');
 				$this->client->addScope("https://www.googleapis.com/auth/plus.login");
 				$this->client->addScope("https://www.googleapis.com/auth/userinfo.email");
-				$this->client->setDeveloperKey(getenv('APP_KEY'));
 			}
 			catch(Google_Service_Exception $exception)
 			{
