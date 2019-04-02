@@ -97,6 +97,58 @@
   			display: block;
 		}
 
+		.sidenav {
+  			height: 100%;
+  			width: 200px;
+  			position: fixed;
+ 			z-index: 1;
+  			top: 0;
+  			left: 0;
+  			background-color: #111;
+  			overflow-x: hidden;
+  			padding-top: 20px;
+		}
+
+		.sidenav a, .dropdown-btn {
+  			padding: 6px 8px 6px 16px;
+  			text-decoration: none;
+  			font-size: 20px;
+  			color: #818181;
+  			display: block;
+  			border: none;
+  			background: none;
+  			width: 100%;
+  			text-align: left;
+  			cursor: pointer;
+  			outline: none;
+		}
+
+		.sidenav a:hover, .dropdown-btn:hover {
+  			color: #f1f1f1;
+		}
+
+		.main {
+  			margin-left: 200px; /* Same as the width of the sidenav */
+  			font-size: 20px; /* Increased text to enable scrolling */
+  			padding: 0px 10px;
+		}
+
+		.active {
+  			background-color: green;
+  			color: white;
+		}
+
+		.dropdown-container {
+  			display: none;
+  			background-color: #262626;
+  			padding-left: 8px;
+		}
+
+		.fa-caret-down {
+  			float: right;
+  			padding-right: 8px;
+		}
+
       	table {
   			border-collapse: collapse;
   			border-spacing: 0;
@@ -137,6 +189,27 @@
 			</div>
 		</header>
 		<?php 
+		$url = 'https://api-portalw.herokuapp.com/user/index.php';
+		$data = get_content($url);
+		$dane = json_decode($data);
+		if (is_array($dane) || is_object($dane))
+		{ 
+			echo '
+			<section class="userList" id="userList">
+  				<div class="sidenav">
+  					<button class="dropdown-btn">Dropdown 
+    					<i class="fa fa-caret-down"></i>
+  					</button>
+  					<div class="dropdown-container">';
+					foreach ($dane->data as $item)
+					{
+						echo '<a href="#">' . $item->login . '</a>';
+					}
+					echo '
+					</div>
+  				</div>
+  			</section>';
+  		}
 		if(isset($_SESSION['token'])) echo '
 		<section class="userData" id="userData">
 			<div>
@@ -155,23 +228,6 @@
   				</table>
   			</div>
   		</section>';
-  		$url = 'https://api-portalw.herokuapp.com/user/index.php';
-		$data = get_content($url);
-		$dane = json_decode($data);
-		if (is_array($dane) || is_object($dane))
-		{ 
-			echo '
-  			<div>
-  				<select name="userList">';
-					foreach ($dane->data as $item)
-					{
-						echo '
-						<option value="' . $item->id . '">' .$item->login .'> </option>';
-					}
-			echo '
-				</select> 
-  			</div>';
-  		}
   		?>
 	</body>
 </html>
