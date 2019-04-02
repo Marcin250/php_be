@@ -99,6 +99,5 @@
 			<?php }?>
 			</select> 
   		</div>
-  		<?php print_r(get_declared_classes()); ?>
 	</body>
 </html>
