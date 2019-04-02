@@ -49,7 +49,7 @@
 		function store()
 		{
 			$query = "insert into " . $this->table_name . " SET Name=:name, Email=:email, Image=:image, provider=:provider, provider_id=:providerId, created_at=NOW()";
-			$stmt = $this->db_connection->prepare($query);
+			$stmt = $this->dbConnection->prepare($query);
 			$stmt->bindParam(":name", $this->name);
 			$stmt->bindParam(":email", $this->email);
 			$stmt->bindParam(":image", $this->image);
