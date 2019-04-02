@@ -3,7 +3,6 @@
 	header("Content-Type: application/json; charset=UTF-8");
 	require_once __DIR__ . '../../../vendor/autoload.php';
 	
-	use Google_Service;
 	use Config\GoogleClient;
 	use Config\DatabaseConnection;
 	use App\Objects\User;
@@ -26,7 +25,7 @@
 		$token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
 		$_SESSION['token'] = $token;
 
-		$oAuthData = new Google_Service_OAuth2($client);
+		$oAuthData = new Google_Service_Oauth2($client);
 		$userData = $oAuthData->userinfo_v2_me->get();
 
 		$_SESSION['name'] = $userData->name;
