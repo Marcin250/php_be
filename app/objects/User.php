@@ -10,7 +10,7 @@
 		public $email;
 		public $provider;
 		public $providerId;
-		public $image
+		public $image;
 		public $createdAt;
 		public $status;
 		public $privilege;
@@ -62,7 +62,7 @@
 		}
 		function delete()
 		{
-			
+
 		}
 	}
 ?>
