@@ -99,5 +99,6 @@
 			<?php }?>
 			</select> 
   		</div>
+  		<?php echo getenv('APP_URL') . '/user/google-callback.php';
 	</body>
 </html>
