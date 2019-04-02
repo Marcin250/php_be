@@ -94,7 +94,7 @@
 				$url = 'http://localhost/plain_php/public/user/index.php';
 				$data = get_content($url);
 				$dane = json_decode($data);
-				if (is_array($values) || is_object($values)){
+				if (is_array($dane) || is_object($dane)){
 					foreach ($dane->data as $item) {?>
 					<option value="<?php echo $item->id;?>"> <?php echo $item->login;?> </option>
 			<?php }}?>
