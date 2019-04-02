@@ -91,7 +91,7 @@
   		<div>
   			<select name="userList">
 			<?php
-				$url = 'http://localhost/plain_php/public/user/index.php';
+				$url = '/user/index.php';
 				$data = get_content($url);
 				$dane = json_decode($data);
 				if (is_array($dane) || is_object($dane)){
