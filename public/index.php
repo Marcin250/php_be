@@ -107,13 +107,8 @@
   			font-size: 17px;
 		}
 
-		.topBar p {
-      		float: left;
-  			color: #dd4b39;
-  			text-align: center;
-  			padding: 14px 16px;
-  			text-decoration: none;
-  			font-size: 17px;
+		.topBar a.left {
+  			float: left;
 		}
 
 		.dropdown {
@@ -136,6 +131,10 @@
   			background-color: #dd4b39;
   			color: white;
   			.topBar a {background-color: grey;}
+		}
+
+		.topBar .dropdown.left {
+ 			float: left;
 		}
 
 		.topBar a:hover {
@@ -244,6 +243,14 @@
 	<body>
 		<header id="header">
 			<div class="topBar">
+				<div class="dropdown.left">
+					<button class="dropbtn"> Asd
+						<i class="fas fa-sign-in-alt"></i>
+					</button>
+					<div class="dropdown-content">
+      					<a href="' . $loginURL . '"> Asd1 </a>
+    				</div>
+				</div>'
 				<?php 
 				if($titleURL == 'Zaloguj') echo '
 				<div class="dropdown">
