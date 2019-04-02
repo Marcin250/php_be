@@ -6,7 +6,7 @@
 	require_once __DIR__ . '../../vendor/autoload.php';
 
 	use Google_Client;
-	use Dotenv\Dotenv as Dotenv;
+	//use Dotenv\Dotenv as Dotenv;
 
 	class GoogleClient
 	{
@@ -17,8 +17,8 @@
 			$this->client = null;
 			try
 			{
-				$dotenv = Dotenv::create(__DIR__ . '/..');
-                $dotenv->load();
+				//$dotenv = Dotenv::create(__DIR__ . '/..');
+                //$dotenv->load();
 				$this->client = new Google_Client();
 				$this->client->setApplicationName("portal-wertykalny");
 				$this->client->setClientId(getenv('GOOGLE_ID'));
