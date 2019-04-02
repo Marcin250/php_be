@@ -1,5 +1,4 @@
 <?php
-	print_r(scandir($_SERVER['DOCUMENT_ROOT']));
-	print_r(scandir(__DIR__ . '/..'));
-	print_r(getenv('DB_DATABASE'));
+	if(!isset($_SESSION)) { session_start(); } 
+	echo "Witam!";
 ?>

@@ -8,12 +8,8 @@
         }
 	},
 	"require": {
-		"vlucas/phpdotenv": "^3.3"
-	},
-	"scripts": {
-        "post-create-project-cmd": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ]
+		"vlucas/phpdotenv": "^3.3",
+		"google/apiclient": "^2.0"
 	},
 	"post-install-cmd": [
 		"php artisan clear-compiled",
