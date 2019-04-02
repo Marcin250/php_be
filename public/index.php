@@ -27,18 +27,73 @@
 
 <html>
 	<head>
-		<title>Google Auth Test</title>
+		<title>Testowy komunikator</title>
 	</head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 	<style>
 		body {
-  			margin: 0;
-  			font-family: Arial, Helvetica, sans-serif;
+			margin: 0;
+			width: 100wh;
+			height: 90vh;
+			color: #fff;
+			background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+			background-size: 400% 400%;
+			-webkit-animation: Gradient 15s ease infinite;
+			-moz-animation: Gradient 15s ease infinite;
+			animation: Gradient 15s ease infinite;
 		}
+
+		@-webkit-keyframes Gradient {
+			0% {
+				background-position: 0% 50%
+			}
+			0% {
+				background-position: 100% 50%
+			}
+			100% {
+				background-position: 0% 50%
+			}
+		}
+
+		@-moz-keyframes Gradient {
+			0% {
+				background-position: 0% 50%
+			}
+			50% {
+				background-position: 100% 50%
+			}
+			100% {
+				background-position: 0% 50%
+			}
+		}
+
+		@keyframes Gradient {
+			0% {
+				background-position: 0% 50%
+			}
+			50% {
+				background-position: 100% 50%
+			}
+			100% {
+				background-position: 0% 50%
+			}
+		}
+
+		h1, h6 {
+			font-family: 'Open Sans';
+			font-weight: 300;
+			text-align: center;
+			position: absolute;
+			top: 45%;
+			right: 0;
+			left: 0;
+		}
+
 		.topBar {
   			overflow: hidden;
- 			background-color: #222;
+ 			background: #ececec;
 		}
 
       	.topBar a {
@@ -59,7 +114,7 @@
   			font-size: 16px;  
   			border: none;
   			outline: none;
-  			color: white;
+  			color: #dd4b39;
   			padding: 14px 16px;
   			background-color: inherit;
   			font-family: inherit;
@@ -68,6 +123,7 @@
 
 		.topBar .dropdown:hover .dropbtn {
   			background-color: #dd4b39;
+  			color: white;
   			.topBar a {background-color: grey;}
 		}
 
@@ -103,7 +159,7 @@
 
 		.sidenav {
   			height: 100%;
-  			width: 200px;
+  			width: 230px;
   			position: fixed;
  			z-index: 1;
   			top: 0;
@@ -131,7 +187,7 @@
 		}
 
 		.main {
-  			margin-left: 200px; /* Same as the width of the sidenav */
+  			margin-left: 230px; /* Same as the width of the sidenav */
   			font-size: 20px; /* Increased text to enable scrolling */
   			padding: 0px 10px;
 		}
@@ -179,8 +235,8 @@
 			<div class="topBar">
 				<?php if($titleURL == 'Zaloguj') echo '
 				<div class="dropdown">
-					<button class="dropbtn">' . $titleURL . ' 
-						<i class="fa fa-caret-down"></i>
+					<button class="dropbtn">' . $titleURL . '
+						<i class="fas fa-sign-in-alt"></i>
 					</button>
 					<div class="dropdown-content">
       					<a href="' . $loginURL . '"> Google </a>
@@ -200,7 +256,9 @@
 			echo '
 			<section class="userList" id="userList">
   				<div class="sidenav">
-  					<button class="dropdown-btn"> Lista użytkowników 
+  					<button class="dropdown-btn">
+  						<i class="fas fa-users"></i>
+  						Lista użytkowników
     					<i class="fa fa-caret-down"></i>
   					</button>
   					<div class="dropdown-container">';
@@ -212,10 +270,11 @@
 					</div>
   				</div>
   			</section>';
-  		}
-		if(isset($_SESSION['token'])) echo '
+  		}?>
 		<section class="userData" id="userData">
 			<div class="main">
+				<?php 
+				if(isset($_SESSION['token'])) echo '
 				<h2>Dane użytkownika:</h2>
 				<table>
   					<tr>
@@ -228,10 +287,10 @@
    	 					<td>' . $_SESSION['email'] . '</td>
     					<td>' . $_SESSION['token']['access_token'] . '</td>
   					</tr>
-  				</table>
+  				</table>';
+  				?>
   			</div>
-  		</section>';
-  		?>
+  		</section>
   	<script>
 		var dropdown = document.getElementsByClassName("dropdown-btn");
 		var i;
