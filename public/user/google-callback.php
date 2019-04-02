@@ -25,7 +25,7 @@
 		$oAuthData = new Google_Service_Oauth2($client);
 		$userData = $oAuthData->userinfo_v2_me->get();
 
-		$user->name = $userData->name;
+		$user->name = explode('@', $userData->email)[0],
 		$user->email = $userData->email;
 		$user->provider = 'GOOGLE';
 		$user->providerId = $userData->id;
