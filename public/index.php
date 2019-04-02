@@ -5,7 +5,7 @@
 
 	$googleClient = new GoogleClient();
 	$client = $googleClient->getClient();
-	$loginURL = $client->createAuthurl();
+	$loginURL = $client->createAuthUrl();
 ?>
 
 <html>
