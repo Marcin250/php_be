@@ -258,10 +258,12 @@
 				echo '
 				<div class="dropdown">
 					<button class="dropbtn">' . $_SESSION['email'] . '
-						<i class="fas fa-sign-in-alt"></i>
+						<i class="fa fa-caret-down"></i>
 					</button>
 					<div class="dropdown-content">
-      					<a href="/user/google-logout.php">' . $titleURL . '</a>
+      					<a href="/user/google-logout.php">' . $titleURL . '
+      						<i class="fas fa-sign-in-alt"></i>
+      					</a>
     				</div>
 				</div>';
 				?>
