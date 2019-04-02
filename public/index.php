@@ -44,7 +44,6 @@
       	.topBar a {
   			float: right;
   			color: #f2f2f2;
-  			
   			text-align: center;
   			padding: 14px 16px;
   			text-decoration: none;
@@ -68,6 +67,11 @@
 		}
 
 		.topBar .dropdown:hover .dropbtn {
+  			background-color: #dd4b39;
+  			.topBar a {background-color: grey;}
+		}
+
+		.topBar a:hover {
   			background-color: #dd4b39;
 		}
 
