@@ -244,8 +244,7 @@
 	<body>
 		<header id="header">
 			<div class="topBar">
-				<?php if(isset($_SESSION['email'])) 
-					echo '<p href="#">' . 'Użytkownik: ' . $_SESSION['email'] . '</p>';
+				<?php 
 				if($titleURL == 'Zaloguj') echo '
 				<div class="dropdown">
 					<button class="dropbtn">' . $titleURL . '
@@ -255,8 +254,16 @@
       					<a href="' . $loginURL . '"> Google </a>
     				</div>
 				</div>';
-				else
-					echo '<a href="/user/google-logout.php">' . $titleURL . '</a>';
+				elseif(isset($_SESSION['email']))
+				echo '
+				<div class="dropdown">
+					<button class="dropbtn">' . $_SESSION['email'] . '
+						<i class="fas fa-sign-in-alt"></i>
+					</button>
+					<div class="dropdown-content">
+      					<a href="/user/google-logout.php">' . $titleURL . '</a>
+    				</div>
+				</div>';
 				?>
 			</div>
 		</header>
