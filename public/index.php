@@ -43,7 +43,8 @@
 
       	.topBar a {
   			float: right;
-  			color: #dd4b39;
+  			color: #f2f2f2;
+  			background-color: #dd4b39;
   			text-align: center;
   			padding: 14px 16px;
   			text-decoration: none;
