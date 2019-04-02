@@ -93,12 +93,13 @@
 		}
 
 		.topBar {
+			margin-left: 230px;
   			overflow: hidden;
  			background: #ececec;
 		}
 
       	.topBar a {
-  			float: right;
+      		float: left;
   			color: #222;
   			text-align: center;
   			padding: 14px 16px;
@@ -112,7 +113,6 @@
 		}
 
       	.dropdown .dropbtn {
-      		float: right;
   			font-size: 16px;  
   			border: none;
   			outline: none;
@@ -236,7 +236,7 @@
 		<header id="header">
 			<div class="topBar">
 				<?php if(isset($_SESSION['email'])) 
-					echo '<a href="#">' . $_SESSION['email'] . '</a>';
+					echo '<a href="#">' . 'Użytkownik: ' . $_SESSION['email'] . '</a>';
 				if($titleURL == 'Zaloguj') echo '
 				<div class="dropdown">
 					<button class="dropbtn">' . $titleURL . '
