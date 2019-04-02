@@ -32,13 +32,69 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style>
-		body, html {height: 100%; margin: 0;}
-		.topBar {border-radius: 16px; display:block; transition: top 0.3s; font-family: 'Ubuntu', sans-serif;}
-      	.topBar-right {float: right;}
-      	.topBar a, u {float: left; display: block; color: #f2f2f2; text-align: center; padding: 15px; text-decoration: none; font-size: 20px;}
-      	.topBar a:hover {color: white;}
+		body {
+  			margin: 0;
+  			font-family: Arial, Helvetica, sans-serif;
+		}
+		.topBar {
+  			overflow: hidden;
+ 			background-color: #222;
+		}
 
-      	.fa-google {background: #dd4b39; color: white;}
+      	.topBar a {
+  			float: right;
+  			color: #f2f2f2;
+  			text-align: center;
+  			padding: 14px 16px;
+  			text-decoration: none;
+  			font-size: 17px;
+		}
+
+		.dropdown {
+  			float: right;
+  			overflow: hidden;
+		}
+
+      	.dropdown .dropbtn {
+  			font-size: 16px;  
+  			border: none;
+  			outline: none;
+  			color: white;
+  			padding: 14px 16px;
+  			background-color: inherit;
+  			font-family: inherit;
+  			margin: 0;
+		}
+
+		.topBar .dropdown:hover .dropbtn {
+  			background-color: #dd4b39;
+		}
+
+		.dropdown-content {
+  			display: none;
+  			position: absolute;
+  			background-color: #f9f9f9;
+  			min-width: 160px;
+  			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  			z-index: 1;
+		}
+
+		.dropdown-content a {
+  			float: none;
+  			color: black;
+  			padding: 12px 16px;
+  			text-decoration: none;
+  			display: block;
+  			text-align: left;
+		}
+
+		.dropdown-content a:hover {
+  			background-color: #ddd;
+		}
+
+		.dropdown:hover .dropdown-content {
+  			display: block;
+		}
 
       	table {
   			border-collapse: collapse;
@@ -65,9 +121,18 @@
 	<body>
 		<header id="header">
 			<div class="topBar">
-				<div class="topBar-right">
-					<a href="<?php if($titleURL == 'Zaloguj') echo $loginURL; else echo '/user/google-logout.php'?>" class="fa fa-google"> <?php echo $titleURL; ?> </a>
-				</div>
+				<?php if($titleURL == 'Zaloguj') echo '
+				<div class="dropdown">
+					<button class="dropbtn">' . $titleURL . '
+						<i class="fa fa-caret-down"></i>
+					</button>
+					<div class="dropdown-content">
+      					<a href="' . $loginURL . '"> Google </a>
+    				</div>
+				</div>';
+				else
+					echo '<a href="/user/google-logout.php">' . $titleURL . '</a>';
+				?>
 			</div>
 		</header>
 		<?php 
