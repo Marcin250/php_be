@@ -1,6 +1,8 @@
 <?php
 	namespace App\Objects;
 	
+	use PDO;
+
 	class User
 	{
 		private $dbConnection;
