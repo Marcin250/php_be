@@ -112,6 +112,7 @@
 		}
 
       	.dropdown .dropbtn {
+      		float: right;
   			font-size: 16px;  
   			border: none;
   			outline: none;
