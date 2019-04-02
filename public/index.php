@@ -17,6 +17,5 @@
 		<form>
 			<input type="button"> onclick="window.location = '<?php echo $loginURL; ?>'" Google+ </input>
 		</form>
-		<img src="/grafika/wyk6_1a.png">
 	</body>
 </html>
