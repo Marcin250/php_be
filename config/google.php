@@ -20,7 +20,7 @@
 				$this->client->setApplicationName("portal-wertykalny");
 				$this->client->setClientId(getenv('GOOGLE_ID'));
 				$this->client->setClientSecret(getenv('GOOGLE_SECRET'));
-				$this->client->setRedirectUri(getenv('APP_URL') . '/user/google-callback.php');
+				$this->client->setRedirectUri(getenv('/user/google-callback');
 				$this->client->addScope("https://www.googleapis.com/auth/plus.login");
 				$this->client->addScope("https://www.googleapis.com/auth/userinfo.email");
 			}
