@@ -11,7 +11,9 @@
 		"vlucas/phpdotenv": "^3.3"
 	},
 	"scripts": {
-		"@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        "post-create-project-cmd": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ]
 	},
 	"post-install-cmd": [
 		"php artisan clear-compiled",
