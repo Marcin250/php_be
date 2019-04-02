@@ -11,11 +11,8 @@
 <html>
 	<head>
 		<title>Google Auth Test</title>
-		<link rel="icon" type="image/png" href=""/>
 	</head>
 	<body>
-		<form>
-			<input type="button"> onclick="window.location = '<?php echo $loginURL; ?>'" Google+ </input>
-		</form>
+		<a href="'<?php echo $loginURL; ?>'"></a>
 	</body>
 </html>
