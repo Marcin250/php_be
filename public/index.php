@@ -88,21 +88,24 @@
   					</tr>
   				</table>
   			</div>
-  		</section>'
+  		</section>';
   		$url = 'https://api-portalw.herokuapp.com/user/index.php';
 		$data = get_content($url);
 		$dane = json_decode($data);
 		if (is_array($dane) || is_object($dane))
 		{ 
-			echo "
+			echo '
   			<div>
-  				<select name="userList">";
+  				<select name="userList">';
 					foreach ($dane->data as $item)
 					{
 						echo '
-						<option value="' . $item->id . '">' .$item->login .'> </option>
-			</select> 
-  		</div>';
+						<option value="' . $item->id . '">' .$item->login .'> </option>';
+					}
+			echo '
+				</select> 
+  			</div>';
+  		}
   		?>
 	</body>
 </html>
