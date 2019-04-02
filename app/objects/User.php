@@ -1,6 +1,7 @@
 <?php
 	namespace App\Objects;
 	
+	require_once __DIR__ . '../../../vendor/autoload.php';
 	use PDO;
 
 	class User
