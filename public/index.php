@@ -275,7 +275,7 @@
 		<div class="wrapper">
 			<h2>Informacje o użytkowniku</h2>
 			<div style="overflow:auto">
-				<h3 id='userImage'>Image</h3>
+				<img src="" id='userImage'>
 			</div>
 			<div style="overflow:auto">
 				<h3 id='userName'>Nazwa</h3>
@@ -312,7 +312,7 @@
 			fetch('/user/index.php?id='+id)
   				.then((resp) => resp.json())
   				.then(function(data) {
-					document.getElementById("userImage").innerHTML = data.Image;
+  					document["userImage"].src = data.Image;
 					document.getElementById("userName").innerHTML = data.Name;
 					document.getElementById("userEmail").innerHTML = data.Email;
 					document.getElementById("userStatus").innerHTML = data.Status;
