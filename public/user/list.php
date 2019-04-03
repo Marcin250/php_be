@@ -8,7 +8,7 @@
 	use App\Objects\Cache;
 
 	$cacheData = new Cache();
-	$data = $cacheData->remember('users-list', 60);
+	$data = $cacheData->remember('userslist', 60);
 	if($data)
 		echo $data;
 	else
@@ -35,7 +35,7 @@
 				);
 				array_push($usersArray["data"], $user);
 			}
-			echo $cacheData->cacheWrite('users-list', json_encode($usersArray));
+			echo $cacheData->cacheWrite('userslist', json_encode($usersArray));
 		}
 		else
 			echo json_encode(array("message" => "Błąd wyszukiwania."));

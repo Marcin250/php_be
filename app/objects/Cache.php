@@ -11,7 +11,7 @@
 		
 		public function __construct()
 		{
-			$this->cacheDirectory = '../cache/';
+			$this->cacheDirectory = '../../cache/';
 		}
 		
 		public function remember($dataIndex, $expirationTime)
