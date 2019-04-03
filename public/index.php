@@ -85,7 +85,6 @@
 		.topBar {
   			overflow: hidden;
  			background: #ececec;
- 			opacity: 0.9;
 		}
 
       	.topBar a {
@@ -165,7 +164,7 @@
 		 	width:500px;
 		 	height:500px;
 		 	margin:0 auto;
-		 	background:#f7f7f7;
+		 	background:#ececec;
 		 	position:absolute;
 		 	left:50%;
 		 	top:50%;
