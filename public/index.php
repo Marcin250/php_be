@@ -272,7 +272,7 @@
   			<h1>Projektowanie</h1>
 		</div>
 		<div class="wrapper">
-			<h2>Wybierz użytkownika aby wyświetlić jego dane</h2>
+			<h2>Informacje o użytkowniku</h2>
 			<div style="overflow:auto">
 				<h3 id='userID'>Image</h3>
 			</div>
