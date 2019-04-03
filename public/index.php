@@ -310,18 +310,15 @@
 		function getUser(id)
 		{
 			fetch('/user/index.php?id='+id)
-			.then(data => { 
-				let dane = data.json();
-				document.getElementById("userImage").innerHTML = dane.Image;
-				document.getElementById("userName").innerHTML = dane.Name;
-				document.getElementById("userEmail").innerHTML = dane.Email;
-				document.getElementById("userStatus").innerHTML = dane.Status;
-				document.getElementById("userPrivielege").innerHTML = dane.Privielege;
-				document.getElementById("userDate").innerHTML = dane.createdAt;
-			})
-			.then(data => { return data.json();})
-			.then(data => { console.log(data);})
-			.catch(err => { throw new Error(err);})
+  				.then((resp) => resp.json())
+  				.then(function(data) {
+					document.getElementById("userImage").innerHTML = data.Image;
+					document.getElementById("userName").innerHTML = data.Name;
+					document.getElementById("userEmail").innerHTML = data.Email;
+					document.getElementById("userStatus").innerHTML = data.Status;
+					document.getElementById("userPrivielege").innerHTML = data.Privielege;
+					document.getElementById("userDate").innerHTML = data.createdAt;
+				})
 		}
 	</script>
 	</body>
