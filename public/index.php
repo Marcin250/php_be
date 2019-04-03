@@ -274,7 +274,7 @@
 		<div class="wrapper">
 			<h2>Informacje o użytkowniku</h2>
 			<div style="overflow:auto">
-				<h3 id='userID'>Image</h3>
+				<h3 id='userImage'>Image</h3>
 			</div>
 			<div style="overflow:auto">
 				<h3 id='userName'>Nazwa</h3>
@@ -309,8 +309,15 @@
 		function getUser(id)
 		{
 			fetch('/user/index.php?id='+id)
-			.then(data => { return data.json();})
-			.then(data => { console.log(data);})
+			.then(data => { 
+				let dane = data.json();
+				document.getElementById("userImage").innerHTML = dane.Image;
+				document.getElementById("userName").innerHTML = dane.Name;
+				document.getElementById("userEmail").innerHTML = dane.Email;
+				document.getElementById("userStatus").innerHTML = dane.Status;
+				document.getElementById("userPrivielege").innerHTML = dane.Privielege;
+				document.getElementById("userDate").innerHTML = dane.createdAt;
+			})
 			.catch(err => { throw new Error(err);})
 		}
 	</script>
