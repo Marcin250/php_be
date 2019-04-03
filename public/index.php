@@ -231,7 +231,7 @@
   						Lista użytkowników
 						<i class="fa fa-caret-down"></i>
 					</button>
-					<div class="dropdown-content">';
+					<div id="userList" class="dropdown-content">';
 						foreach ($dane->data as $item)
 						{
 						echo '
@@ -313,6 +313,16 @@
 			.then(data => { console.log(data);})
 			.catch(err => { throw new Error(err);})
 		}
+		function getEventTarget(e) {
+    		e = e || window.event;
+    		return e.target || e.srcElement; 
+		}
+
+		var ul = document.getElementById('userList');
+		ul.onclick = function(event) {
+   			var target = getEventTarget(event);
+    		alert(target.innerHTML);
+		};
 	</script>
 	</body>
 </html>
