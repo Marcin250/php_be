@@ -295,7 +295,6 @@
   	<script>
 		var dropdown = document.getElementsByClassName("dropdown-btn");
 		var i;
-
 		for (i = 0; i < dropdown.length; i++) {
  			dropdown[i].addEventListener("click", function() {
   				this.classList.toggle("active");
@@ -306,6 +305,13 @@
   					dropdownContent.style.display = "block";
   				}
   			});
+		}
+		function getUser()
+		{
+			fetch('/user/index.php?id=141')
+			.then(data => { return data.json();})
+			.then(data => { console.log(data);})
+			.catch(err => { throw new Error(err);})
 		}
 	</script>
 	</body>
