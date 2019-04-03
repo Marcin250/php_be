@@ -5,31 +5,39 @@
 	
 	use Config\DatabaseConnection;
 	use App\Objects\User;
+	use App\Objects\Cache;
 
-	$dbConnection = new DatabaseConnection();
-	$connetion = $dbConnection->getConnection();
- 
-	$users = new User($connetion);
- 
-	$result = $users->index();
-	$num = $result->rowCount();
-
-	if($num > 0)
-	{
-		$usersArray = array();
-		$usersArray["data"] = array();
-		while($row = $result->fetch(PDO::FETCH_ASSOC))
-		{
-			extract($row);
-			$user = array(
-				"id" => $id,
-				"name" => $Name,
-				"createdAt" => $created_at
-			);
-			array_push($usersArray["data"], $user);
-		}
-		echo json_encode($usersArray);
-	}
+	$cacheData = new Cache();
+	$data = $cacheData->remember('users-list', 60);
+	if($data)
+		echo $data;
 	else
-		echo json_encode(array("message" => "Błąd wyszukiwania."));
+	{
+		$dbConnection = new DatabaseConnection();
+		$connetion = $dbConnection->getConnection();
+	 
+		$users = new User($connetion);
+	 
+		$result = $users->index();
+		$num = $result->rowCount();
+	
+		if($num > 0)
+		{
+			$usersArray = array();
+			$usersArray["data"] = array();
+			while($row = $result->fetch(PDO::FETCH_ASSOC))
+			{
+				extract($row);
+				$user = array(
+					"id" => $id,
+					"name" => $Name,
+					"createdAt" => $created_at
+				);
+				array_push($usersArray["data"], $user);
+			}
+			echo $cacheData->cacheWrite('users-list', json_encode($usersArray));
+		}
+		else
+			echo json_encode(array("message" => "Błąd wyszukiwania."));
+	}
 ?>
