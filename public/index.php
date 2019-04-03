@@ -82,16 +82,6 @@
 			}
 		}
 
-		h1, h6 {
-			font-family: 'Open Sans';
-			font-weight: 300;
-			text-align: center;
-			position: absolute;
-			top: 45%;
-			right: 0;
-			left: 0;
-		}
-
 		.topBar {
   			overflow: hidden;
  			background: #ececec;
@@ -167,6 +157,35 @@
   			padding-right: 8px;
 		}
 
+		.wrapper
+		{
+			border-radius: 8px;
+		 	width:500px;
+		 	height:500px;
+		 	margin:0 auto;
+		 	background:#f7f7f7;
+		 	position:absolute;
+		 	left:50%;
+		 	top:50%;
+		 	margin-left:-250px;
+		 	margin-top:-250px;
+		}
+
+		h2 {
+			color: black;
+			font-size: 14px;
+			text-align: center;
+		}
+
+		h3 {
+			color: black;
+			font-size: 16px;
+			margin-left: 70px;
+			margin-top: 30px;
+			display:block;
+ 			float:left;
+		}
+
       	table {
   			border-collapse: collapse;
   			border-spacing: 0;
@@ -216,7 +235,7 @@
 						foreach ($dane->data as $item)
 						{
 						echo '
-      					<a href="' . $item->id . '">' . $item->name . '</a>';
+      					<a value="' . $item->id . '">' . $item->name . '</a>';
       					}
       					echo '
     				</div>
@@ -249,8 +268,29 @@
 			</div>
 		</header>
 		<div class="w3-container w3-center w3-animate-top">
+			<p>Stan aplikacji:</p>
   			<h1>Projektowanie</h1>
-  			<p>Stan aplikacji:</p>
+		</div>
+		<div class="wrapper">
+			<h2>Wybierz użytkownika aby wyświetlić jego dane</h2>
+			<div style="overflow:auto">
+				<h3 id='userID'>Image</h3>
+			</div>
+			<div style="overflow:auto">
+				<h3 id='userName'>Nazwa</h3>
+			</div>
+			<div style="overflow:auto">
+				<h3 id='userEmail'>Email</h3>
+			</div>
+			<div style="overflow:auto">
+				<h3 id='userStatus'>Status</h3>
+			</div>
+			<div style="overflow:auto">
+				<h3 id='userPrivielege'>Uprawnienia</h3>
+			</div>
+			<div style="overflow:auto">
+				<h3 id='userDate'>Data założenia</h3>
+			</div>
 		</div>
   	<script>
 		var dropdown = document.getElementsByClassName("dropdown-btn");

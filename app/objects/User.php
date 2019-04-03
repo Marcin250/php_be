@@ -26,7 +26,8 @@
 		function index()
 		{
 			$query = "SELECT id, Name, created_at" .
-					" FROM " . $this->tableName;
+					" FROM " . $this->tableName .
+					" ORDER BY id asc";
 			$stmt = $this->dbConnection->prepare($query);
 			$stmt->execute();
 			return $stmt;
