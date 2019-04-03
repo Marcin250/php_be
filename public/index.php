@@ -85,6 +85,7 @@
 		.topBar {
   			overflow: hidden;
  			background: #ececec;
+ 			opacity: 0.9;
 		}
 
       	.topBar a {
@@ -170,6 +171,7 @@
 		 	top:50%;
 		 	margin-left:-250px;
 		 	margin-top:-250px;
+		 	opacity: 0.9;
 		}
 
 		h2 {
