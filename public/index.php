@@ -235,7 +235,7 @@
 						foreach ($dane->data as $item)
 						{
 						echo '
-      					<a value="' . $item->id . '">' . $item->name . '</a>';
+      					<a onclick="myFunction(' . $item->id . ')"' . $item->name . '</a>';
       					}
       					echo '
     				</div>
@@ -306,23 +306,13 @@
   				}
   			});
 		}
-		function getUser()
+		function getUser(id)
 		{
-			fetch('/user/index.php?id=141')
+			fetch('/user/index.php?id=' )
 			.then(data => { return data.json();})
 			.then(data => { console.log(data);})
 			.catch(err => { throw new Error(err);})
 		}
-		function getEventTarget(e) {
-    		e = e || window.event;
-    		return e.target || e.srcElement; 
-		}
-
-		var ul = document.getElementById('userList');
-		ul.onclick = function(event) {
-   			var target = getEventTarget(event);
-    		alert(target.innerHTML);
-		};
 	</script>
 	</body>
 </html>
