@@ -235,7 +235,7 @@
 						foreach ($dane->data as $item)
 						{
 						echo '
-      					<a onclick="myFunction(' . $item->id . ')"' . $item->name . '</a>';
+      					<a onclick="getUser(' . $item->id . ')"' . $item->name . '</a>';
       					}
       					echo '
     				</div>
@@ -308,7 +308,7 @@
 		}
 		function getUser(id)
 		{
-			fetch('/user/index.php?id=' )
+			fetch('/user/index.php?id='+id)
 			.then(data => { return data.json();})
 			.then(data => { console.log(data);})
 			.catch(err => { throw new Error(err);})
