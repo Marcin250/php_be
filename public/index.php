@@ -188,8 +188,8 @@
 		}
 
 		img {
-			max-height:75px;
-    		max-width:75px;
+			max-height:50px;
+    		max-width:50px;
 			margin-left: 70px;
 			margin-top: 30px;
 		}
@@ -282,7 +282,7 @@
 		<div class="wrapper">
 			<h2>Informacje o użytkowniku</h2>
 			<div style="overflow:auto">
-				<img src="" id='userImage'>
+				<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" id='userImage'>
 			</div>
 			<div style="overflow:auto">
 				<h3 id='userName'>Nazwa</h3>
