@@ -235,7 +235,7 @@
 						foreach ($dane->data as $item)
 						{
 						echo '
-      					<a value="' . $item->id . '" onclick="getUser(' . $item->id . ')"' . $item->name . '</a>';
+      					<a value="' . $item->id . '" onclick="getUser(' . $item->id . ')">' . $item->name . '</a>';
       					}
       					echo '
     				</div>
