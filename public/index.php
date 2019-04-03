@@ -312,7 +312,7 @@
 			fetch('/user/index.php?id='+id)
   				.then((resp) => resp.json())
   				.then(function(data) {
-  					document["userImage"].src = data.Image;
+  					document.getElementById("userImage").src = data.Image;
 					document.getElementById("userName").innerHTML = data.Name;
 					document.getElementById("userEmail").innerHTML = data.Email;
 					document.getElementById("userStatus").innerHTML = data.Status;
