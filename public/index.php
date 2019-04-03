@@ -187,6 +187,13 @@
  			float:left;
 		}
 
+		img {
+			max-height:75px;
+    		max-width:75px;
+			margin-left: 70px;
+			margin-top: 30px;
+		}
+
       	table {
   			border-collapse: collapse;
   			border-spacing: 0;
