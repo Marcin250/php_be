@@ -7,11 +7,11 @@
 	class Cache
 	{
 		private $expirationTime;
-		private $cacheDirectory;		
+		private $cacheDirectory;
 		
-		public function __construct()
+		public function __construct($cachePath)
 		{
-			$this->cacheDirectory = '../../cache/';
+			$this->cacheDirectory = $cachePath;
 		}
 		
 		public function remember($dataIndex, $expirationTime)

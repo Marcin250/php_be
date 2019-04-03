@@ -7,7 +7,7 @@
 	use App\Objects\User;
 	use App\Objects\Cache;
 
-	$cacheData = new Cache();
+	$cacheData = new Cache('../../cache/');
 	$data = $cacheData->remember('userslist', 60);
 	if($data)
 		echo $data;

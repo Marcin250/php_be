@@ -3,11 +3,10 @@
 	header("Content-Type: application/json; charset=UTF-8");
 	require_once __DIR__ . '../../vendor/autoload.php';
 
-	echo $_SERVER['DOCUMENT_ROOT'];
 	use App\Objects\Cache;
 	if(isset($_GET['name']))
 	{
-		$cacheData = new Cache();
+		$cacheData = new Cache('../cache/');
 		$data = $cacheData->remember($_GET['name'], 60);
 		if($data)
 			echo $data;
