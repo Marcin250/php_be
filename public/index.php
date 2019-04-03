@@ -318,6 +318,7 @@
 				document.getElementById("userPrivielege").innerHTML = dane.Privielege;
 				document.getElementById("userDate").innerHTML = dane.createdAt;
 			})
+			.then(data => { console.log(data);}
 			.catch(err => { throw new Error(err);})
 		}
 	</script>
