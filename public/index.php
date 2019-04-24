@@ -161,8 +161,8 @@
 		.wrapper
 		{
 			border-radius: 8px;
-		 	width:500px;
-		 	height:500px;
+		 	width:550px;
+		 	height:550px;
 		 	margin:0 auto;
 		 	background:#ececec;
 		 	position:absolute;
@@ -171,6 +171,49 @@
 		 	margin-left:-250px;
 		 	margin-top:-250px;
 		 	opacity: 0.9;
+		}
+
+		.wrapperbtn
+		{
+			border-radius: 4px;
+			border: none;
+			color: black;
+			text-align: center;
+			font-size: 16px;
+			margin-left: 70px;
+			margin-top: 30px;
+			display:block;
+ 			float:left;
+ 			width: 230px;
+			transition: all 0.5s;
+			cursor: pointer;
+		}
+
+		.wrapperbtn span 
+		{
+		  	cursor: pointer;
+		  	display: inline-block;
+		  	position: relative;
+		  	transition: 0.5s;
+		}
+
+		.wrapperbtn span:after 
+		{
+		  	content: '\00bb';
+		  	position: absolute;
+		  	opacity: 0;
+		  	top: 0;
+		  	right: -20px;
+		  	transition: 0.5s;
+		}
+
+		.wrapperbtn:hover span {
+		  	padding-right: 25px;
+		}
+
+		.wrapperbtn:hover span:after {
+		  	opacity: 1;
+		  	right: 0;
 		}
 
 		h2 {
@@ -286,19 +329,29 @@
 				<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" id='userImage'>
 			</div>
 			<div style="overflow:auto">
-				<h3 id='userName'>Nazwa</h3>
+				<h3>Nazwa:</h3>
+				<h3 id='userName'></h3>
 			</div>
 			<div style="overflow:auto">
-				<h3 id='userEmail'>Email</h3>
+				<h3>Email:</h3>
+				<h3 id='userEmail'></h3>
 			</div>
 			<div style="overflow:auto">
-				<h3 id='userStatus'>Status</h3>
+				<h3>Status:</h3>
+				<h3 id='userStatus'></h3>
 			</div>
 			<div style="overflow:auto">
-				<h3 id='userPrivielege'>Uprawnienia</h3>
+				<h3>Uprawnienia:</h3>
+				<h3 id='userPrivielege'></h3>
 			</div>
 			<div style="overflow:auto">
-				<h3 id='userDate'>Data założenia</h3>
+				<h3>Data założenia:</h3>
+				<h3 id='userDate'></h3>
+			</div>
+			<div style="overflow:auto">
+				<button type="button" class="wrapperbtn">
+					<span> Przejdz do rozmowy </span>
+				</button>
 			</div>
 		</div>
   	<script>
