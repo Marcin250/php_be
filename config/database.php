@@ -7,23 +7,23 @@
 
 	class DatabaseConnection
 	{
-		public $db_connection;
+		private $dbConnection;
 		
 		public function getConnection()
 		{
-			$this->db_connection = null;
+			$this->dbConnection = null;
 			try
 			{
-				//$dotenv = Dotenv::create(__DIR__ . '/..');
-                //$dotenv->load();
-				$this->db_connection = new PDO("mysql:host=" . getenv('DB_HOST') . ";dbname=" . getenv('DB_DATABASE'), getenv('DB_USERNAME'), getenv('DB_PASSWORD'));
-				$this->db_connection->exec("set names utf8");
+				// $dotenv = Dotenv::create(__DIR__ . '/..');
+    //             $dotenv->load();
+				$this->dbConnection = new PDO("mysql:host=" . getenv('DB_HOST') . ";dbname=" . getenv('DB_DATABASE'), getenv('DB_USERNAME'), getenv('DB_PASSWORD'));
+				$this->dbConnection->exec("set names utf8");
 			}
 			catch(PDOException $exception)
 			{
 				echo "Connection error: " . $exception->getMessage();
 			}
-			return $this->db_connection;
+			return $this->dbConnection;
 		}
 	}
 ?>

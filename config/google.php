@@ -10,7 +10,7 @@
 
 	class GoogleClient
 	{
-		public $client;
+		private $client;
 		
 		public function getClient()
 		{

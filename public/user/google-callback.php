@@ -5,6 +5,7 @@
 	
 	use Config\GoogleClient;
 	use Config\DatabaseConnection;
+	use Config\PusherConnection;
 	use App\Objects\User;
 
 	if(!isset($_SESSION)) { session_start(); }
@@ -38,6 +39,11 @@
 
 		setcookie('name', $userData->name, time()+60*60);
 		setcookie('email', $userData->email, time()+60*60);
+
+		$data['name'] = $_SESSION['name'];
+
+		$pusher = new PusherConnection();
+		$pusher->trigger('home', 'my-event', $data);
 
 		header("Location: " . getenv('APP_URL'));
 		exit();

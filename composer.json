@@ -9,7 +9,8 @@
 	},
 	"require": {
 		"vlucas/phpdotenv": "^3.3",
-		"google/apiclient": "^2.0"
+		"google/apiclient": "^2.0",
+		"pusher/pusher-php-server": "^3.4"
 	},
 	"post-install-cmd": [
 		"php artisan clear-compiled",
