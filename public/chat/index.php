@@ -54,9 +54,6 @@
 	<style>
 		body {
 			margin: 0;
-			width: 100wh;
-			height: 90vh;
-			color: #fff;
 			background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
 			background-size: 400% 400%;
 			-webkit-animation: Gradient 15s ease infinite;
@@ -179,14 +176,13 @@
 		.wrapper
 		{
 			border-radius: 8px;
-		 	width:1000px;
+		 	width:1820px;
 		 	height:800px;
 		 	margin:0 auto;
 		 	background:#ececec;
 		 	position:absolute;
-		 	left:50%;
 		 	top:50%;
-		 	margin-left:-451.5px;
+		 	margin-left:50px;
 		 	margin-top:-375px;
 		 	opacity: 0.9;
 		}
