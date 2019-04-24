@@ -234,14 +234,14 @@
 		<header id="header">
 			<div class="topBar">
 				<div class="dropdown">
-					<button class="dropbtn"> <?php $_SESSION['email']; ?>
+					<button class="dropbtn"> <?php echo $_SESSION['email']; ?>
 						<i class="fa fa-caret-down"></i>
 					</button>
 					<div class="dropdown-content">
 						<a href="/"> Powrót
       						<i class="fas fa-sign-in-alt"></i>
       					</a>
-      					<a href="/user/google-logout.php"> <?php $titleURL ?>
+      					<a href="/user/google-logout.php"> <?php echo $titleURL ?>
       						<i class="fas fa-sign-in-alt"></i>
       					</a>
     				</div>
