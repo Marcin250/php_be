@@ -361,6 +361,7 @@
 			</div>
 		</div>
   	<script>
+  		var userId = 1;
 		var dropdown = document.getElementsByClassName("dropdown-btn");
 		var i;
 		for (i = 0; i < dropdown.length; i++) {
@@ -374,23 +375,27 @@
   				}
   			});
 		}
+
 		function getUser(id)
 		{
+			userId = id;
 			fetch('/user/index?id=' +id)
   				.then((resp) => resp.json())
   				.then(function(data) {
-  					document.getElementById("userImage").src = data.Image;
-					document.getElementById("userName").innerHTML = data.Name;
-					document.getElementById("userEmail").innerHTML = data.Email;
-					document.getElementById("userStatus").innerHTML = data.Status;
-					document.getElementById("userPrivielege").innerHTML = data.Privielege;
+  					document.getElementById("userImage").src = data.image;
+					document.getElementById("userName").innerHTML = data.name;
+					document.getElementById("userEmail").innerHTML = data.email;
+					document.getElementById("userStatus").innerHTML = data.status;
+					document.getElementById("userPrivielege").innerHTML = data.privielege;
 					document.getElementById("userDate").innerHTML = data.createdAt;
 				})
 		}
+
 		function goChat()
 		{
-			console.log('dziala');
+			console.log(userId);
 		}
+
 		Pusher.logToConsole = true;
 
 	    var pusher = new Pusher('ff71283c9ea50e531f55', {
@@ -399,8 +404,9 @@
 	    });
 
 	    var channel = pusher.subscribe('home');
-	    	channel.bind('login', function(data) {
-	      	alert(JSON.stringify(data));
+	    channel.bind('login', function(data) {
+	    	console.log(data);
+	      	//alert(JSON.stringify(data));
 	    });
 	</script>
 	</body>
