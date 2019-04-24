@@ -6,7 +6,7 @@
 
 	if(!isset($_SESSION)) { session_start(); }
 
-	if(isset($_SESSION['token']))
+	if(isset($_SESSION['id']))
 		$titleURL = 'Wyloguj';
 	else
 		$titleURL = 'Zaloguj';
@@ -396,7 +396,7 @@
 			console.log(userId);
 		}
 
-		Pusher.logToConsole = true;
+		Pusher.logToConsole = false;
 
 	    var pusher = new Pusher('ff71283c9ea50e531f55', {
 	      	cluster: 'eu',
@@ -406,7 +406,6 @@
 	    var channel = pusher.subscribe('home');
 	    channel.bind('login', function(data) {
 	    	console.log(data);
-	      	//alert(JSON.stringify(data));
 	    });
 	</script>
 	</body>

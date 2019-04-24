@@ -1,18 +1,23 @@
 <?php
-	require_once __DIR__ . '../../vendor/autoload.php';
+	require_once __DIR__ . '../../../vendor/autoload.php';
 
-	use Config\GoogleClient;
+	//use Dotenv\Dotenv as Dotenv;
 
 	if(!isset($_SESSION)) { session_start(); }
 
-	if(isset($_SESSION['token']))
+	if(isset($_SESSION['id']) && $_GET['u'])
+	{
+		$u1 = $_GET['u'][0];
+		$u2 = $_GET['u'][1];
 		$titleURL = 'Wyloguj';
+	}
 	else
-		$titleURL = 'Zaloguj';
-
-	$googleClient = new GoogleClient();
-	$client = $googleClient->getClient();
-	$loginURL = $client->createAuthUrl();
+	{
+		// $dotenv = Dotenv::create(__DIR__ . '/../..');
+		// $dotenv->load();
+		header("Location:" . getenv('APP_URL'));
+		die;
+	}
 
 	function get_content($URL){
 		$ch = curl_init();
@@ -33,6 +38,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<script src="https://js.pusher.com/4.4/pusher.min.js"></script>
 	<style>
 		body {
 			margin: 0;
@@ -161,15 +167,15 @@
 		.wrapper
 		{
 			border-radius: 8px;
-		 	width:500px;
-		 	height:500px;
+		 	width:1000px;
+		 	height:800px;
 		 	margin:0 auto;
 		 	background:#ececec;
 		 	position:absolute;
 		 	left:50%;
 		 	top:50%;
-		 	margin-left:-250px;
-		 	margin-top:-250px;
+		 	margin-left:-451.5px;
+		 	margin-top:-350px;
 		 	opacity: 0.9;
 		}
 
@@ -227,107 +233,37 @@
 	<body>
 		<header id="header">
 			<div class="topBar">
-				<?php 
-				$url = getenv('APP_URL') . 'user/list';
-				$data = get_content($url);
-				$dane = json_decode($data);
-				if (is_array($dane) || is_object($dane))
-				{
-				echo '
-				<div class="dropdown" style="float: left">
-					<button class="dropbtn">
-						<i class="fas fa-users"></i>
-  						Lista użytkowników
-						<i class="fa fa-caret-down"></i>
-					</button>
-					<div id="userList" class="dropdown-content">';
-						foreach ($dane->data as $item)
-						{
-						echo '
-      					<a value="' . $item->id . '" onclick="getUser(' . $item->id . ')">' . $item->name . '</a>';
-      					}
-      					echo '
-    				</div>
-				</div>';
-				}
-				?>
-				<?php 
-				if($titleURL == 'Zaloguj') echo '
 				<div class="dropdown">
-					<button class="dropbtn">' . $titleURL . '
-						<i class="fas fa-sign-in-alt"></i>
-					</button>
-					<div class="dropdown-content">
-      					<a href="' . $loginURL . '"> Google </a>
-    				</div>
-				</div>';
-				elseif(isset($_SESSION['email']))
-				echo '
-				<div class="dropdown">
-					<button class="dropbtn">' . $_SESSION['email'] . '
+					<button class="dropbtn"> <?php $_SESSION['email']; ?>
 						<i class="fa fa-caret-down"></i>
 					</button>
 					<div class="dropdown-content">
-      					<a href="/user/google-logout.php">' . $titleURL . '
+						<a href="/"> Powrót
+      						<i class="fas fa-sign-in-alt"></i>
+      					</a>
+      					<a href="/user/google-logout.php"> <?php $titleURL ?>
       						<i class="fas fa-sign-in-alt"></i>
       					</a>
     				</div>
-				</div>';
-				?>
+				</div>
 			</div>
 		</header>
-		<div class="w3-container w3-center w3-animate-top">
-			<p>Stan aplikacji:</p>
-  			<h1>Projektowanie</h1>
-		</div>
 		<div class="wrapper">
-			<h2>Informacje o użytkowniku</h2>
-			<div style="overflow:auto">
-				<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" id='userImage'>
-			</div>
-			<div style="overflow:auto">
-				<h3 id='userName'>Nazwa</h3>
-			</div>
-			<div style="overflow:auto">
-				<h3 id='userEmail'>Email</h3>
-			</div>
-			<div style="overflow:auto">
-				<h3 id='userStatus'>Status</h3>
-			</div>
-			<div style="overflow:auto">
-				<h3 id='userPrivielege'>Uprawnienia</h3>
-			</div>
-			<div style="overflow:auto">
-				<h3 id='userDate'>Data założenia</h3>
-			</div>
+			<h2>Rozmowa z użytkownikiem: <?php echo $u1 . ' ' . $u2; ?></h2>
+
 		</div>
   	<script>
-		var dropdown = document.getElementsByClassName("dropdown-btn");
-		var i;
-		for (i = 0; i < dropdown.length; i++) {
- 			dropdown[i].addEventListener("click", function() {
-  				this.classList.toggle("active");
-  				var dropdownContent = this.nextElementSibling;
-  				if (dropdownContent.style.display === "block") {
-  					dropdownContent.style.display = "none";
-  				} else {
-  					dropdownContent.style.display = "block";
-  				}
-  			});
-		}
-		function getUser(id)
-		{
-			fetch('/user/index?id=' +id)
-  				.then((resp) => resp.json())
-  				.then(function(data) {
-  					document.getElementById("userImage").src = data.Image;
-					document.getElementById("userName").innerHTML = data.Name;
-					document.getElementById("userEmail").innerHTML = data.Email;
-					document.getElementById("userStatus").innerHTML = data.Status;
-					document.getElementById("userPrivielege").innerHTML = data.Privielege;
-					document.getElementById("userDate").innerHTML = data.createdAt;
-				})
-		}
+  		Pusher.logToConsole = false;
+
+	    var pusher = new Pusher('ff71283c9ea50e531f55', {
+	      	cluster: 'eu',
+	      	forceTLS: true
+	    });
+
+	    var channel = pusher.subscribe('chat-room');
+	    channel.bind('chat', function(data) {
+	    	console.log(data);
+	    });
 	</script>
 	</body>
 </html>
