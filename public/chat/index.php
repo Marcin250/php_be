@@ -5,11 +5,22 @@
 
 	if(!isset($_SESSION)) { session_start(); }
 
-	if(isset($_SESSION['id']) && $_GET['u'])
+	if(isset($_SESSION['id']) && isset($_GET['u']))
 	{
-		$u1 = $_GET['u'][0];
-		$u2 = $_GET['u'][1];
+		$_SESSION['recipient'] = $_GET['u'];
 		$titleURL = 'Wyloguj';
+		if($_SESSION['id'] < $_SESSION['recipient'])
+			$chatName = 'chat' . $_SESSION['id'] . $_SESSION['recipient'];
+		else
+			$chatName = 'chat' . $_SESSION['recipient'] . $_SESSION['id'];
+	}
+	elseif(isset($_SESSION['id']) && isset($_SESSION['recipient']))
+	{
+		$titleURL = 'Wyloguj';
+		if($_SESSION['id'] < $_SESSION['recipient'])
+			$chatName = 'chat' . $_SESSION['id'] . $_SESSION['recipient'];
+		else
+			$chatName = 'chat' . $_SESSION['recipient'] . $_SESSION['id'];
 	}
 	else
 	{
@@ -249,7 +260,7 @@
 			</div>
 		</header>
 		<div class="wrapper">
-			<h2>Rozmowa z użytkownikiem: <?php echo $u1 . ' ' . $u2; ?></h2>
+			<h2>Rozmowa z użytkownikiem: <?php echo $chatName; ?></h2>
 
 		</div>
   	<script>
@@ -260,7 +271,7 @@
 	      	forceTLS: true
 	    });
 
-	    var channel = pusher.subscribe('chat-room');
+	    var channel = pusher.subscribe('<?php echo $chatName; ?>');
 	    channel.bind('chat', function(data) {
 	    	console.log(data);
 	    });

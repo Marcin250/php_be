@@ -393,7 +393,7 @@
 
 		function goChat()
 		{
-			console.log(userId);
+			window.location = '/chat?u=' + userId;
 		}
 
 		Pusher.logToConsole = false;
