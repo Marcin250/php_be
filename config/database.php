@@ -15,7 +15,8 @@
 			try
 			{
 				// $dotenv = Dotenv::create(__DIR__ . '/..');
-    //             $dotenv->load();
+				// $dotenv->load();
+				
 				$this->dbConnection = new PDO("mysql:host=" . getenv('DB_HOST') . ";dbname=" . getenv('DB_DATABASE'), getenv('DB_USERNAME'), getenv('DB_PASSWORD'));
 				$this->dbConnection->exec("set names utf8");
 			}

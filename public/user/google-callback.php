@@ -5,7 +5,8 @@
 	
 	use Config\GoogleClient;
 	use Config\DatabaseConnection;
-	use Config\PusherConnection;
+	//use Dotenv\Dotenv as Dotenv;
+	use Pusher\Pusher as Pusher;
 	use App\Objects\User;
 
 	if(!isset($_SESSION)) { session_start(); }
@@ -42,8 +43,15 @@
 
 		$data['name'] = $_SESSION['name'];
 
-		$pusher = new PusherConnection();
-		$pusher->trigger('home', 'my-event', $data);
+		// $dotenv = Dotenv::create(__DIR__ . '/../..');
+		// $dotenv->load();
+
+		$pusherOptions = array(
+    		'cluster' => getenv('PUSHER_CLUSTER'),
+    		'useTLS' => true
+  		);
+		$pusher = new Pusher(getenv('PUSHER_KEY'), getenv('PUSHER_SECRET'), getenv('PUSHER_ID'), $pusherOptions);
+		$pusher->trigger('home', 'login', $data);
 
 		header("Location: " . getenv('APP_URL'));
 		exit();

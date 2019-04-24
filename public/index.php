@@ -2,6 +2,7 @@
 	require_once __DIR__ . '../../vendor/autoload.php';
 
 	use Config\GoogleClient;
+	//use Dotenv\Dotenv as Dotenv;
 
 	if(!isset($_SESSION)) { session_start(); }
 
@@ -270,7 +271,11 @@
 	<body>
 		<header id="header">
 			<div class="topBar">
-				<?php 
+				<?php
+
+				// $dotenv = Dotenv::create(__DIR__ . '/..');
+				// $dotenv->load();
+
 				$url = getenv('APP_URL') . 'user/list';
 				$data = get_content($url);
 				$dane = json_decode($data);
@@ -350,7 +355,7 @@
 			</div>
 			<div style="overflow:auto">
 				<button type="button" class="wrapperbtn" onclick="goChat()">
-					<span> Przejdz do rozmowy </span>
+					<span> Przejdź do rozmowy </span>
 				</button>
 			</div>
 		</div>
@@ -385,6 +390,17 @@
 		{
 			console.log('dziala');
 		}
+		Pusher.logToConsole = true;
+
+	    var pusher = new Pusher('ff71283c9ea50e531f55', {
+	      	cluster: 'eu',
+	      	forceTLS: true
+	    });
+
+	    var channel = pusher.subscribe('home');
+	    	channel.bind('login', function(data) {
+	      	alert(JSON.stringify(data));
+	    });
 	</script>
 	</body>
 </html>

@@ -17,13 +17,14 @@
 			$this->client = null;
 			try
 			{
-				//$dotenv = Dotenv::create(__DIR__ . '/..');
-                //$dotenv->load();
+				// $dotenv = Dotenv::create(__DIR__ . '/..');
+				// $dotenv->load();
+
 				$this->client = new Google_Client();
 				$this->client->setApplicationName("portal-wertykalny");
 				$this->client->setClientId(getenv('GOOGLE_ID'));
 				$this->client->setClientSecret(getenv('GOOGLE_SECRET'));
-				$this->client->setRedirectUri('https://api-portalw.herokuapp.com/user/google-callback.php');
+				$this->client->setRedirectUri(getenv('GOOGLE_CALLBACK'));
 				$this->client->addScope("https://www.googleapis.com/auth/plus.login");
 				$this->client->addScope("https://www.googleapis.com/auth/userinfo.email");
 			}
