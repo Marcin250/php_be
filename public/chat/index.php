@@ -250,7 +250,7 @@
       		.topBar-right {float: none;} 
       	}
 	</style>
-	<body>
+	<body id="channelName" value= <?php '"' . echo $chatName . '"'; ?> >
 		<header id="header">
 			<div class="topBar">
 				<div class="dropdown">
@@ -283,8 +283,6 @@
 			</div>
 		</div>
   	<script>
-  		var channelName = <?php echo $chatName; ?>;
-
   		Pusher.logToConsole = false;
 
 	    var pusher = new Pusher('ff71283c9ea50e531f55', {
@@ -292,7 +290,7 @@
 	      	forceTLS: true
 	    });
 
-	    var channel = pusher.subscribe(channelName);
+	    var channel = pusher.subscribe(document.getElementById('channelName').value);
 	    channel.bind('chat', function(data) {
 	    	console.log(data);
 	    });
