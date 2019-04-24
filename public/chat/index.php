@@ -289,12 +289,12 @@
 	</script>
 	</body>
 	<?php
-		$data['message'] = $_SESSION['id'] . 'dołączył do chatu';
+		$pushData['message'] = $_SESSION['id'] . 'dołączył do chatu';
 		$pusherOptions = array(
     		'cluster' => getenv('PUSHER_CLUSTER'),
     		'useTLS' => true
   		);
 		$pusher = new Pusher(getenv('PUSHER_KEY'), getenv('PUSHER_SECRET'), getenv('PUSHER_ID'), $pusherOptions);
-		$pusher->trigger($chatName, 'chat', $data);
+		$pusher->trigger($chatName, 'chat', $pushData);
 	?>
 </html>
