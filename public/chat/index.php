@@ -1,5 +1,5 @@
 <?php
-	require_once __DIR__ . '../../../vendor/autoload.php';
+	require_once __DIR__ . '../../vendor/autoload.php';
 
 	use Config\GoogleClient;
 
@@ -228,7 +228,7 @@
 		<header id="header">
 			<div class="topBar">
 				<?php 
-				$url = 'https://api-portalw.herokuapp.com/user/list.php';
+				$url = getenv('APP_URL') . 'user/list';
 				$data = get_content($url);
 				$dane = json_decode($data);
 				if (is_array($dane) || is_object($dane))
@@ -317,7 +317,7 @@
 		}
 		function getUser(id)
 		{
-			fetch('/plain_php/public/user/index.php?id='+id)
+			fetch('/user/index?id='+id)
   				.then((resp) => resp.json())
   				.then(function(data) {
   					document.getElementById("userImage").src = data.Image;
