@@ -178,7 +178,8 @@
 		.wrapperbtn
 		{
 			border-radius: 4px;
-			border: none;
+			border: 1.5px solid black;
+    		border-color: black;
 			color: black;
 			text-align: center;
 			font-size: 16px;
@@ -220,7 +221,7 @@
 
 		h2 {
 			color: black;
-			font-size: 14px;
+			font-size: 18px;
 			text-align: center;
 		}
 
