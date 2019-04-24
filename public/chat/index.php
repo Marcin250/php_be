@@ -283,6 +283,8 @@
 			</div>
 		</div>
   	<script>
+  		var channelName = <?php echo $chatName; ?>;
+
   		Pusher.logToConsole = false;
 
 	    var pusher = new Pusher('ff71283c9ea50e531f55', {
@@ -290,7 +292,7 @@
 	      	forceTLS: true
 	    });
 
-	    var channel = pusher.subscribe(<?php echo "'" . $chatName . "'"; ?>);
+	    var channel = pusher.subscribe(channelName);
 	    channel.bind('chat', function(data) {
 	    	console.log(data);
 	    });
