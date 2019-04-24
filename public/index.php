@@ -349,7 +349,7 @@
 				<h3 id='userDate'></h3>
 			</div>
 			<div style="overflow:auto">
-				<button type="button" class="wrapperbtn">
+				<button type="button" class="wrapperbtn" onclick="goChat()">
 					<span> Przejdz do rozmowy </span>
 				</button>
 			</div>
@@ -380,6 +380,10 @@
 					document.getElementById("userPrivielege").innerHTML = data.Privielege;
 					document.getElementById("userDate").innerHTML = data.createdAt;
 				})
+		}
+		function goChat()
+		{
+			console.log('dziala');
 		}
 	</script>
 	</body>
