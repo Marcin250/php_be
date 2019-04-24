@@ -175,7 +175,7 @@
 
 		.wrapper
 		{
-			border-radius: 8px;
+			border-radius: 4px;
 		 	width:1820px;
 		 	height:800px;
 		 	margin:0 auto;
@@ -209,7 +209,7 @@
 			margin-top: 30px;
 		}
 
-      	@media screen and (max-width: 500px) {
+      	@media screen and (max-width: 700px) {
       		.topBar {margin: 0px; margin-left: 0px;} 
       		.topBar a {float: none; display: block; text-align: left; background-color: #333; text-align: center;} 
       		.topBar-right {float: none;} 
