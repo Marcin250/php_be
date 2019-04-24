@@ -241,7 +241,7 @@
 						<a href="/"> Powrót
       						<i class="fas fa-sign-in-alt"></i>
       					</a>
-      					<a href="/user/google-logout.php"> <?php echo $titleURL ?>
+      					<a href="/user/google-logout.php"> <?php echo $titleURL; ?>
       						<i class="fas fa-sign-in-alt"></i>
       					</a>
     				</div>
