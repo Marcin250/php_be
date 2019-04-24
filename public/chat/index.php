@@ -6,6 +6,22 @@
 
 	if(!isset($_SESSION)) { session_start(); }
 
+	function join_chat()
+	{
+		$titleURL = 'Wyloguj';
+		if($_SESSION['id'] < $_SESSION['recipient'])
+			$chatName = 'chat' . $_SESSION['id'] . $_SESSION['recipient'];
+		else
+			$chatName = 'chat' . $_SESSION['recipient'] . $_SESSION['id'];
+		$data['message'] = $_SESSION['id'] . 'dołączył do chatu';
+		$pusherOptions = array(
+    		'cluster' => getenv('PUSHER_CLUSTER'),
+    		'useTLS' => true
+  		);
+		$pusher = new Pusher(getenv('PUSHER_KEY'), getenv('PUSHER_SECRET'), getenv('PUSHER_ID'), $pusherOptions);
+		$pusher->trigger($chatName, 'chat', $data);
+	}
+
 	if(isset($_SESSION['id']) && isset($_GET['u']))
 	{
 		$_SESSION['recipient'] = $_GET['u'];
@@ -21,22 +37,6 @@
 		// $dotenv->load();
 		header("Location:" . getenv('APP_URL'));
 		die;
-	}
-
-	function join_chat()
-	{
-		$titleURL = 'Wyloguj';
-		if($_SESSION['id'] < $_SESSION['recipient'])
-			$chatName = 'chat' . $_SESSION['id'] . $_SESSION['recipient'];
-		else
-			$chatName = 'chat' . $_SESSION['recipient'] . $_SESSION['id'];
-		$data['message'] = $_SESSION['id'] . 'dołączył do chatu';
-		$pusherOptions = array(
-    		'cluster' => getenv('PUSHER_CLUSTER'),
-    		'useTLS' => true
-  		);
-		$pusher = new Pusher(getenv('PUSHER_KEY'), getenv('PUSHER_SECRET'), getenv('PUSHER_ID'), $pusherOptions);
-		$pusher->trigger($chatName, 'chat', $data);
 	}
 
 	function get_content($URL){
