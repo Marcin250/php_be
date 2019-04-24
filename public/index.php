@@ -228,7 +228,7 @@
 		<header id="header">
 			<div class="topBar">
 				<?php 
-				$url = 'https://api-portalw.herokuapp.com/user/list.php';
+				$url = 'https://api-portalw.herokuapp.com/user/list';
 				$data = get_content($url);
 				$dane = json_decode($data);
 				if (is_array($dane) || is_object($dane))
@@ -317,7 +317,7 @@
 		}
 		function getUser(id)
 		{
-			fetch('/plain_php/public/user/index.php?id='+id)
+			fetch('/plain_php/public/user/index?id='+id)
   				.then((resp) => resp.json())
   				.then(function(data) {
   					document.getElementById("userImage").src = data.Image;
