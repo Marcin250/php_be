@@ -250,7 +250,7 @@
       		.topBar-right {float: none;} 
       	}
 	</style>
-	<body id="channelName" value= <?php '"' . echo $chatName . '"'; ?> >
+	<body id="channelName" value= <?php echo '"' . $chatName . '"'; ?> >
 		<header id="header">
 			<div class="topBar">
 				<div class="dropdown">
