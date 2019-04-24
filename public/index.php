@@ -231,6 +231,7 @@
 				$url = 'https://api-portalw.herokuapp.com/user/list';
 				$data = get_content($url);
 				$dane = json_decode($data);
+				var_dump($dane);
 				if (is_array($dane) || is_object($dane))
 				{
 				echo '
