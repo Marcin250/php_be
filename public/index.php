@@ -241,29 +241,6 @@
 			margin-top: 30px;
 		}
 
-      	table {
-  			border-collapse: collapse;
-  			border-spacing: 0;
- 			width: 100%;
-  			border: 1px solid #ddd;
-		}
-
-		th, td {
-  			text-align: left;
-  			padding: 16px;
-		}
-
-		tr:nth-child(even) {
-  			background-color: #f2f2f2
-		}
-
-		hr {
-	    	border: 1px solid #f1f1f1;
-	    	margin-bottom: 25px;
-		}
-
-
-
       	@media screen and (max-width: 500px) {
       		.topBar {margin: 0px; margin-left: 0px;} 
       		.topBar a {float: none; display: block; text-align: left; background-color: #333; text-align: center;} 
