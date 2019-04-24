@@ -317,7 +317,7 @@
 		}
 		function getUser(id)
 		{
-			fetch('/plain_php/public/user/index?id='+id)
+			fetch('/user/index?id=' +id)
   				.then((resp) => resp.json())
   				.then(function(data) {
   					document.getElementById("userImage").src = data.Image;
