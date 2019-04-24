@@ -289,7 +289,7 @@
 	</script>
 	</body>
 	<?php
-		$pushData['message'] = $_SESSION['id'] . 'dołączył do chatu';
+		$pushData['message'] = $dane->name . 'dołączył do chatu';
 		$pusherOptions = array(
     		'cluster' => getenv('PUSHER_CLUSTER'),
     		'useTLS' => true
