@@ -268,7 +268,7 @@
       		.topBar a {float: none; display: block; text-align: left; background-color: #333; text-align: center;} 
       		.topBar-right {float: none;} 
       	}
-</style>
+	</style>
 	<body>
 		<header id="header">
 			<div class="topBar">
