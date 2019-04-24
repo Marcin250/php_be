@@ -32,9 +32,10 @@
 			$stmt->execute();
 			return $stmt;
 		}
-		function by_id()
+
+		function byId()
 		{
-			$query = "SELECT users.Name as Name, users.Email as Email, users.Image as Image, users.created_at as createdAt, statuses.Name as Status, privileges.Name as Privielege, privileges.Tier as Tier" .
+			$query = "SELECT users.id as id, users.Name as name, users.Email as email, users.Image as image, users.created_at as createdAt, statuses.Name as status, privileges.Name as privielege, privileges.Tier as tier" .
 					" FROM " . $this->tableName .
 					" LEFT JOIN statuses" .
 					" ON statuses.idStatus = " . $this->tableName . ".idStatus" .
@@ -43,6 +44,26 @@
 					" WHERE users.id=:idUser";
 			$stmt = $this->dbConnection->prepare($query);
 			$stmt->bindParam(":idUser", $this->id);
+			if($stmt->execute())
+			{
+				$row = $stmt->fetch(PDO::FETCH_ASSOC);
+				return $row;
+			}
+			else
+				return false;
+		}
+
+		function byProviderId()
+		{
+			$query = "SELECT users.id as id, users.Name as name, users.Email as email, users.Image as image, users.created_at as createdAt, statuses.Name as status, privileges.Name as privielege, privileges.Tier as tier" .
+					" FROM " . $this->tableName .
+					" LEFT JOIN statuses" .
+					" ON statuses.idStatus = " . $this->tableName . ".idStatus" .
+					" LEFT JOIN privileges" .
+					" ON privileges.idPrivilege = " . $this->tableName . ".idPrivilege" .
+					" WHERE users.provider_id=:ProviderId";
+			$stmt = $this->dbConnection->prepare($query);
+			$stmt->bindParam(":ProviderId", $this->providerId);
 			if($stmt->execute())
 			{
 				$row = $stmt->fetch(PDO::FETCH_ASSOC);

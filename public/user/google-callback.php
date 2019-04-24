@@ -32,14 +32,22 @@
 		$user->provider = 'GOOGLE';
 		$user->providerId = $userData->id;
 		$user->image = $userData->picture;
-		if($user->verify() == false)
+		if(!$user->verify())
 			$user->store();
+		else
+		{
+			$user->providerId = $userData->id;
+			$sessionUserData = $user->byProviderId();
+		}
 
-		$_SESSION['name'] = $userData->name;
-		$_SESSION['email'] = $userData->email;
-
-		setcookie('name', $userData->name, time()+60*60);
-		setcookie('email', $userData->email, time()+60*60);
+		$_SESSION['id'] = $sessionUserData['id'];
+		$_SESSION['name'] = $sessionUserData['name'];
+		$_SESSION['email'] = $sessionUserData['email'];
+		$_SESSION['image'] = $sessionUserData['image'];
+		$_SESSION['createdAt'] = $sessionUserData['createdAt'];
+		$_SESSION['status'] = $sessionUserData['status'];
+		$_SESSION['privielege'] = $sessionUserData['privielege'];
+		$_SESSION['tier'] = $sessionUserData['tier'];
 
 		$data['name'] = $_SESSION['name'];
 

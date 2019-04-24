@@ -22,7 +22,7 @@
 			$user = new User($connetion);
 
 			$user->id = $_GET['id'];
-			$result = $user->by_id();
+			$result = $user->byId();
 
 			if($result != null)
 			{
