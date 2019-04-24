@@ -260,8 +260,18 @@
 			</div>
 		</header>
 		<div class="wrapper">
-			<h2>Rozmowa z użytkownikiem: <?php echo $chatName; ?></h2>
+		<?php
 
+			// $dotenv = Dotenv::create(__DIR__ . '/..');
+			// $dotenv->load();
+
+			$url = getenv('APP_URL') . '/user/?id=' . $_SESSION['recipient'];
+			$data = get_content($url);
+			$dane = json_decode($data);
+			if (is_array($dane) || is_object($dane)) echo '<h2>Rozmowa z użytkownikiem: ' $dane->name '</h2>';
+		?>
+			<div style="overflow:auto">
+			</div>
 		</div>
   	<script>
   		Pusher.logToConsole = false;
