@@ -228,7 +228,7 @@
 		<header id="header">
 			<div class="topBar">
 				<?php 
-				$url = 'https://php-ws.herokuapp.com/user/list';
+				$url = getenv('PUSHER_CLUSTER') . 'user/list';
 				$data = get_content($url);
 				$dane = json_decode($data);
 				if (is_array($dane) || is_object($dane))
