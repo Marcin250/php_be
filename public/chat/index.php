@@ -290,7 +290,7 @@
 	      	forceTLS: true
 	    });
 
-	    var channel = pusher.subscribe('<?php echo $chatName; ?>');
+	    var channel = pusher.subscribe(<?php echo "'" . $chatName . "'"; ?>);
 	    channel.bind('chat', function(data) {
 	    	console.log(data);
 	    });
