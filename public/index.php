@@ -99,6 +99,15 @@
   			font-size: 17px;
 		}
 
+		.topBar b {
+      		float: left;
+  			color: #dd4b39;
+  			text-align: center;
+  			padding: 14px 16px;
+  			text-decoration: none;
+  			font-size: 17px;
+		}
+
 		.topBar a.left {
   			float: left;
 		}
@@ -264,9 +273,10 @@
 		  	z-index: 1;
 		  	top: 0;
 		  	left: 0;
-		  	background-color: #111;
+		  	background-color: #ececec;
 		  	overflow-x: hidden;
 		  	padding-top: 16px;
+		  	margin-top: 52px;
 		}
 
 	</style>
