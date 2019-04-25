@@ -191,22 +191,46 @@
 			color: black;
 			font-size: 18px;
 			text-align: center;
+			font-family: inherit;
+			margin-top: 0;
+    		margin-bottom: 0;
 		}
 
-		h3 {
-			color: black;
-			font-size: 16px;
-			margin-left: 70px;
-			margin-top: 30px;
-			display:block;
- 			float:left;
+		.container {
+		  	padding: 10px;
 		}
 
-		img {
-			max-height:50px;
-    		max-width:50px;
-			margin-left: 70px;
-			margin-top: 30px;
+		.darker{
+			background-color: #a7a7a7;
+		}
+
+		.container img {
+		  	float: left;
+		  	max-width: 50px;
+		  	width: 100%;
+		  	margin-right: 20px;
+		  	border-radius: 50%;
+		}
+
+		.chat {
+			overflow: scroll;
+		    width: 100%;
+		    height: 90.4%;
+		}
+
+		input.textarea {
+		    position: inherit;
+		    bottom: 0px;
+		    left: 0px;
+		    right: 0px;
+		    width: 100%;
+		    height: 50px;
+		    z-index: 99;
+		    border: none;
+		    outline: none;
+		    padding-left: 20px;
+		    padding-right: 20px;
+		    font-weight: 500;
 		}
 
       	@media screen and (max-width: 700px) {
@@ -244,8 +268,57 @@
 			$dane = json_decode($data);
 			if (is_array($dane) || is_object($dane)) echo '<h2>Rozmowa z użytkownikiem: ' . $dane->name . '</h2>';
 		?>
-			<div style="overflow:auto">
+			<div class="chat">
+				<div class="container darker">
+				  	<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" alt="Avatar" style="width:100%;">
+				  	<p>Wiadomość od Admin.</p>
+				</div>
+				<div class="container">
+				  	<img src="https://lh5.googleusercontent.com/-CvoOSH2G-E4/AAAAAAAAAAI/AAAAAAAAAAA/ACevoQNNsX50cxlY-CyyCzKtTESoQK-Lug/mo/photo.jpg?sz=50" alt="Avatar" class="right" style="width:100%;">
+				  	<p>Wiadomość od profesjonalnetestyapki.</p>
+				</div>
+				<div class="container darker">
+				  	<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" alt="Avatar" style="width:100%;">
+				  	<p>Wiadomość od Admin.</p>
+				</div>
+				<div class="container">
+				  	<img src="https://lh5.googleusercontent.com/-CvoOSH2G-E4/AAAAAAAAAAI/AAAAAAAAAAA/ACevoQNNsX50cxlY-CyyCzKtTESoQK-Lug/mo/photo.jpg?sz=50" alt="Avatar" class="right" style="width:100%;">
+				  	<p>Wiadomość od profesjonalnetestyapki.</p>
+				</div>
+				<div class="container darker">
+				  	<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" alt="Avatar" style="width:100%;">
+				  	<p>Wiadomość od Admin.</p>
+				</div>
+				<div class="container">
+				  	<img src="https://lh5.googleusercontent.com/-CvoOSH2G-E4/AAAAAAAAAAI/AAAAAAAAAAA/ACevoQNNsX50cxlY-CyyCzKtTESoQK-Lug/mo/photo.jpg?sz=50" alt="Avatar" class="right" style="width:100%;">
+				  	<p>Wiadomość od profesjonalnetestyapki.</p>
+				</div>
+				<div class="container darker">
+				  	<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" alt="Avatar" style="width:100%;">
+				  	<p>Wiadomość od Admin.</p>
+				</div>
+				<div class="container">
+				  	<img src="https://lh5.googleusercontent.com/-CvoOSH2G-E4/AAAAAAAAAAI/AAAAAAAAAAA/ACevoQNNsX50cxlY-CyyCzKtTESoQK-Lug/mo/photo.jpg?sz=50" alt="Avatar" class="right" style="width:100%;">
+				  	<p>Wiadomość od profesjonalnetestyapki.</p>
+				</div>
+				<div class="container darker">
+				  	<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" alt="Avatar" style="width:100%;">
+				  	<p>Wiadomość od Admin.</p>
+				</div>
+				<div class="container">
+				  	<img src="https://lh5.googleusercontent.com/-CvoOSH2G-E4/AAAAAAAAAAI/AAAAAAAAAAA/ACevoQNNsX50cxlY-CyyCzKtTESoQK-Lug/mo/photo.jpg?sz=50" alt="Avatar" class="right" style="width:100%;">
+				  	<p>Wiadomość od profesjonalnetestyapki.</p>
+				</div>
+				<div class="container darker">
+				  	<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" alt="Avatar" style="width:100%;">
+				  	<p>Wiadomość od Admin.</p>
+				</div>
+				<div class="container">
+				  	<img src="https://lh5.googleusercontent.com/-CvoOSH2G-E4/AAAAAAAAAAI/AAAAAAAAAAA/ACevoQNNsX50cxlY-CyyCzKtTESoQK-Lug/mo/photo.jpg?sz=50" alt="Avatar" class="right" style="width:100%;">
+				  	<p>Wiadomość od profesjonalnetestyapki.</p>
+				</div>
 			</div>
+			<input class="textarea" type="text" placeholder="Type here!"/><div class="emojis"></div>
 		</div>
   	<script>
   		Pusher.logToConsole = false;
