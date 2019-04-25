@@ -28,7 +28,8 @@
 
 <html>
 	<head>
-		<title>Stan aplikacji: Projektowanie</title>
+		<title>Simple chatting application</title>
+		<link rel="icon" type="image/png" href="/favicon.png"/>
 	</head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -237,10 +238,10 @@
 		h4 {
 		    color: black;
 		    font-size: 16px;
-		    margin-right: 200px;
+		    margin-left: 200px;
 		    margin-top: 30px;
 		    display: block;
-		    float: right;
+		    float: initial;
 		}
 
 		img {
@@ -315,13 +316,15 @@
 		</header>
 		<div class="w3-container w3-center w3-animate-top">
 			<p>Stan aplikacji:</p>
-  			<h1>Projektowanie</h1>
+  			<h1>Aplikacja w fazie testów</h1>
+  			<?php 
+			if(isset($_SESSION['email']))
+			echo "<h1>Zaloguj się aby móc korzystać z aplikacji</h1>";
+			?>
 		</div>
 		<div class="wrapper">
 			<?php 
-			if(!isset($_SESSION['email']))
-			echo "<h2>Zaloguj się aby móc korzystać z aplikacji</h2>";
-			else
+			if(isset($_SESSION['email']))
 			echo '
 			<h2>Informacje o użytkowniku</h2>
 			<div style="overflow:auto">
