@@ -309,7 +309,7 @@
 			<p>Stan aplikacji:</p>
   			<h1>Projektowanie</h1>
 		</div>
-		<div class="wrapper" onload="getUserOnLoad('user1')">
+		<div class="wrapper" onload="getUserOnLoad()">
 			<h2>Informacje o użytkowniku</h2>
 			<div style="overflow:auto">
 				<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" id='userImage'>
@@ -375,7 +375,7 @@
 
 		function getUserOnLoad(user)
 		{
-			userId = document.getElementById(user).value;
+			userId = document.getElementsByTagName('a')[0].getAttribute('value');
 			getUser(userId);
 		}
 
