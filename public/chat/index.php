@@ -292,47 +292,7 @@
 			</div>
 		</header>
 		<div class="wrapper">
-			<div class="chat">
-				<div class="container darker">
-				  	<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" alt="Avatar" style="width:100%;">
-				  	<p>Wiadomość od Admin.</p>
-				</div>
-				<div class="container">
-				  	<img src="https://lh5.googleusercontent.com/-CvoOSH2G-E4/AAAAAAAAAAI/AAAAAAAAAAA/ACevoQNNsX50cxlY-CyyCzKtTESoQK-Lug/mo/photo.jpg?sz=50" alt="Avatar" class="right" style="width:100%;">
-				  	<p>Wiadomość od profesjonalnetestyapki.</p>
-				</div>
-				<div class="container darker">
-				  	<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" alt="Avatar" style="width:100%;">
-				  	<p>Wiadomość od Admin.</p>
-				</div>
-				<div class="container">
-				  	<img src="https://lh5.googleusercontent.com/-CvoOSH2G-E4/AAAAAAAAAAI/AAAAAAAAAAA/ACevoQNNsX50cxlY-CyyCzKtTESoQK-Lug/mo/photo.jpg?sz=50" alt="Avatar" class="right" style="width:100%;">
-				  	<p>Wiadomość od profesjonalnetestyapki.</p>
-				</div>
-				<div class="container darker">
-				  	<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" alt="Avatar" style="width:100%;">
-				  	<p>Wiadomość od Admin.</p>
-				</div>
-				<div class="container">
-				  	<img src="https://lh5.googleusercontent.com/-CvoOSH2G-E4/AAAAAAAAAAI/AAAAAAAAAAA/ACevoQNNsX50cxlY-CyyCzKtTESoQK-Lug/mo/photo.jpg?sz=50" alt="Avatar" class="right" style="width:100%;">
-				  	<p>Wiadomość od profesjonalnetestyapki.</p>
-				</div>
-				<div class="container darker">
-				  	<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" alt="Avatar" style="width:100%;">
-				  	<p>Wiadomość od Admin.</p>
-				</div>
-				<div class="container">
-				  	<img src="https://lh5.googleusercontent.com/-CvoOSH2G-E4/AAAAAAAAAAI/AAAAAAAAAAA/ACevoQNNsX50cxlY-CyyCzKtTESoQK-Lug/mo/photo.jpg?sz=50" alt="Avatar" class="right" style="width:100%;">
-				  	<p>Wiadomość od profesjonalnetestyapki.</p>
-				</div>
-				<div class="container darker">
-				  	<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" alt="Avatar" style="width:100%;">
-				  	<p>Wiadomość od Admin.</p>
-				</div>
-				<div class="container">
-				  	<img src="https://lh5.googleusercontent.com/-CvoOSH2G-E4/AAAAAAAAAAI/AAAAAAAAAAA/ACevoQNNsX50cxlY-CyyCzKtTESoQK-Lug/mo/photo.jpg?sz=50" alt="Avatar" class="right" style="width:100%;">
-				  	<p>Wiadomość od profesjonalnetestyapki.</p>
-				</div>
+			<div class="chat" id="chatContainer">
 				<div class="container darker">
 				  	<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" alt="Avatar" style="width:100%;">
 				  	<p>Wiadomość od Admin.</p>
@@ -348,6 +308,7 @@
   		Pusher.logToConsole = false;
   		var channelName = <?php echo '"' . $chatName . '"'; ?>;
   		var channelUser = <?php echo '"' . $_SESSION['id'] . '"'; ?>;
+  		var dynamicId = 1;
 
 	    var pusher = new Pusher('ff71283c9ea50e531f55', {
 	      	cluster: 'eu',
@@ -356,10 +317,26 @@
 
 	    var channel = pusher.subscribe(channelName);
 	    channel.bind('chat', function(data) {
-	    	if(data.author == channelUser)
-	    		console.log(data.message);
-	    	else
-	    		console.log(data);
+	    	if(data.author == channelUser) // Dark Container
+	    	{
+	    		var image = <?php echo '"' . $_SESSION['image'] . '"'; ?>;
+	    		var classContainer = "container darker";
+	    	}
+	    	else // Normal Container
+	    	{
+	    		var image = <?php echo '"' . $dane->image . '"'; ?>;
+	    		var classContainer = "container";
+	    	}
+	    	var chatContainer = "chatContainer";
+	    	var message = data.message;
+
+	    	var newDiv = document.createElement('div');
+	    	newDiv.id = dynamicId;
+	    	newDiv.className = classContainer;
+	    	document.getElementById('chatContainer')[0].appendChild(newDiv);
+
+
+	    	dynamicId++;
 	    });
 
 	    function sendMessage(event)
@@ -383,7 +360,7 @@
 	</script>
 	</body>
 	<?php
-		$pushData['author'] = $_SESSION['id'] . ' dołączył do chatu.';
+		$pushData['author'] = $_SESSION['id'];
 		$pushData['message'] = $_SESSION['name'] . ' dołączył do chatu.';
 		$pusherOptions = array(
     		'cluster' => getenv('PUSHER_CLUSTER'),
