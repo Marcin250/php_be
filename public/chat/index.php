@@ -279,7 +279,7 @@
 						<i class="fa fa-caret-down"></i>
 					</button>
 					<div class="dropdown-content">
-						<a href="/"> Powrót
+						<a href="/" onclick="leaveChat()"> Powrót
       						<i class="fas fa-sign-in-alt"></i>
       					</a>
       					<a href="/user/google-logout.php"> <?php echo $titleURL; ?>
@@ -357,6 +357,23 @@
 				$.ajax(settings);
 				document.getElementById("chatMessage").value = "";
 			}
+	    }
+
+	    function leaveChat()
+	    {
+	    	var form = new FormData();
+				form.append("chat", channelName);
+				form.append("author", channelUser);
+				form.append("message", channelUser + ' opuścił chat.');
+				var settings = {
+	  				"async": true,
+	  				"processData": false,
+  					"contentType": false,
+					"url": "http://php-ws.herokuapp.com/chat/send-message",
+					"method": "POST",
+					"data": form
+				};
+			$.ajax(settings);
 	    }
 	</script>
 	</body>
