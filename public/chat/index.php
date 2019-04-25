@@ -293,7 +293,7 @@
 			<div class="chat" id="chatContainer">
 
 			</div>
-			<input class="textarea" id="chatMessage" type="text" placeholder="Type here..." onkeypress="sendMessage(event)"/>
+			<input class="textarea" id="chatMessage" type="text" placeholder="Napisz wiadomość" onkeypress="sendMessage(event)"/>
 		</div>
   	<script>
   		Pusher.logToConsole = false;
@@ -355,6 +355,7 @@
 					"data": form
 				};
 				$.ajax(settings);
+				document.getElementById("chatMessage").value = "";
 			}
 	    }
 	</script>
