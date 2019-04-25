@@ -302,6 +302,7 @@
   		Pusher.logToConsole = false;
   		var channelName = <?php echo '"' . $chatName . '"'; ?>;
   		var channelUser = <?php echo '"' . $_SESSION['id'] . '"'; ?>;
+  		var channelUserName = <?php echo '"' . $_SESSION['name'] . '"'; ?>;
   		var previousUser = null;
   		var dynamicId = 1;
 
@@ -367,7 +368,7 @@
 	    	var form = new FormData();
 				form.append("chat", channelName);
 				form.append("author", channelUser);
-				form.append("message", channelUser + ' opuścił chat.');
+				form.append("message", channelUserName + ' opuścił chat.');
 				var settings = {
 	  				"async": true,
 	  				"processData": false,
