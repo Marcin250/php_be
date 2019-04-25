@@ -6,6 +6,20 @@
 
 	if(!isset($_SESSION)) { session_start(); }
 
+	function get_content($URL)
+	{
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_URL, $URL);
+		$data = curl_exec($ch);
+		curl_close($ch);
+		return $data;
+	}
+
+	// $dotenv = Dotenv::create(__DIR__ . '/../..');
+	// $dotenv->load();
+
 	if(isset($_SESSION['id']) && isset($_GET['u']))
 	{
 		$_SESSION['recipient'] = $_GET['u'];
@@ -25,21 +39,13 @@
 	}
 	else
 	{
-		// $dotenv = Dotenv::create(__DIR__ . '/../..');
-		// $dotenv->load();
 		header("Location:" . getenv('APP_URL'));
 		die;
 	}
 
-	function get_content($URL){
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_POST, 1);
-		curl_setopt($ch, CURLOPT_URL, $URL);
-		$data = curl_exec($ch);
-		curl_close($ch);
-		return $data;
-	}
+	$url = getenv('APP_URL') . '/user/?id=' . $_SESSION['recipient'];
+	$data = get_content($url);
+	$dane = json_decode($data);
 ?>
 
 <html>
@@ -266,16 +272,7 @@
 		<header id="header">
 			<div class="topBar">
 				<div style="float: left">
-					<?php
-
-					// $dotenv = Dotenv::create(__DIR__ . '/..');
-					// $dotenv->load();
-
-					$url = getenv('APP_URL') . '/user/?id=' . $_SESSION['recipient'];
-					$data = get_content($url);
-					$dane = json_decode($data);
-					if (is_array($dane) || is_object($dane)) echo '<b>Rozmowa z użytkownikiem: ' . $dane->name . '</b>';
-					?>
+					<?php if (is_array($dane) || is_object($dane)) echo '<b>Rozmowa z użytkownikiem: ' . $dane->name . '</b>'; ?>
 				</div>
 				<div class="dropdown">
 					<button class="dropbtn"> <?php echo $_SESSION['email']; ?>
@@ -302,6 +299,7 @@
   		Pusher.logToConsole = false;
   		var channelName = <?php echo '"' . $chatName . '"'; ?>;
   		var channelUser = <?php echo '"' . $_SESSION['id'] . '"'; ?>;
+  		var previousUser = null;
   		var dynamicId = 1;
 
 	    var pusher = new Pusher('ff71283c9ea50e531f55', {
@@ -325,13 +323,16 @@
 	    	var newDiv = document.createElement('div');
 	    	newDiv.id = 'containeer' + dynamicId;
 	    	newDiv.className = classContainer;
-	    	newDiv.value = data.author;
 	    	document.getElementById('chatContainer').appendChild(newDiv);
-	    	var newImg = document.createElement('img');
-	    	newImg.src = image;
-	    	if(classContainer == "container")
-	    		newImg.className = 'right';
-	    	document.getElementById(newDiv.id).appendChild(newImg);
+	    	if(previousUser != data.author)
+	    	{
+	    		var newImg = document.createElement('img');
+			    newImg.src = image;
+			    if(classContainer == "container")
+			    	newImg.className = 'right';
+			    document.getElementById(newDiv.id).appendChild(newImg);
+			    previousUser = data.author;
+	    	}
 	    	var newPar = document.createElement('p');
 	    	newPar.innerHTML = data.message;
 	    	document.getElementById(newDiv.id).appendChild(newPar);
