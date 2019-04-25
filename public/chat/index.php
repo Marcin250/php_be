@@ -120,7 +120,7 @@
   			overflow: hidden;
 		}
 
-      	.dropdown .dropbtn {
+      	.dropdown .dropbtn{
   			font-size: 16px;  
   			border: none;
   			outline: none;
@@ -129,6 +129,17 @@
   			background-color: inherit;
   			font-family: inherit;
   			margin: 0;
+		}
+
+		b {
+  			float: left;
+		    height: 52px;
+		    font-size: 16px;
+		    color: #dd4b39;
+		    padding: 14px 8px;
+		    background-color: inherit;
+		    font-family: inherit;
+		    margin: 0;
 		}
 
 		.topBar .dropdown:hover .dropbtn {
@@ -177,9 +188,8 @@
 		{
 			width: 100%;
 		    height: 94.5%;
-		    background: #ececec;
+		    background: #ffffff;
 		    position: absolute;
-		    opacity: 0.9;
 		}
 
 		h2 {
@@ -195,12 +205,21 @@
 		  	padding: 10px;
 		}
 
-		.darker{
-			background-color: #a7a7a7;
-		}
-
 		.container img {
 		  	float: left;
+		  	max-width: 50px;
+		  	width: 100%;
+		  	margin-right: 20px;
+		  	border-radius: 50%;
+		}
+
+		.darker {
+			background-color: #dedede;
+			text-align: right;
+		}
+
+		.darker img {
+			float: right;
 		  	max-width: 50px;
 		  	width: 100%;
 		  	margin-right: 20px;
@@ -210,7 +229,8 @@
 		.chat {
 			overflow: scroll;
 		    width: 100%;
-		    height: 90.4%;
+		    height: 94.3%;
+		    overflow-x: hidden;;
 		}
 
 		input.textarea {
@@ -237,6 +257,18 @@
 	<body>
 		<header id="header">
 			<div class="topBar">
+				<div style="float: left">
+					<?php
+
+					// $dotenv = Dotenv::create(__DIR__ . '/..');
+					// $dotenv->load();
+
+					$url = getenv('APP_URL') . '/user/?id=' . $_SESSION['recipient'];
+					$data = get_content($url);
+					$dane = json_decode($data);
+					if (is_array($dane) || is_object($dane)) echo '<b>Rozmowa z użytkownikiem: ' . $dane->name . '</b>';
+					?>
+				</div>
 				<div class="dropdown">
 					<button class="dropbtn"> <?php echo $_SESSION['email']; ?>
 						<i class="fa fa-caret-down"></i>
@@ -253,16 +285,6 @@
 			</div>
 		</header>
 		<div class="wrapper">
-		<?php
-
-			// $dotenv = Dotenv::create(__DIR__ . '/..');
-			// $dotenv->load();
-
-			$url = getenv('APP_URL') . '/user/?id=' . $_SESSION['recipient'];
-			$data = get_content($url);
-			$dane = json_decode($data);
-			if (is_array($dane) || is_object($dane)) echo '<h2>Rozmowa z użytkownikiem: ' . $dane->name . '</h2>';
-		?>
 			<div class="chat">
 				<div class="container darker">
 				  	<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" alt="Avatar" style="width:100%;">
@@ -313,7 +335,7 @@
 				  	<p>Wiadomość od profesjonalnetestyapki.</p>
 				</div>
 			</div>
-			<input class="textarea" type="text" placeholder="Type here!"/><div class="emojis"></div>
+			<input class="textarea" type="text" placeholder="Type here!"/>
 		</div>
   	<script>
   		Pusher.logToConsole = false;
