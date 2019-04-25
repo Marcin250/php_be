@@ -309,7 +309,7 @@
 			<p>Stan aplikacji:</p>
   			<h1>Projektowanie</h1>
 		</div>
-		<div class="wrapper" onload="getUserOnLoad()">
+		<div class="wrapper" onload="getUser('first')">
 			<h2>Informacje o użytkowniku</h2>
 			<div style="overflow:auto">
 				<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" id='userImage'>
@@ -361,6 +361,9 @@
 		function getUser(id)
 		{
 			userId = id;
+			if(userId == 'first')
+				userId = parseInt(document.getElementsByTagName('a')[0].getAttribute('value'), 10);
+			console.log(userId);
 			fetch('/user/index?id=' +id)
   				.then((resp) => resp.json())
   				.then(function(data) {
@@ -371,12 +374,6 @@
 					document.getElementById("userPrivielege").innerHTML = data.privielege;
 					document.getElementById("userDate").innerHTML = data.createdAt;
 				})
-		}
-
-		function getUserOnLoad(user)
-		{
-			userId = parseInt(document.getElementsByTagName('a')[0].getAttribute('value'), 10);
-			getUser(userId);
 		}
 
 		function goChat()
