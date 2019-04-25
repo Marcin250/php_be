@@ -293,14 +293,7 @@
 		</header>
 		<div class="wrapper">
 			<div class="chat" id="chatContainer">
-				<div class="container darker">
-				  	<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" alt="Avatar" style="width:100%;">
-				  	<p>Wiadomość od Admin.</p>
-				</div>
-				<div class="container">
-				  	<img src="https://lh5.googleusercontent.com/-CvoOSH2G-E4/AAAAAAAAAAI/AAAAAAAAAAA/ACevoQNNsX50cxlY-CyyCzKtTESoQK-Lug/mo/photo.jpg?sz=50" alt="Avatar" class="right" style="width:100%;">
-				  	<p>Wiadomość od profesjonalnetestyapki.</p>
-				</div>
+				
 			</div>
 			<input class="textarea" id="chatMessage" type="text" placeholder="Type here..." onkeypress="sendMessage(event)"/>
 		</div>
