@@ -30,8 +30,7 @@
 				extract($row);
 				$user = array(
 					"id" => $id,
-					"name" => $Name,
-					"createdAt" => $created_at
+					"name" => $Name
 				);
 				array_push($usersArray["data"], $user);
 			}
