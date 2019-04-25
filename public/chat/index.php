@@ -140,6 +140,7 @@
 		    background-color: inherit;
 		    font-family: inherit;
 		    margin: 0;
+		    font-weight: 400;
 		}
 
 		.topBar .dropdown:hover .dropbtn {
