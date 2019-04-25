@@ -331,12 +331,8 @@
 	    	var message = data.message;
 
 	    	var newDiv = document.createElement('div');
-	    	newDiv.id = dynamicId;
 	    	newDiv.className = classContainer;
-	    	document.getElementById('chatContainer')[0].appendChild(newDiv);
-
-
-	    	dynamicId++;
+	    	document.getElementById('chatContainer').appendChild(newDiv);
 	    });
 
 	    function sendMessage(event)
