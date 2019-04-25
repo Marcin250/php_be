@@ -234,18 +234,22 @@
 		}
 
 		input.textarea {
-		    position: inherit;
+			position: inherit;
 		    bottom: 0px;
 		    left: 0px;
 		    right: 0px;
 		    width: 100%;
 		    height: 50px;
 		    z-index: 99;
-		    border: none;
 		    outline: none;
 		    padding-left: 20px;
 		    padding-right: 20px;
 		    font-weight: 500;
+		    border-width: 2px;
+		    border-bottom: none;
+		    border-left: none;
+		    border-right: none;
+		    border-color: #dedede;
 		}
 
       	@media screen and (max-width: 700px) {
