@@ -260,6 +260,7 @@
 				$dane = json_decode($data);
 				if (is_array($dane) || is_object($dane))
 				{
+				$arrayId = 1;
 				echo '
 				<div class="dropdown" style="float: left">
 					<button class="dropbtn">
@@ -271,7 +272,8 @@
 						foreach ($dane->data as $item)
 						{
 						if($item->id != $_SESSION['id'])
-							echo '<a value="' . $item->id . '" onclick="getUser(' . $item->id . ')">' . $item->name . '</a>';
+							echo '<a value="' . $item->id . '" onclick="getUser(' . $item->id . ')" id="user'. $arrayId . '">' . $item->name . '</a>';
+						$arrayId++;
       					}
       					echo '
     				</div>
@@ -307,7 +309,7 @@
 			<p>Stan aplikacji:</p>
   			<h1>Projektowanie</h1>
 		</div>
-		<div class="wrapper">
+		<div class="wrapper" onload="getUser('user0')">
 			<h2>Informacje o użytkowniku</h2>
 			<div style="overflow:auto">
 				<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" id='userImage'>
