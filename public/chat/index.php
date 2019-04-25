@@ -367,6 +367,8 @@
 				form.append("message", document.getElementById("chatMessage").value);
 				var settings = {
 	  				"async": true,
+	  				"processData": false,
+  					"contentType": false,
 					"url": "http://php-ws.herokuapp.com/chat/send-message",
 					"method": "POST",
 					"data": form
