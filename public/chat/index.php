@@ -211,10 +211,11 @@
 		}
 
 		.container {
-		  	padding: 10px;
+		  	padding: 3px;
 		}
 
 		.container img {
+			padding-top: 3px;
 		  	float: left;
 		  	max-width: 50px;
 		  	width: 100%;
@@ -228,6 +229,7 @@
 		}
 
 		.darker img {
+			padding-top: 3px;
 			float: right;
 		  	max-width: 50px;
 		  	width: 100%;
