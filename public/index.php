@@ -317,15 +317,12 @@
 		<div class="w3-container w3-center w3-animate-top">
 			<p>Stan aplikacji:</p>
   			<h1>Aplikacja w fazie testów</h1>
-  			<?php 
-			if(isset($_SESSION['email']))
-			echo "<h1>Zaloguj się aby móc korzystać z aplikacji</h1>";
-			?>
+  			<?php if(!isset($_SESSION['email'])) echo "<h1>Zaloguj się aby móc korzystać z aplikacji</h1>"; ?>
 		</div>
+		<?php 
+		if(isset($_SESSION['email']))
+		echo '
 		<div class="wrapper">
-			<?php 
-			if(isset($_SESSION['email']))
-			echo '
 			<h2>Informacje o użytkowniku</h2>
 			<div style="overflow:auto">
 				<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" id="userImage">
@@ -355,9 +352,9 @@
 					<span> Przejdź do rozmowy </span>
 				</button>
 			</div>
-			'; 
-			?>
 		</div>
+		'; 
+		?>
   	<script>
   		var userId = 1;
 		var dropdown = document.getElementsByClassName("dropdown-btn");
