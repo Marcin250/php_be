@@ -270,8 +270,8 @@
 					<div id="userList" class="dropdown-content">';
 						foreach ($dane->data as $item)
 						{
-						echo '
-      					<a value="' . $item->id . '" onclick="getUser(' . $item->id . ')">' . $item->name . '</a>';
+						if($item->id != $_SESSION['id'])
+							echo '<a value="' . $item->id . '" onclick="getUser(' . $item->id . ')">' . $item->name . '</a>';
       					}
       					echo '
     				</div>
