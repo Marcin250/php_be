@@ -332,11 +332,13 @@
 				<h3>Data założenia:</h3>
 				<h3 id='userDate'></h3>
 			</div>
+			<?php if(isset($_SESSION['email'])) echo '
 			<div style="overflow:auto">
 				<button type="button" class="wrapperbtn" onclick="goChat()">
-					<?php if(isset($_SESSION['email'])) echo '<span> Przejdź do rozmowy </span>'; ?>
+					<span> Przejdź do rozmowy </span>
 				</button>
 			</div>
+			'; ?>
 		</div>
   	<script>
   		var userId = 1;
