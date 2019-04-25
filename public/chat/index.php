@@ -346,8 +346,8 @@
 		</div>
   	<script>
   		Pusher.logToConsole = false;
-
   		var channelName = <?php echo '"' . $chatName . '"'; ?>
+  		var channelUser = <?php echo '"' . $_SESSION['id'] . '"'; ?>
 
 	    var pusher = new Pusher('ff71283c9ea50e531f55', {
 	      	cluster: 'eu',
@@ -356,7 +356,10 @@
 
 	    var channel = pusher.subscribe(channelName);
 	    channel.bind('chat', function(data) {
-	    	console.log(data);
+	    	if(data.author == channelUser)
+	    		console.log(data.message);
+	    	else
+	    		console.log(data);
 	    });
 
 	    function sendMessage(event)
@@ -364,6 +367,7 @@
 	    	if (event.keyCode == 13) {
 		    	var form = new FormData();
 				form.append("chat", channelName);
+				form.append("author", channelUser);
 				form.append("message", document.getElementById("chatMessage").value);
 				var settings = {
 	  				"async": true,
@@ -379,6 +383,7 @@
 	</script>
 	</body>
 	<?php
+		$pushData['author'] = $_SESSION['id'] . ' dołączył do chatu.';
 		$pushData['message'] = $_SESSION['name'] . ' dołączył do chatu.';
 		$pusherOptions = array(
     		'cluster' => getenv('PUSHER_CLUSTER'),

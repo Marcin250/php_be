@@ -5,8 +5,9 @@
 	
 	use Pusher\Pusher as Pusher;
 
-	if(isset($_POST['chat']) && isset($_POST['message']))
+	if(isset($_POST['chat']) && isset($_POST['message']) && isset($_POST['author']))
 	{
+		$data['author'] = $_POST['author'];
 		$data['message'] = $_POST['message'];
 		$pusherOptions = array(
     		'cluster' => getenv('PUSHER_CLUSTER'),
