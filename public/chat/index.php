@@ -175,16 +175,11 @@
 
 		.wrapper
 		{
-			border-radius: 4px;
-		 	width:1820px;
-		 	height:800px;
-		 	margin:0 auto;
-		 	background:#ececec;
-		 	position:absolute;
-		 	top:50%;
-		 	margin-left:50px;
-		 	margin-top:-375px;
-		 	opacity: 0.9;
+			width: 100%;
+		    height: 94.5%;
+		    background: #ececec;
+		    position: absolute;
+		    opacity: 0.9;
 		}
 
 		h2 {
