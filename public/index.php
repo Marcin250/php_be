@@ -320,32 +320,32 @@
 		<div class="wrapper">
 			<?php 
 			if(!isset($_SESSION['email']))
-			echo '<h2>Zaloguj się aby móc korzystać z aplikacji</h2>';
+			echo "<h2>Zaloguj się aby móc korzystać z aplikacji</h2>";
 			else
 			echo '
 			<h2>Informacje o użytkowniku</h2>
 			<div style="overflow:auto">
-				<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" id='userImage'>
+				<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" id="userImage">
 			</div>
 			<div style="overflow:auto">
 				<h3>Nazwa:</h3>
-				<h4 id='userName'></h4>
+				<h4 id="userName"></h4>
 			</div>
 			<div style="overflow:auto">
 				<h3>Email:</h3>
-				<h4 id='userEmail'></h4>
+				<h4 id="userEmail"></h4>
 			</div>
 			<div style="overflow:auto">
 				<h3>Status:</h3>
-				<h4 id='userStatus'></h4>
+				<h4 id="userStatus"></h4>
 			</div>
 			<div style="overflow:auto">
 				<h3>Uprawnienia:</h3>
-				<h4 id='userPrivielege'></h4>
+				<h4 id="userPrivielege"></h4>
 			</div>
 			<div style="overflow:auto">
 				<h3>Data założenia:</h3>
-				<h4 id='userDate'></h4>
+				<h4 id="userDate"></h4>
 			</div>
 			<div style="overflow:auto">
 				<button type="button" class="wrapperbtn" onclick="goChat()">
