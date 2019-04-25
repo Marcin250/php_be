@@ -234,6 +234,15 @@
  			float:left;
 		}
 
+		h4 {
+		    color: black;
+		    font-size: 16px;
+		    margin-right: 200px;
+		    margin-top: 30px;
+		    display: block;
+		    float: right;
+		}
+
 		img {
 			max-height:50px;
     		max-width:50px;
@@ -258,9 +267,8 @@
 				$url = getenv('APP_URL') . 'user/list';
 				$data = get_content($url);
 				$dane = json_decode($data);
-				if (is_array($dane) || is_object($dane))
+				if ((is_array($dane) || is_object($dane)) && isset($_SESSION['email']))
 				{
-				$arrayId = 1;
 				echo '
 				<div class="dropdown" style="float: left">
 					<button class="dropbtn">
@@ -272,7 +280,7 @@
 						foreach ($dane->data as $item)
 						{
 						if($item->id != $_SESSION['id'])
-							echo '<a value="' . $item->id . '" onclick="getUser(' . $item->id . ')" id="user'. $arrayId . '">' . $item->name . '</a>';
+							echo '<a value="' . $item->id . '" onclick="getUser(' . $item->id . ')">' . $item->name . '</a>';
 						$arrayId++;
       					}
       					echo '
@@ -309,30 +317,30 @@
 			<p>Stan aplikacji:</p>
   			<h1>Projektowanie</h1>
 		</div>
-		<div class="wrapper" onload="getUser('first')">
+		<div class="wrapper">
 			<h2>Informacje o użytkowniku</h2>
 			<div style="overflow:auto">
 				<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" id='userImage'>
 			</div>
 			<div style="overflow:auto">
 				<h3>Nazwa:</h3>
-				<h3 id='userName'></h3>
+				<h4 id='userName'></h4>
 			</div>
 			<div style="overflow:auto">
 				<h3>Email:</h3>
-				<h3 id='userEmail'></h3>
+				<h4 id='userEmail'></h4>
 			</div>
 			<div style="overflow:auto">
 				<h3>Status:</h3>
-				<h3 id='userStatus'></h3>
+				<h4 id='userStatus'></h4>
 			</div>
 			<div style="overflow:auto">
 				<h3>Uprawnienia:</h3>
-				<h3 id='userPrivielege'></h3>
+				<h4 id='userPrivielege'></h4>
 			</div>
 			<div style="overflow:auto">
 				<h3>Data założenia:</h3>
-				<h3 id='userDate'></h3>
+				<h4 id='userDate'></h4>
 			</div>
 			<?php if(isset($_SESSION['email'])) echo '
 			<div style="overflow:auto">
@@ -361,8 +369,6 @@
 		function getUser(id)
 		{
 			userId = id;
-			if(userId == 'first')
-				userId = parseInt(document.getElementsByTagName('a')[0].getAttribute('value'), 10);
 			console.log(userId);
 			fetch('/user/index?id=' +id)
   				.then((resp) => resp.json())
