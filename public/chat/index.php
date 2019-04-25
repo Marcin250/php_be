@@ -340,20 +340,27 @@
 				  	<p>Wiadomość od profesjonalnetestyapki.</p>
 				</div>
 			</div>
-			<input class="textarea" type="text" placeholder="Type here!"/>
+			<input class="textarea" type="text" placeholder="Type here..." onkeypress="sendMessage()"/>
 		</div>
   	<script>
   		Pusher.logToConsole = false;
+
+  		var channelName = <?php echo '"' . $chatName . '"'; ?>
 
 	    var pusher = new Pusher('ff71283c9ea50e531f55', {
 	      	cluster: 'eu',
 	      	forceTLS: true
 	    });
 
-	    var channel = pusher.subscribe(<?php echo '"' . $chatName . '"'; ?>);
+	    var channel = pusher.subscribe(channelName);
 	    channel.bind('chat', function(data) {
 	    	console.log(data);
 	    });
+
+	    function sendMessage()
+	    {
+	    	
+	    }
 	</script>
 	</body>
 	<?php
