@@ -327,12 +327,20 @@
 	    		var image = <?php echo '"' . $dane->image . '"'; ?>;
 	    		var classContainer = "container";
 	    	}
-	    	var chatContainer = "chatContainer";
-	    	var message = data.message;
 
 	    	var newDiv = document.createElement('div');
+	    	newDiv.id = 'containeer' + dynamicId;
 	    	newDiv.className = classContainer;
 	    	document.getElementById('chatContainer').appendChild(newDiv);
+	    	var newImg = document.createElement('img');
+	    	newImg.src = image;
+	    	if(classContainer == "container")
+	    		newImg.className = 'right';
+	    	document.getElementById(newDiv.id).appendChild(newImg);
+	    	var newPar = document.createElement('p');
+	    	newPar.innerHTML = data.message;
+	    	document.getElementById(newDiv.id).appendChild(newPar);
+	    	dynamicId++;
 	    });
 
 	    function sendMessage(event)
