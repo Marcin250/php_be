@@ -35,11 +35,11 @@
 
 		function listByPrivilege()
 		{
-			$query = "SELECT id, Name, privileges.Name as Privielge" .
+			$query = "SELECT users.id, users.Name, privileges.Name as Privielge" .
 					" FROM " . $this->tableName .
 					" LEFT JOIN privileges" .
 					" ON privileges.idPrivilege = " . $this->tableName . ".idPrivilege" .
-					" ORDER BY id asc";
+					" ORDER BY users.id asc";
 			$stmt = $this->dbConnection->prepare($query);
 			$stmt->execute();
 			return $stmt;

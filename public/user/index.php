@@ -11,7 +11,7 @@
 
 	if(isset($_GET['id']))
 	{
-		$data = $cacheData->remember('userid' . $_GET['id'], 60);
+		$data = $cacheData->remember('user-id' . $_GET['id'], 60);
 		if($data)
 			echo $data;
 		else
@@ -26,7 +26,7 @@
 
 			if($result != null)
 			{
-				echo $cacheData->cacheWrite('userid' . $_GET['id'], json_encode($result));
+				echo $cacheData->cacheWrite('user-id' . $_GET['id'], json_encode($result));
 			}
 			else
 				echo json_encode(array("message" => "Błąd wyszukiwania."));

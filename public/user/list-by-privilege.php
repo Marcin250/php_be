@@ -5,6 +5,7 @@
 	
 	use Config\DatabaseConnection;
 	use App\Objects\User;
+	use App\Objects\Privilege;
 	use App\Objects\Cache;
 
 	$cacheData = new Cache('../../cache/');
@@ -13,12 +14,29 @@
 		echo $data;
 	else
 	{
+		$data = $cacheData->remember('privileges-list', 60);
+		if($data)
+			$privilegesArray;
+		else
+		{
+			$privileges = new Privilege($connetion);
+			$privilegesArray = $privileges->list();
+			if($privilegesArray == null)
+			{
+				echo json_encode(array("message" => "Błąd wyszukiwania."));
+				die;
+			}
+			else
+				$cacheData->cacheWrite('privileges-list', json_encode($privilegesArray));
+		}
+		var_dump($privilegesArray);
+		die;
 		$dbConnection = new DatabaseConnection();
 		$connetion = $dbConnection->getConnection();
 	 
 		$users = new User($connetion);
 	 
-		$result = $users->index();
+		$result = $users->listByPrivilege();
 		$num = $result->rowCount();
 	
 		if($num > 0)

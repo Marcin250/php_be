@@ -4,11 +4,11 @@
 	require_once __DIR__ . '../../../vendor/autoload.php';
 	
 	use Config\DatabaseConnection;
-	use App\Objects\User;
+	use App\Objects\Privilege;
 	use App\Objects\Cache;
 
 	$cacheData = new Cache('../../cache/');
-	$data = $cacheData->remember('users-list', 60);
+	$data = $cacheData->remember('privileges-list', 60);
 	if($data)
 		echo $data;
 	else
@@ -16,26 +16,24 @@
 		$dbConnection = new DatabaseConnection();
 		$connetion = $dbConnection->getConnection();
 	 
-		$users = new User($connetion);
+		$privileges = new Privilege($connetion);
 	 
-		$result = $users->list();
+		$result = $privileges->list();
 		$num = $result->rowCount();
 	
 		if($num > 0)
 		{
-			$usersArray = array();
-			$usersArray["data"] = array();
+			$privilegesArray = array();
+			$privilegesArray["data"] = array();
 			while($row = $result->fetch(PDO::FETCH_ASSOC))
 			{
 				extract($row);
-				$user = array(
-					"id" => $id,
-					"name" => $Name,
-					"createdAt" => $created_at
+				$privilege = array(
+					"name" => $Name
 				);
-				array_push($usersArray["data"], $user);
+				array_push($privilegesArray["data"], $privilege);
 			}
-			echo $cacheData->cacheWrite('users-list', json_encode($usersArray));
+			echo $cacheData->cacheWrite('privileges-list', json_encode($privilegesArray));
 		}
 		else
 			echo json_encode(array("message" => "Błąd wyszukiwania."));
