@@ -225,8 +225,9 @@
 			float: right;
 		  	max-width: 50px;
 		  	width: 100%;
-		  	margin-right: 20px;
+		  	margin-left: 20px;
 		  	border-radius: 50%;
+		  	margin-right: 0px;
 		}
 
 		.chat {
@@ -293,7 +294,7 @@
 		</header>
 		<div class="wrapper">
 			<div class="chat" id="chatContainer">
-				
+
 			</div>
 			<input class="textarea" id="chatMessage" type="text" placeholder="Type here..." onkeypress="sendMessage(event)"/>
 		</div>
@@ -324,6 +325,7 @@
 	    	var newDiv = document.createElement('div');
 	    	newDiv.id = 'containeer' + dynamicId;
 	    	newDiv.className = classContainer;
+	    	newDiv.value = data.author;
 	    	document.getElementById('chatContainer').appendChild(newDiv);
 	    	var newImg = document.createElement('img');
 	    	newImg.src = image;
@@ -356,14 +358,15 @@
 	    }
 	</script>
 	</body>
-	<?php
-		$pushData['author'] = $_SESSION['id'];
-		$pushData['message'] = $_SESSION['name'] . ' dołączył do chatu.';
-		$pusherOptions = array(
-    		'cluster' => getenv('PUSHER_CLUSTER'),
-    		'useTLS' => true
-  		);
-		$pusher = new Pusher(getenv('PUSHER_KEY'), getenv('PUSHER_SECRET'), getenv('PUSHER_ID'), $pusherOptions);
-		$pusher->trigger($chatName, 'chat', $pushData);
-	?>
 </html>
+
+<?php
+	$pushData['author'] = $_SESSION['id'];
+	$pushData['message'] = $_SESSION['name'] . ' dołączył do chatu.';
+	$pusherOptions = array(
+    	'cluster' => getenv('PUSHER_CLUSTER'),
+    	'useTLS' => true
+  	);
+	$pusher = new Pusher(getenv('PUSHER_KEY'), getenv('PUSHER_SECRET'), getenv('PUSHER_ID'), $pusherOptions);
+	$pusher->trigger($chatName, 'chat', $pushData);
+?>
