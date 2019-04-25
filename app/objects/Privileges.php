@@ -21,21 +21,21 @@
 		{
 			$query = "SELECT Name" .
 					" FROM " . $this->tableName .
-					" ORDER BY id asc";
+					" ORDER BY Tier desc";
 			$stmt = $this->dbConnection->prepare($query);
 			$stmt->execute();
 
 			$num = $stmt->rowCount();
-	
+
 			if($num > 0)
 			{
 				$privilegesArray = array();
 				$privilegesArray["data"] = array();
-				while($row = $result->fetch(PDO::FETCH_ASSOC))
+				while($row = $stmt->fetch(PDO::FETCH_ASSOC))
 				{
 					extract($row);
 					$privilege[$Name] = array();
-					array_push($privilegesArray["data"], $privilege[$Name]);
+					$privilegesArray["data"][$Name] = array();
 				}
 				return $privilegesArray;
 			}

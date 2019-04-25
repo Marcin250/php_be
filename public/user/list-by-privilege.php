@@ -8,6 +8,9 @@
 	use App\Objects\Privilege;
 	use App\Objects\Cache;
 
+	$dbConnection = new DatabaseConnection();
+	$connetion = $dbConnection->getConnection();
+
 	$cacheData = new Cache('../../cache/');
 	$data = $cacheData->remember('userslist-by-privilege', 60);
 	if($data)
@@ -16,7 +19,8 @@
 	{
 		$data = $cacheData->remember('privileges-list', 60);
 		if($data)
-			$privilegesArray;
+
+			$privilegesArray = json_decode($cacheData->remember('privileges-list', 60), true);
 		else
 		{
 			$privileges = new Privilege($connetion);
@@ -29,10 +33,7 @@
 			else
 				$cacheData->cacheWrite('privileges-list', json_encode($privilegesArray));
 		}
-		var_dump($privilegesArray);
-		die;
-		$dbConnection = new DatabaseConnection();
-		$connetion = $dbConnection->getConnection();
+		//array_push($privilegesArray['data']['root'], [['name' => 'Admin', 'id' => 1], ['name' => 'Marcin', 'id' => 2]]);
 	 
 		$users = new User($connetion);
 	 
@@ -46,14 +47,13 @@
 			while($row = $result->fetch(PDO::FETCH_ASSOC))
 			{
 				extract($row);
-				$user = array(
-					"id" => $id,
-					"name" => $Name,
-					"privilege" => $Privielge
-				);
-				array_push($usersArray["data"], $user);
+				array_push($privilegesArray['data'][$Privielge], ['id' => $id, 'name' => $Name]);
 			}
-			echo $cacheData->cacheWrite('userslist-by-privilege', json_encode($usersArray));
+			foreach ($privilegesArray['data'] as $key => $privilegeArray) {
+				if(empty($privilegeArray))
+					unset($privilegesArray['data'][$key]);
+			}
+			echo $cacheData->cacheWrite('userslist-by-privilege', json_encode($privilegesArray));
 		}
 		else
 			echo json_encode(array("message" => "Błąd wyszukiwania."));

@@ -35,7 +35,7 @@
 
 		function listByPrivilege()
 		{
-			$query = "SELECT users.id, users.Name, privileges.Name as Privielge" .
+			$query = "SELECT users.id as id, users.Name as Name, privileges.Name as Privielge" .
 					" FROM " . $this->tableName .
 					" LEFT JOIN privileges" .
 					" ON privileges.idPrivilege = " . $this->tableName . ".idPrivilege" .
