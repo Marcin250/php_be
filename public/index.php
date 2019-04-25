@@ -309,7 +309,7 @@
 			<p>Stan aplikacji:</p>
   			<h1>Projektowanie</h1>
 		</div>
-		<div class="wrapper" onload="getUser('user1')">
+		<div class="wrapper" onload="getUserOnLoad('user1')">
 			<h2>Informacje o użytkowniku</h2>
 			<div style="overflow:auto">
 				<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" id='userImage'>
@@ -371,6 +371,12 @@
 					document.getElementById("userPrivielege").innerHTML = data.privielege;
 					document.getElementById("userDate").innerHTML = data.createdAt;
 				})
+		}
+
+		function getUserOnLoad(user)
+		{
+			userId = document.getElementById(user).value;
+			getUser(userId);
 		}
 
 		function goChat()
