@@ -33,7 +33,6 @@
 			else
 				$cacheData->cacheWrite('privileges-list', json_encode($privilegesArray));
 		}
-		//array_push($privilegesArray['data']['root'], [['name' => 'Admin', 'id' => 1], ['name' => 'Marcin', 'id' => 2]]);
 	 
 		$users = new User($connetion);
 	 

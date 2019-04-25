@@ -256,6 +256,19 @@
       		.topBar a {float: none; display: block; text-align: left; background-color: #333; text-align: center;} 
       		.topBar-right {float: none;} 
       	}
+
+      	.sidebar {
+		  	height: 100%;
+		  	width: 232.02px;
+		  	position: fixed;
+		  	z-index: 1;
+		  	top: 0;
+		  	left: 0;
+		  	background-color: #111;
+		  	overflow-x: hidden;
+		  	padding-top: 16px;
+		}
+
 	</style>
 	<body>
 		<header id="header">
@@ -310,7 +323,11 @@
       						<i class="fas fa-sign-in-alt"></i>
       					</a>
     				</div>
-				</div>';
+				</div>
+				<div class="sidebar">
+                    <a> asd </a>
+    			</div>
+				';
 				?>
 			</div>
 		</header>
