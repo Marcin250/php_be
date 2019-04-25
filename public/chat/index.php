@@ -342,7 +342,7 @@
 				  	<p>Wiadomość od profesjonalnetestyapki.</p>
 				</div>
 			</div>
-			<input class="textarea" id="chatMessage" type="text" placeholder="Type here..." onkeypress="sendMessage()"/>
+			<input class="textarea" id="chatMessage" type="text" placeholder="Type here..." onkeypress="sendMessage(event)"/>
 		</div>
   	<script>
   		Pusher.logToConsole = false;
@@ -359,20 +359,22 @@
 	    	console.log(data);
 	    });
 
-	    function sendMessage()
+	    function sendMessage(event)
 	    {
-	    	var form = new FormData();
-			form.append("chat", channelName);
-			form.append("message", document.getElementById("chatMessage").value);
-			var settings = {
-  				"async": true,
-				"url": "http://php-ws.herokuapp.com/chat/send-message",
-				"method": "POST",
-				"data": form
-			};
-			$.ajax(settings).done(function (response) {
-  				console.log(response);
-			});
+	    	if (event.keyCode == 13) {
+		    	var form = new FormData();
+				form.append("chat", channelName);
+				form.append("message", document.getElementById("chatMessage").value);
+				var settings = {
+	  				"async": true,
+					"url": "http://php-ws.herokuapp.com/chat/send-message",
+					"method": "POST",
+					"data": form
+				};
+				$.ajax(settings).done(function (response) {
+	  				console.log(response);
+				});
+			}
 	    }
 	</script>
 	</body>
