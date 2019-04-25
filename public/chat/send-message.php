@@ -5,16 +5,18 @@
 	
 	use Pusher\Pusher as Pusher;
 
-	if(isset($_GET['chat']) && isset($_GET['message']))
+	if(isset($_POST['chat']) && isset($_POST['message']))
 	{
-		$data['message'] = $_GET['message'];
+		$data['message'] = $_POST['message'];
 		$pusherOptions = array(
     		'cluster' => getenv('PUSHER_CLUSTER'),
     		'useTLS' => true
   		);
 		$pusher = new Pusher(getenv('PUSHER_KEY'), getenv('PUSHER_SECRET'), getenv('PUSHER_ID'), $pusherOptions);
-		$pusher->trigger($_GET['chat'], 'chat', $data);
+		$pusher->trigger($_POST['chat'], 'chat', $data);
+		echo json_encode(array("message" => "Wysłano."));
 	}
 	else
-		die;
+		echo json_encode(array("message" => "Błąd wysłania."));
+	die;
 ?>

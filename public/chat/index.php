@@ -51,6 +51,8 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<script src="https://js.pusher.com/4.4/pusher.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script rel="javascript" type="text/javascript" href="js/jquery-1.11.3.min.js"></script>
 	<style>
 		body {
 			margin: 0;
@@ -340,7 +342,7 @@
 				  	<p>Wiadomość od profesjonalnetestyapki.</p>
 				</div>
 			</div>
-			<input class="textarea" type="text" placeholder="Type here..." onkeypress="sendMessage()"/>
+			<input class="textarea" id="chatMessage" type="text" placeholder="Type here..." onkeypress="sendMessage()"/>
 		</div>
   	<script>
   		Pusher.logToConsole = false;
@@ -359,7 +361,18 @@
 
 	    function sendMessage()
 	    {
-	    	
+	    	var form = new FormData();
+			form.append("chat", channelName);
+			form.append("message", document.getElementById("chatMessage").value);
+			var settings = {
+  				"async": true,
+				"url": "/send-message",
+				"method": "POST",
+				"data": form
+			};
+			$.ajax(settings).done(function (response) {
+  				console.log(response);
+			});
 	    }
 	</script>
 	</body>
