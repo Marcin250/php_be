@@ -375,7 +375,7 @@
 
 		function getUserOnLoad(user)
 		{
-			userId = document.getElementsByTagName('a')[0].getAttribute('value');
+			userId = parseInt(document.getElementsByTagName('a')[0].getAttribute('value'), 10);
 			getUser(userId);
 		}
 
