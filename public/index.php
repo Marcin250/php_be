@@ -178,18 +178,18 @@
 		.wrapperbtn
 		{
 			border-radius: 4px;
-			border: 1.5px solid black;
-    		border-color: black;
-			color: black;
-			text-align: center;
-			font-size: 16px;
-			margin-left: 70px;
-			margin-top: 30px;
-			display:block;
- 			float:left;
- 			width: 230px;
-			transition: all 0.5s;
-			cursor: pointer;
+		    background-color: #c1c1c1;
+		    border: none;
+		    color: black;
+		    text-align: center;
+		    font-size: 16px;
+		    margin-left: 70px;
+		    margin-top: 30px;
+		    display: block;
+		    float: left;
+		    width: 215px;
+		    transition: all 0.5s;
+		    cursor: pointer;
 		}
 
 		.wrapperbtn span 
