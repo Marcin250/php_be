@@ -268,7 +268,7 @@
 
       	.sidebar {
 		  	height: 100%;
-		  	width: 232.02px;
+		  	width: 240px;
 		  	position: fixed;
 		  	z-index: 1;
 		  	top: 0;
@@ -335,7 +335,7 @@
     				</div>
 				</div>
 				<div class="sidebar">
-                    <a> asd </a>
+                    <b> Admin </b>
     			</div>
 				';
 				?>
