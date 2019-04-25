@@ -334,7 +334,7 @@
 			</div>
 			<div style="overflow:auto">
 				<button type="button" class="wrapperbtn" onclick="goChat()">
-					<span> Przejdź do rozmowy </span>
+					<?php if(isset($_SESSION['email'])) echo '<span> Przejdź do rozmowy </span>'; ?>
 				</button>
 			</div>
 		</div>
