@@ -25,7 +25,7 @@
 		
 		function list()
 		{
-			$query = "SELECT id, Namet" .
+			$query = "SELECT id, Name" .
 					" FROM " . $this->tableName .
 					" ORDER BY id asc";
 			$stmt = $this->dbConnection->prepare($query);
