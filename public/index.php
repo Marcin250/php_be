@@ -318,6 +318,11 @@
   			<h1>Projektowanie</h1>
 		</div>
 		<div class="wrapper">
+			<?php 
+			if(!isset($_SESSION['email']))
+			echo '<h2>Zaloguj się aby móc korzystać z aplikacji</h2>';
+			else
+			echo '
 			<h2>Informacje o użytkowniku</h2>
 			<div style="overflow:auto">
 				<img src="https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png" id='userImage'>
@@ -342,13 +347,13 @@
 				<h3>Data założenia:</h3>
 				<h4 id='userDate'></h4>
 			</div>
-			<?php if(isset($_SESSION['email'])) echo '
 			<div style="overflow:auto">
 				<button type="button" class="wrapperbtn" onclick="goChat()">
 					<span> Przejdź do rozmowy </span>
 				</button>
 			</div>
-			'; ?>
+			'; 
+			?>
 		</div>
   	<script>
   		var userId = 1;
