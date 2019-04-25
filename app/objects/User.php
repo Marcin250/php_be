@@ -23,10 +23,22 @@
 			$this->dbConnection = $connection;
 		}
 		
-		function index()
+		function list()
 		{
-			$query = "SELECT id, Name, created_at" .
+			$query = "SELECT id, Namet" .
 					" FROM " . $this->tableName .
+					" ORDER BY id asc";
+			$stmt = $this->dbConnection->prepare($query);
+			$stmt->execute();
+			return $stmt;
+		}
+
+		function listByPrivilege()
+		{
+			$query = "SELECT id, Name, privileges.Name as Privielge" .
+					" FROM " . $this->tableName .
+					" LEFT JOIN privileges" .
+					" ON privileges.idPrivilege = " . $this->tableName . ".idPrivilege" .
 					" ORDER BY id asc";
 			$stmt = $this->dbConnection->prepare($query);
 			$stmt->execute();

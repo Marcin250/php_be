@@ -8,7 +8,7 @@
 	use App\Objects\Cache;
 
 	$cacheData = new Cache('../../cache/');
-	$data = $cacheData->remember('userslist', 60);
+	$data = $cacheData->remember('userslist-by-privilege', 60);
 	if($data)
 		echo $data;
 	else
@@ -18,7 +18,7 @@
 	 
 		$users = new User($connetion);
 	 
-		$result = $users->list();
+		$result = $users->index();
 		$num = $result->rowCount();
 	
 		if($num > 0)
@@ -31,11 +31,11 @@
 				$user = array(
 					"id" => $id,
 					"name" => $Name,
-					"createdAt" => $created_at
+					"privilege" => $Privielge
 				);
 				array_push($usersArray["data"], $user);
 			}
-			echo $cacheData->cacheWrite('userslist', json_encode($usersArray));
+			echo $cacheData->cacheWrite('userslist-by-privilege', json_encode($usersArray));
 		}
 		else
 			echo json_encode(array("message" => "Błąd wyszukiwania."));
