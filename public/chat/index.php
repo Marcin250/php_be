@@ -346,8 +346,8 @@
 		</div>
   	<script>
   		Pusher.logToConsole = false;
-  		var channelName = <?php echo '"' . $chatName . '"'; ?>
-  		var channelUser = <?php echo '"' . $_SESSION['id'] . '"'; ?>
+  		var channelName = <?php echo '"' . $chatName . '"'; ?>;
+  		var channelUser = <?php echo '"' . $_SESSION['id'] . '"'; ?>;
 
 	    var pusher = new Pusher('ff71283c9ea50e531f55', {
 	      	cluster: 'eu',
