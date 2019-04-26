@@ -11,6 +11,7 @@
 		private $idPrivielege;
 		private $Name;
 		private $Tier;
+		private $createdAt;
 
 		public function __construct($connection)
 		{

@@ -357,7 +357,10 @@
 					echo '<p> ' . ucfirst($key) . ' (' . count($privilegeArray) . ') </p>';
 					foreach ($privilegeArray as $item)
 					{
-						echo '<a value="' . $item->id . '" onclick="getUser(' . $item->id . ')">' . $item->name . '</a>';
+						if($_SESSION['id'] != $item->id)
+							echo '<a value="' . $item->id . '" onclick="getUser(' . $item->id . ')">' . $item->name . '</a>';
+						else
+							echo '<a value="' . $item->id . '">' . $item->name . '</a>';
 					}
                 }
                 echo '
