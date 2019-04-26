@@ -396,6 +396,7 @@
 <?php
 	$pushData['author'] = $_SESSION['id'];
 	$pushData['message'] = $_SESSION['name'] . ' dołączył do chatu.';
+	$pushData['createdAt'] = date('Y-m-d H:i:s');
 	$pusherOptions = array(
     	'cluster' => getenv('PUSHER_CLUSTER'),
     	'useTLS' => true
