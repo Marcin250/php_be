@@ -265,6 +265,14 @@
 		    border-color: #dedede;
 		}
 
+		p {
+    		margin: 3px;
+		}
+
+		time {
+			font-size: 9px;
+		}
+
       	@media screen and (max-width: 700px) {
       		.topBar {margin: 0px; margin-left: 0px;} 
       		.topBar a {float: none; display: block; text-align: left; background-color: #333; text-align: center;} 
@@ -313,7 +321,6 @@
 
 	    var channel = pusher.subscribe(channelName);
 	    channel.bind('chat', function(data) {
-	    	console.log(data);
 	    	if(data.author == channelUser)
 	    	{
 	    		var image = <?php echo '"' . $_SESSION['image'] . '"'; ?>;
@@ -340,6 +347,10 @@
 	    	}
 	    	var newPar = document.createElement('p');
 	    	newPar.innerHTML = data.message;
+	    	document.getElementById(newDiv.id).appendChild(newPar);
+
+	    	var newTime = document.createElement('time');
+	    	newTime.innerHTML = data.createdAt;
 	    	document.getElementById(newDiv.id).appendChild(newPar);
 	    	dynamicId++;
 	    });
