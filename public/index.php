@@ -9,16 +9,6 @@
 
 	if(!isset($_SESSION)) { session_start(); }
 
-		$_SESSION['id'] = 1;
-		$_SESSION['name'] = 'Admin';
-		$_SESSION['email'] = 'oauth2testbackend@gmail.com';
-		$_SESSION['image'] = 'https://res.cloudinary.com/hhidlawm6/image/upload/v1544290892/users/root.png';
-		$_SESSION['createdAt'] = '2019-01-19 15:30:35';
-		$_SESSION['status'] = 'aktywny';
-		$_SESSION['privielege'] = 'root';
-		$_SESSION['tier'] = '127';
-
-
 	if(isset($_SESSION['id']))
 		$titleURL = 'Wyloguj';
 	else
@@ -441,7 +431,7 @@
 		{
 			userId = id;
 			console.log(userId);
-			fetch('http://localhost/plain_php/public/user/index?id=' +id)
+			fetch('/user/index?id=' +id)
   				.then((resp) => resp.json())
   				.then(function(data) {
   					document.getElementById("userImage").src = data.image;
@@ -455,7 +445,7 @@
 
 		function goChat()
 		{
-			window.location = 'http://localhost/plain_php/public/chat?u=' + userId;
+			window.location = '/chat?u=' + userId;
 		}
 
 		Pusher.logToConsole = false;
