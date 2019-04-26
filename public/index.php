@@ -150,6 +150,7 @@
   			display: block;
   			text-align: left;
   			cursor: pointer;
+  			width: auto;
 		}
 
 		.dropdown-content a:hover {
@@ -248,6 +249,14 @@
 		    float: initial;
 		}
 
+		h5 {
+		    color: #dd4b39;
+		    font-size: 18px;
+		    display: block;
+		    float: initial;
+		    padding-left: 14px;
+		}
+
 		img {
 			max-height:50px;
     		max-width:50px;
@@ -273,12 +282,31 @@
 		.sidebar a {
       		float: left;
 		    color: #dd4b39;
-		    text-align: center;
+		    text-align: left;
 		    padding: 14px;
 		    text-decoration: none;
-		    font-size: 18px;
-		    font-weight: 500;
+		    font-size: 15px;
+		    font-weight: 400;
 		    display: block;
+		    width: 240px;
+		    cursor: pointer;
+		}
+
+		.sidebar a:hover {
+  			background-color: #ddd;
+		}
+
+		.sidebar p {
+      		float: left;
+		    color: #dd4b39;
+		    text-align: center;
+		    text-decoration: none;
+		    font-size: 18px;
+		    font-weight: 450;
+		    display: block;
+		    width: 240px;
+		    margin-top: 1px;
+		    margin-bottom: 1px;
 		}
 
 	</style>
@@ -286,30 +314,16 @@
 		<header id="header">
 			<div class="topBar">
 				<?php
-				$url = getenv('APP_URL') . 'user/list';
-				$data = get_content($url);
-				$dane = json_decode($data);
-				if ((is_array($dane) || is_object($dane)) && isset($_SESSION['email']))
+				if (isset($_SESSION['email']))
 				{
 				echo '
-				<div class="dropdown" style="float: left">
-					<button class="dropbtn">
+				<div style="float: left;width: 240px;height: 52px;">
+					<h5>
 						<i class="fas fa-users"></i>
   						Lista użytkowników
-						<i class="fa fa-caret-down"></i>
-					</button>
-					<div id="userList" class="dropdown-content">';
-						foreach ($dane->data as $item)
-						{
-						if($item->id != $_SESSION['id'])
-							echo '<a value="' . $item->id . '" onclick="getUser(' . $item->id . ')">' . $item->name . '</a>';
-      					}
-      					echo '
-    				</div>
+					</h5>
 				</div>';
 				}
-				?>
-				<?php 
 				if($titleURL == 'Zaloguj') echo '
 				<div class="dropdown">
 					<button class="dropbtn">' . $titleURL . '
@@ -330,7 +344,23 @@
       						<i class="fas fa-sign-in-alt"></i>
       					</a>
     				</div>
-				</div>
+				</div>';
+				$url = getenv('APP_URL') . 'user/list-by-privilege';
+				$data = get_content($url);
+				$daneByPrivilege = json_decode($data);
+				if ((is_array($daneByPrivilege) || is_object($daneByPrivilege)) && isset($_SESSION['email']))
+				echo '
+				<div class="sidebar">';
+				foreach ($daneByPrivilege->data as $key => $privilegeArray)
+				{
+					echo '<p> ' . ucfirst($key) . ' (' . count($privilegeArray) . ') </p>';
+					foreach ($privilegeArray as $item)
+					{
+						echo '<a value="' . $item->id . '" onclick="getUser(' . $item->id . ')">' . $item->name . '</a>';
+					}
+                }
+                echo '
+    			</div>
 				';
 				?>
 			</div>
