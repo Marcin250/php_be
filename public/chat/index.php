@@ -216,7 +216,6 @@
 		}
 
 		.container img {
-			padding-top: 3px;
 		  	float: left;
 		  	max-width: 50px;
 		  	width: 100%;
@@ -230,7 +229,6 @@
 		}
 
 		.darker img {
-			padding-top: 3px;
 			float: right;
 		  	max-width: 50px;
 		  	width: 100%;
@@ -266,7 +264,7 @@
 		}
 
 		p {
-    		margin: 3px;
+    		margin: 6px;
 		}
 
 		time {
