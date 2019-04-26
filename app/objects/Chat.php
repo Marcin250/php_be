@@ -12,7 +12,7 @@
 		public $ChatName;
 		public $idUser;
 		public $Message;
-		private $createdAt;
+		public $createdAt;
 
 		public function __construct($connection)
 		{
@@ -21,9 +21,9 @@
 		
 		function store()
 		{
-			$query = "insert into " . $this->table_name . 
+			$query = "insert into " . $this->tableName . 
 			" SET ChatName=:ChatName, idUser=:idUser, Message=:Message, created_at=:createdAt";
-			$stmt = $this->db_connection->prepare($query);
+			$stmt = $this->dbConnection->prepare($query);
 			$stmt->bindParam(":ChatName", $this->ChatName);
 			$stmt->bindParam(":idUser", $this->idUser);
 			$stmt->bindParam(":Message", $this->Message);
