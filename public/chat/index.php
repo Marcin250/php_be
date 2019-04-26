@@ -313,12 +313,13 @@
 
 	    var channel = pusher.subscribe(channelName);
 	    channel.bind('chat', function(data) {
-	    	if(data.author == channelUser) // Dark Container
+	    	console.log(data);
+	    	if(data.author == channelUser)
 	    	{
 	    		var image = <?php echo '"' . $_SESSION['image'] . '"'; ?>;
 	    		var classContainer = "container darker";
 	    	}
-	    	else // Normal Container
+	    	else
 	    	{
 	    		var image = <?php echo '"' . $dane->image . '"'; ?>;
 	    		var classContainer = "container";
