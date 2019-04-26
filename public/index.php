@@ -100,11 +100,11 @@
   			padding: 14px 16px;
   			text-decoration: none;
   			font-size: 17px;
+  			width: auto;
 		}
 
 		.topBar a.left {
   			float: left;
-  			width: 232.02px;
 		}
 
 		.dropdown {
