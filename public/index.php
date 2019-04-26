@@ -104,6 +104,7 @@
 
 		.topBar a.left {
   			float: left;
+  			width: 232.02px;
 		}
 
 		.dropdown {
