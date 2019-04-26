@@ -252,7 +252,6 @@
 		h5 {
 		    color: #dd4b39;
 		    font-size: 18px;
-		    display: block;
 		    float: initial;
 		    padding-left: 14px;
 		}
