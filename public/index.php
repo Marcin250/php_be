@@ -2,9 +2,21 @@
 	require_once __DIR__ . '../../vendor/autoload.php';
 
 	use Config\GoogleClient;
-	//use Dotenv\Dotenv as Dotenv;
+	use Dotenv\Dotenv as Dotenv;
+
+	$dotenv = Dotenv::create(__DIR__ . '/..');
+	$dotenv->load();
 
 	if(!isset($_SESSION)) { session_start(); }
+
+		$_SESSION['id'] = 1;
+		$_SESSION['name'] = 'test1';
+		$_SESSION['email'] = 'test1';
+		$_SESSION['image'] = 'test1';
+		$_SESSION['createdAt'] = 'test1';
+		$_SESSION['status'] = 'test1';
+		$_SESSION['privielege'] = 'test1';
+		$_SESSION['tier'] = 'test1';
 
 	if(isset($_SESSION['id']))
 		$titleURL = 'Wyloguj';
@@ -92,15 +104,6 @@
 
       	.topBar a {
       		float: right;
-  			color: #dd4b39;
-  			text-align: center;
-  			padding: 14px 16px;
-  			text-decoration: none;
-  			font-size: 17px;
-		}
-
-		.topBar b {
-      		float: left;
   			color: #dd4b39;
   			text-align: center;
   			padding: 14px 16px;
@@ -270,13 +273,20 @@
 		  	height: 100%;
 		  	width: 240px;
 		  	position: fixed;
-		  	z-index: 1;
-		  	top: 0;
-		  	left: 0;
 		  	background-color: #ececec;
-		  	overflow-x: hidden;
-		  	padding-top: 16px;
 		  	margin-top: 52px;
+		  	overflow: auto;
+		}
+
+		.sidebar a {
+      		float: left;
+		    color: #dd4b39;
+		    text-align: center;
+		    padding: 14px;
+		    text-decoration: none;
+		    font-size: 18px;
+		    font-weight: 500;
+		    display: block;
 		}
 
 	</style>
@@ -284,10 +294,6 @@
 		<header id="header">
 			<div class="topBar">
 				<?php
-
-				// $dotenv = Dotenv::create(__DIR__ . '/..');
-				// $dotenv->load();
-
 				$url = getenv('APP_URL') . 'user/list';
 				$data = get_content($url);
 				$dane = json_decode($data);
@@ -305,7 +311,6 @@
 						{
 						if($item->id != $_SESSION['id'])
 							echo '<a value="' . $item->id . '" onclick="getUser(' . $item->id . ')">' . $item->name . '</a>';
-						$arrayId++;
       					}
       					echo '
     				</div>
@@ -334,14 +339,11 @@
       					</a>
     				</div>
 				</div>
-				<div class="sidebar">
-                    <b> Admin </b>
-    			</div>
 				';
 				?>
 			</div>
 		</header>
-		<div class="w3-container w3-center w3-animate-top">
+		<div class="w3-container w3-center w3-animate-top" style="width: 1680; float: right; padding-right: 240px; display: contents;">
 			<p>Stan aplikacji:</p>
   			<h1>Aplikacja w fazie testów</h1>
   			<?php if(!isset($_SESSION['email'])) echo "<h1>Zaloguj się aby móc korzystać z aplikacji</h1>"; ?>
