@@ -212,6 +212,7 @@
 		}
 
 		.container {
+			height: 60px;
 		  	padding: 3px;
 		}
 
