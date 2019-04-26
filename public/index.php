@@ -344,6 +344,8 @@
       					</a>
     				</div>
 				</div>';
+				if (isset($_SESSION['email']))
+				{
 				$url = getenv('APP_URL') . 'user/list-by-privilege';
 				$data = get_content($url);
 				$daneByPrivilege = json_decode($data);
@@ -361,6 +363,7 @@
                 echo '
     			</div>
 				';
+				}
 				?>
 			</div>
 		</header>
