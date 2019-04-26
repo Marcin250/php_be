@@ -29,11 +29,8 @@
 			$stmt->bindParam(":Message", $this->Message);
 			$stmt->bindParam(":createdAt", $this->createdAt);
 			if($stmt->execute())
-			{
 				return true;
-			}
-			else
-				return false;
+			return false;
 		}
 	}
 ?>

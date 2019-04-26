@@ -97,12 +97,12 @@
 			$queryUserCount = $row["userCount"];
 			if($queryUserCount > 0)
 				return true;
-			else
-				return false;
+			return false;
 		}
 		function store()
 		{
-			$query = "insert into " . $this->tableName . " SET Name=:name, Email=:email, Image=:image, provider=:providerName, provider_id=:providerId, created_at=NOW()";
+			$query = "insert into " . $this->tableName . 
+			" SET Name=:name, Email=:email, Image=:image, provider=:providerName, provider_id=:providerId, created_at=NOW()";
 			$stmt = $this->dbConnection->prepare($query);
 			$stmt->bindParam(":name", $this->name);
 			$stmt->bindParam(":email", $this->email);

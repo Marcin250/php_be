@@ -351,7 +351,7 @@
 
 	    	var newTime = document.createElement('time');
 	    	newTime.innerHTML = data.createdAt;
-	    	document.getElementById(newDiv.id).appendChild(newPar);
+	    	document.getElementById(newDiv.id).appendChild(newTime);
 	    	dynamicId++;
 	    });
 

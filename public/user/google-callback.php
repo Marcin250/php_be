@@ -33,7 +33,10 @@
 		$user->providerId = $userData->id;
 		$user->image = $userData->picture;
 		if(!$user->verify())
+		{
 			$user->store();
+			$sessionUserData = $user->byProviderId();
+		}
 		else
 		{
 			$user->providerId = $userData->id;
