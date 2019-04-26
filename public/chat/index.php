@@ -221,6 +221,7 @@
 		  	width: 100%;
 		  	margin-right: 20px;
 		  	border-radius: 50%;
+		  	margin-top: 2px;
 		}
 
 		.darker {
@@ -235,6 +236,7 @@
 		  	margin-left: 20px;
 		  	border-radius: 50%;
 		  	margin-right: 0px;
+		  	margin-top: 2px;
 		}
 
 		.chat {
