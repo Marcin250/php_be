@@ -19,7 +19,7 @@
 		$chat->idUser = $_POST['author'];
 		$chat->Message = $_POST['message'];
 		$chat->createdAt = $messageTime;
-		if($users->store())
+		if($chat->store())
 		{
 			$data['author'] = $_POST['author'];
 			$data['message'] = $_POST['message'];
