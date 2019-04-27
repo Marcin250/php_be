@@ -9,8 +9,8 @@
 
 	if(!isset($_SESSION)) { session_start(); }
 
-	if((isset($_GET['chat']) && $_GET['chat'] == $_SESSION['chat']) && isset($_GET['from']) && isset($_GET['quantity']))
-	{
+	//if((isset($_GET['chat']) && $_GET['chat'] == $_SESSION['chat']) && isset($_GET['from']) && isset($_GET['quantity']))
+	//{
 		$dbConnection = new DatabaseConnection();
 		$connetion = $dbConnection->getConnection();
 
@@ -20,5 +20,5 @@
 		$result = $chat->getChatPastMessages($_GET['from'], $_GET['quantity']);
 
 		var_dump($result);
-	}
+	//}
 ?>

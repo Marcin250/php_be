@@ -39,8 +39,9 @@
 					" FROM " . $this->tableName .
 					" ORDER BY id asc";
 			$stmt = $this->dbConnection->prepare($query);
-			$stmt->execute();
-			return $stmt;
+			if($stmt->execute())
+				return $stmt;
+			return false;
 		}
 
 		function listByPrivilege()
@@ -51,8 +52,9 @@
 					" ON privileges.idPrivilege = " . $this->tableName . ".idPrivilege" .
 					" ORDER BY users.id asc";
 			$stmt = $this->dbConnection->prepare($query);
-			$stmt->execute();
-			return $stmt;
+			if($stmt->execute())
+				return $stmt;
+			return false;
 		}
 
 		function byId()

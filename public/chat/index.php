@@ -282,7 +282,7 @@
       		.topBar-right {float: none;} 
       	}
 	</style>
-	<body>
+	<body onload="joinChat()">
 		<header id="header">
 			<div class="topBar">
 				<div style="float: left">
@@ -378,6 +378,23 @@
 			}
 	    }
 
+	    function joinChat()
+	    {
+	    	var form = new FormData();
+				form.append("chat", channelName);
+				form.append("author", channelUser);
+				form.append("message", channelUserName + ' dołączył do chatu.');
+				var settings = {
+	  				"async": true,
+	  				"processData": false,
+  					"contentType": false,
+					"url": "http://php-ws.herokuapp.com/chat/send-message",
+					"method": "POST",
+					"data": form
+				};
+			$.ajax(settings);
+	    }
+
 	    function leaveChat()
 	    {
 	    	var form = new FormData();
@@ -397,15 +414,3 @@
 	</script>
 	</body>
 </html>
-
-<?php
-	$pushData['author'] = $_SESSION['id'];
-	$pushData['message'] = $_SESSION['name'] . ' dołączył do chatu.';
-	$pushData['createdAt'] = date('Y-m-d H:i:s');
-	$pusherOptions = array(
-    	'cluster' => getenv('PUSHER_CLUSTER'),
-    	'useTLS' => true
-  	);
-	$pusher = new Pusher(getenv('PUSHER_KEY'), getenv('PUSHER_SECRET'), getenv('PUSHER_ID'), $pusherOptions);
-	$pusher->trigger($chatName, 'chat', $pushData);
-?>

@@ -45,17 +45,18 @@
 
 		function getChatPastMessages($from, $quantity)
 		{
-			$query = "SELECT idUser, Message, created_at as createdAt" .
+			$query = "SELECT idUser, Message, created_at" .
 					" FROM " . $this->tableName .
 					" WHERE ChatName=:ChatName" .
 					" ORDER BY idChat asc" . 
 					" LIMIT :from, :quantity";
 			$stmt = $this->dbConnection->prepare($query);
 			$stmt->bindParam(":ChatName", $this->ChatName);
-			$stmt->bindParam(":from", $from);
-			$stmt->bindParam(":quantity", $quantity);
-			$stmt->execute();
-			return $stmt;
+			$stmt->bindParam(":from", $from, PDO::PARAM_INT);
+			$stmt->bindParam(":quantity", $quantity, PDO::PARAM_INT);
+			if($stmt->execute())
+				return $stmt;
+			return false;
 		}
 	}
 ?>
