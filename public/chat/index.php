@@ -243,6 +243,49 @@
 		    overflow-x: hidden;;
 		}
 
+		.wrapperbtn
+		{
+		    background-color: #c1c1c1;
+		    border: none;
+		    color: black;
+		    text-align: center;
+		    font-size: 16px;
+		    margin-left: 70px;
+		    margin-top: 30px;
+		    display: block;
+		    float: left;
+		    width: 100%;
+		    transition: all 0.5s;
+		    cursor: pointer;
+		}
+
+		.wrapperbtn span 
+		{
+		  	cursor: pointer;
+		  	display: inline-block;
+		  	position: relative;
+		  	transition: 0.5s;
+		}
+
+		.wrapperbtn span:after 
+		{
+		  	content: '\00bb';
+		  	position: absolute;
+		  	opacity: 0;
+		  	top: 0;
+		  	right: -20px;
+		  	transition: 0.5s;
+		}
+
+		.wrapperbtn:hover span {
+		  	padding-right: 25px;
+		}
+
+		.wrapperbtn:hover span:after {
+		  	opacity: 1;
+		  	right: 0;
+		}
+
 		input.textarea {
 			position: inherit;
 		    bottom: 0px;
@@ -305,7 +348,7 @@
 				$chat = new Chat($connetion);
 				$chat->ChatName = $_SESSION['chat'];
 				$pastMessagesCount = $chat->getTotalPastMessages();
-				if($pastMessagesCount > 0) echo '<p>' . $pastMessagesCount . '</p>';
+				if($pastMessagesCount > 0) echo '<button class="wrapperbtn" onclick="loadPastMessages()"> Wczytaj poprzednie wiadomości </button>';
 			?>
 			</div>
 			<input class="textarea" id="chatMessage" type="text" placeholder="Napisz wiadomość" onkeypress="sendMessage(event)"/>
@@ -317,6 +360,7 @@
   		var channelUserName = <?php echo '"' . $_SESSION['name'] . '"'; ?>;
   		var previousUser = null;
   		var dynamicId = 1;
+  		var pastMessagesFrom = 0;
 
 	    var pusher = new Pusher('ff71283c9ea50e531f55', {
 	      	cluster: 'eu',
@@ -358,6 +402,16 @@
 	    	document.getElementById(newDiv.id).appendChild(newTime);
 	    	dynamicId++;
 	    });
+
+	    function loadPastMessages()
+	    {
+			fetch('/get-past-messages?chat=' + channelName + '&from=' + pastMessagesFrom + '&quantity=5')
+  				.then((resp) => resp.json())
+  				.then(function(data) {
+  					console.log(data);
+			})
+  			pastMessagesFrom += 5;
+	    }
 
 	    function sendMessage(event)
 	    {

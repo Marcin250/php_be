@@ -430,7 +430,6 @@
 		function getUser(id)
 		{
 			userId = id;
-			console.log(userId);
 			fetch('/user/index?id=' +id)
   				.then((resp) => resp.json())
   				.then(function(data) {
@@ -440,7 +439,7 @@
 					document.getElementById("userStatus").innerHTML = data.status;
 					document.getElementById("userPrivielege").innerHTML = data.privielege;
 					document.getElementById("userDate").innerHTML = data.createdAt;
-				})
+			})
 		}
 
 		function goChat()
