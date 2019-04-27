@@ -9,6 +9,8 @@
 
 	if(!isset($_SESSION)) { session_start(); }
 
+	$_SESSION['chat'] = 'chat1131';
+
 	if((isset($_GET['chat']) && $_GET['chat'] == $_SESSION['chat']) && isset($_GET['from']) && isset($_GET['quantity']))
 	{
 		$dbConnection = new DatabaseConnection();
@@ -20,8 +22,6 @@
 		$result = $chat->getChatPastMessages($_GET['from'], $_GET['quantity']);
 
 		$pastMessagesCount = $chat->getTotalPastMessages();
-
-		var_dump($pastMessagesCount);
 
 		$num = $result->rowCount();
 
@@ -38,7 +38,15 @@
 				);
 				array_push($messagesArray, $message);
 			}
-			//echo json_encode($messagesArray);
+
+			$messagesData = [
+				'messages' => $messagesArray,
+				'messagesFrom' => $_GET['from'],
+				'messagesQuantity' => $_GET['quantity'],
+				'totalMessages' => $pastMessagesCount
+			];
+
+			echo json_encode($messagesData);
 		}
 		else
 			echo json_encode(array("message" => "Błąd wyszukiwania."));
