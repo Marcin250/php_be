@@ -48,7 +48,7 @@
 			$query = "SELECT idUser, Message, created_at" .
 					" FROM " . $this->tableName .
 					" WHERE ChatName=:ChatName" .
-					" ORDER BY idChat asc" . 
+					" ORDER BY idChat desc" . 
 					" LIMIT :from, :quantity";
 			$stmt = $this->dbConnection->prepare($query);
 			$stmt->bindParam(":ChatName", $this->ChatName);
