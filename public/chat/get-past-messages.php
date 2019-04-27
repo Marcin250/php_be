@@ -9,8 +9,8 @@
 
 	if(!isset($_SESSION)) { session_start(); }
 
-	//if((isset($_GET['chat']) && $_GET['chat'] == $_SESSION['chat']) && isset($_GET['from']) && isset($_GET['quantity']))
-	//{
+	if((isset($_GET['chat']) && $_GET['chat'] == $_SESSION['chat']) && isset($_GET['from']) && isset($_GET['quantity']))
+	{
 		$dbConnection = new DatabaseConnection();
 		$connetion = $dbConnection->getConnection();
 
@@ -19,6 +19,24 @@
 		$chat->ChatName = $_GET['chat'];
 		$result = $chat->getChatPastMessages($_GET['from'], $_GET['quantity']);
 
-		var_dump($result);
-	//}
+		$num = $result->rowCount();
+
+		if($num > 0)
+		{
+			$messagesArray = array();
+			while($row = $result->fetch(PDO::FETCH_ASSOC))
+			{
+				extract($row);
+				$message = array(
+					"author" => $idUser,
+					"message" => $Message,
+					"createdAt" => $created_at
+				);
+				array_push($messagesArray, $message);
+			}
+			echo json_encode($messagesArray);
+		}
+		else
+			echo json_encode(array("message" => "Błąd wyszukiwania."));
+	}
 ?>
