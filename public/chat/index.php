@@ -4,6 +4,7 @@
 	//use Dotenv\Dotenv as Dotenv;
 	use Pusher\Pusher as Pusher;
 	use App\Objects\Chat;
+	use Config\DatabaseConnection;
 
 	if(!isset($_SESSION)) { session_start(); }
 
