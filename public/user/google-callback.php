@@ -34,8 +34,10 @@
 		$user->image = $userData->picture;
 		if(!$user->verify())
 		{
-			$user->store();
-			$sessionUserData = $user->byProviderId();
+			if($user->store())
+				$sessionUserData = $user->byProviderId();
+			else
+				echo json_encode(array("message" => "Błąd serwera."));
 		}
 		else
 		{
@@ -51,6 +53,7 @@
 		$_SESSION['status'] = $sessionUserData['status'];
 		$_SESSION['privielege'] = $sessionUserData['privielege'];
 		$_SESSION['tier'] = $sessionUserData['tier'];
+		$_SESSION['chat'] = 'chat' . $sessionUserData['id'];
 
 		$data['name'] = $_SESSION['name'];
 
