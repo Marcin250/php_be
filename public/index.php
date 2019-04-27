@@ -38,8 +38,292 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel="stylesheet" href="styles.css" type="text/css">
 	<script src="https://js.pusher.com/4.4/pusher.min.js"></script>
+	<style>
+		::-webkit-scrollbar {
+  			width: 4px;
+		}
+
+		::-webkit-scrollbar-track {
+  			background: #f1f1f1; 
+		}
+
+		::-webkit-scrollbar-thumb {
+  			background: #888; 
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+  			background: #555; 
+		}
+
+		body {
+			margin: 0;
+			width: 100wh;
+			height: 90vh;
+			color: #fff;
+			background: linear-gradient(-45deg, #00bfde, #a06aff, #ff493b, #fff8bd);
+			background-size: 400% 400%;
+			-webkit-animation: Gradient 15s ease infinite;
+			-moz-animation: Gradient 15s ease infinite;
+			animation: Gradient 15s ease infinite;
+		}
+
+		@-webkit-keyframes Gradient {
+			0% {
+					background-position: 0% 50%
+			}
+			0% {
+					background-position: 100% 50%
+			}
+			100% {
+					background-position: 0% 50%
+			}
+		}
+
+		@-moz-keyframes Gradient {
+			0% {
+					background-position: 0% 50%
+			}
+			50% {
+					background-position: 100% 50%
+			}
+			100% {
+					background-position: 0% 50%
+			}
+		}
+
+		@keyframes Gradient {
+			0% {
+				background-position: 0% 50%
+			}
+			50% {
+				background-position: 100% 50%
+			}
+			100% {
+				background-position: 0% 50%
+			}
+		}
+
+		.topBar {
+		  	overflow: hidden;
+		 	background: #ececec;
+		}
+
+		.topBar a {
+		    float: right;
+		  	color: #dd4b39;
+		  	text-align: center;
+		  	padding: 14px 16px;
+		  	text-decoration: none;
+		  	font-size: 17px;
+		  	width: auto;
+		}
+
+		.topBar a.left {
+		  	float: left;
+		}
+
+		.dropdown {
+  			float: right;
+  			overflow: hidden;
+		}
+
+      	.dropdown .dropbtn {
+  			font-size: 16px;  
+  			border: none;
+  			outline: none;
+  			color: #dd4b39;
+  			padding: 14px 16px;
+  			background-color: inherit;
+  			font-family: inherit;
+  			margin: 0;
+		}
+
+		.topBar .dropdown:hover .dropbtn {
+  			background-color: #dd4b39;
+  			color: white;
+  			.topBar a {background-color: grey;}
+		}
+
+		.topBar a:hover {
+  			background-color: #dd4b39;
+		}
+
+		.dropdown-content {
+  			display: none;
+  			position: absolute;
+  			background-color: #f9f9f9;
+  			min-width: 160px;
+  			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  			z-index: 1;
+		}
+
+		.dropdown-content a {
+  			float: none;
+  			color: black;
+  			padding: 12px 16px;
+  			text-decoration: none;
+  			display: block;
+  			text-align: left;
+  			cursor: pointer;
+  			width: auto;
+		}
+
+		.dropdown-content a:hover {
+  			background-color: #ddd;
+		}
+
+		.dropdown:hover .dropdown-content {
+  			display: block;
+		}
+
+		.fa-caret-down {
+  			float: right;
+  			padding-right: 8px;
+		}
+
+		.wrapper
+		{
+			border-radius: 8px;
+		 	width:550px;
+		 	height:550px;
+		 	margin:0 auto;
+		 	background:#ececec;
+		 	position:absolute;
+		 	left:50%;
+		 	top:50%;
+		 	margin-left:-250px;
+		 	margin-top:-250px;
+		 	opacity: 0.9;
+		}
+
+		.wrapperbtn
+		{
+			border-radius: 4px;
+		    background-color: #c1c1c1;
+		    border: none;
+		    color: black;
+		    text-align: center;
+		    font-size: 16px;
+		    margin-left: 70px;
+		    margin-top: 30px;
+		    display: block;
+		    float: left;
+		    width: 215px;
+		    transition: all 0.5s;
+		    cursor: pointer;
+		}
+
+		.wrapperbtn span 
+		{
+		  	cursor: pointer;
+		  	display: inline-block;
+		  	position: relative;
+		  	transition: 0.5s;
+		}
+
+		.wrapperbtn span:after 
+		{
+		  	content: '\00bb';
+		  	position: absolute;
+		  	opacity: 0;
+		  	top: 0;
+		  	right: -20px;
+		  	transition: 0.5s;
+		}
+
+		.wrapperbtn:hover span {
+		  	padding-right: 25px;
+		}
+
+		.wrapperbtn:hover span:after {
+		  	opacity: 1;
+		  	right: 0;
+		}
+
+		h2 {
+			color: black;
+			font-size: 18px;
+			text-align: center;
+		}
+
+		h3 {
+			color: black;
+			font-size: 16px;
+			margin-left: 70px;
+			margin-top: 30px;
+			display:block;
+ 			float:left;
+		}
+
+		h4 {
+		    color: black;
+		    font-size: 16px;
+		    margin-left: 200px;
+		    margin-top: 30px;
+		    display: block;
+		    float: initial;
+		}
+
+		h5 {
+		    color: #dd4b39;
+		    font-size: 18px;
+		    float: initial;
+		    padding-left: 14px;
+		}
+
+		img {
+			max-height:50px;
+    		max-width:50px;
+			margin-left: 70px;
+			margin-top: 30px;
+		}
+
+      	@media screen and (max-width: 500px) {
+      		.topBar {margin: 0px; margin-left: 0px;} 
+      		.topBar a {float: none; display: block; text-align: left; background-color: #333; text-align: center;} 
+      		.topBar-right {float: none;} 
+      	}
+
+      	.sidebar {
+		  	height: 100%;
+		  	width: 240px;
+		  	position: fixed;
+		  	background-color: #ececec;
+		  	margin-top: 52px;
+		  	overflow: auto;
+		}
+
+		.sidebar a {
+      		float: left;
+		    color: #dd4b39;
+		    text-align: left;
+		    padding: 14px;
+		    text-decoration: none;
+		    font-size: 15px;
+		    font-weight: 400;
+		    display: block;
+		    width: 240px;
+		    cursor: pointer;
+		}
+
+		.sidebar a:hover {
+  			background-color: #ddd;
+		}
+
+		.sidebar p {
+      		float: left;
+		    color: #dd4b39;
+		    text-align: center;
+		    text-decoration: none;
+		    font-size: 18px;
+		    font-weight: 450;
+		    display: block;
+		    width: 240px;
+		    margin-top: 1px;
+		    margin-bottom: 1px;
+		}
+	</style>
 	<body>
 		<header id="header">
 			<div class="topBar">
