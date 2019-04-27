@@ -42,5 +42,20 @@
 				return true;
 			return false;
 		}
+
+		function getChatPastMessages($from, $quantity)
+		{
+			$query = "SELECT idUser, Message, created_at as createdAt" .
+					" FROM " . $this->tableName .
+					" WHERE ChatName=:ChatName" .
+					" ORDER BY idChat asc" . 
+					" LIMIT :from, :quantity";
+			$stmt = $this->dbConnection->prepare($query);
+			$stmt->bindParam(":ChatName", $this->ChatName);
+			$stmt->bindParam(":from", $from);
+			$stmt->bindParam(":quantity", $quantity);
+			$stmt->execute();
+			return $stmt;
+		}
 	}
 ?>

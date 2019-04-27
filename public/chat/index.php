@@ -28,6 +28,7 @@
 			$chatName = 'chat' . $_SESSION['id'] . $_SESSION['recipient'];
 		else
 			$chatName = 'chat' . $_SESSION['recipient'] . $_SESSION['id'];
+		$_SESSION['chat'] = $chatName;
 	}
 	elseif(isset($_SESSION['id']) && isset($_SESSION['recipient']))
 	{
@@ -36,6 +37,7 @@
 			$chatName = 'chat' . $_SESSION['id'] . $_SESSION['recipient'];
 		else
 			$chatName = 'chat' . $_SESSION['recipient'] . $_SESSION['id'];
+		$_SESSION['chat'] = $chatName;
 	}
 	else
 	{

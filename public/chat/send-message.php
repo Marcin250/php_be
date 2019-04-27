@@ -7,7 +7,9 @@
 	use Config\DatabaseConnection;
 	use App\Objects\Chat;
 
-	if(isset($_POST['chat']) && isset($_POST['message']) && isset($_POST['author']))
+	if(!isset($_SESSION)) { session_start(); }
+
+	if((isset($_POST['chat']) && $_POST['chat'] == $_SESSION['chat']) && isset($_POST['message']) && isset($_POST['author']))
 	{
 		$dbConnection = new DatabaseConnection();
 		$connetion = $dbConnection->getConnection();
