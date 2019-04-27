@@ -21,6 +21,8 @@
 
 		$pastMessagesCount = $chat->getTotalPastMessages();
 
+		var_dump($pastMessagesCount);
+
 		$num = $result->rowCount();
 
 		if($num > 0)
@@ -36,7 +38,7 @@
 				);
 				array_push($messagesArray, $message);
 			}
-			echo json_encode($messagesArray);
+			//echo json_encode($messagesArray);
 		}
 		else
 			echo json_encode(array("message" => "Błąd wyszukiwania."));

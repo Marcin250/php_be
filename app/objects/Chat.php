@@ -66,11 +66,11 @@
 					" WHERE ChatName=:ChatName";
 			$stmt = $this->dbConnection->prepare($query);
 			$stmt->bindParam(":ChatName", $this->ChatName);
+			var_dump($stmt);
 			if($stmt->execute())
 			{
 				$row = $stmt->fetch(PDO::FETCH_ASSOC);
-				echo $row->total_messages;
-				return $row->total_messages;
+				return $row
 			}
 			return false;
 		}
