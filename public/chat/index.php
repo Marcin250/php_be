@@ -24,20 +24,12 @@
 	{
 		$_SESSION['recipient'] = $_GET['u'];
 		$titleURL = 'Wyloguj';
-		if($_SESSION['id'] < $_SESSION['recipient'])
-			$chatName = 'chat' . $_SESSION['id'] . $_SESSION['recipient'];
-		else
-			$chatName = 'chat' . $_SESSION['recipient'] . $_SESSION['id'];
-		$_SESSION['chat'] = $chatName;
+		$_SESSION['chat'] = $_SESSION['id'] < $_SESSION['recipient'] ? 'chat' . $_SESSION['id'] . $_SESSION['recipient'] : 'chat' . $_SESSION['recipient'] . $_SESSION['id'];
 	}
 	elseif(isset($_SESSION['id']) && isset($_SESSION['recipient']))
 	{
 		$titleURL = 'Wyloguj';
-		if($_SESSION['id'] < $_SESSION['recipient'])
-			$chatName = 'chat' . $_SESSION['id'] . $_SESSION['recipient'];
-		else
-			$chatName = 'chat' . $_SESSION['recipient'] . $_SESSION['id'];
-		$_SESSION['chat'] = $chatName;
+		$_SESSION['chat'] = $_SESSION['id'] < $_SESSION['recipient'] ? 'chat' . $_SESSION['id'] . $_SESSION['recipient'] : 'chat' . $_SESSION['recipient'] . $_SESSION['id'];
 	}
 	else
 	{
@@ -52,7 +44,7 @@
 
 <html>
 	<head>
-		<title>Simple chatting application - <?php echo $chatName; ?></title>
+		<title>Simple chatting application - <?php echo $_SESSION['chat']; ?></title>
 		<link rel="icon" type="image/png" href="/favicon.png"/>
 	</head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -305,13 +297,19 @@
 		</header>
 		<div class="wrapper">
 			<div class="chat" id="chatContainer">
-
+			<?php
+				getenv('APP_URL') . '/chat/get-past-messages?chat=' . $_SESSION['chat'];
+				$url = 'http://localhost/plain_php/public/chat/get-past-messages?chat=chat1131&from=0&quantity=5';
+				$dataPastMessages = get_content($url);
+				$danePastMessages = json_decode($dataPastMessages);
+				if($danePastMessages->totalMessages > 0) echo '<p>' . $danePastMessages->totalMessages . '</p>';
+			?>
 			</div>
 			<input class="textarea" id="chatMessage" type="text" placeholder="Napisz wiadomość" onkeypress="sendMessage(event)"/>
 		</div>
   	<script>
   		Pusher.logToConsole = false;
-  		var channelName = <?php echo '"' . $chatName . '"'; ?>;
+  		var channelName = <?php echo '"' . $_SESSION['chat'] . '"'; ?>;
   		var channelUser = <?php echo '"' . $_SESSION['id'] . '"'; ?>;
   		var channelUserName = <?php echo '"' . $_SESSION['name'] . '"'; ?>;
   		var previousUser = null;

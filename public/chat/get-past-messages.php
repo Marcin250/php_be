@@ -9,8 +9,6 @@
 
 	if(!isset($_SESSION)) { session_start(); }
 
-	$_SESSION['chat'] = 'chat1131';
-
 	if((isset($_GET['chat']) && $_GET['chat'] == $_SESSION['chat']) && isset($_GET['from']) && isset($_GET['quantity']))
 	{
 		$dbConnection = new DatabaseConnection();
