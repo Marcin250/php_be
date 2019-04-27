@@ -307,9 +307,8 @@
 			<div class="chat" id="chatContainer">
 
 			</div>
-			<input class="textarea" id="chatMessage" type="text" placeholder="Napisz wiadomość" onkeypress="sendMessage(event)"/>
+			<input class="textarea" id="chatMessage" type="text" placeholder="Napisz wiadomość" onkeypress="sendMessage(event)" onload="joinChat()"/>
 		</div>
-		<div onload="joinChat()"></div>
   	<script>
   		Pusher.logToConsole = false;
   		var channelName = <?php echo '"' . $chatName . '"'; ?>;
