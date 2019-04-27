@@ -52,8 +52,8 @@
 					" LIMIT :from, :quantity";
 			$stmt = $this->dbConnection->prepare($query);
 			$stmt->bindParam(":ChatName", $this->ChatName);
-			$stmt->bindParam(":from", $from, PDO::PARAM_INT);
-			$stmt->bindParam(":quantity", $quantity, PDO::PARAM_INT);
+			$stmt->bindValue(":from", (int)$from, PDO::PARAM_INT);
+			$stmt->bindValue(":quantity", (int)$quantity, PDO::PARAM_INT);
 			if($stmt->execute())
 				return $stmt;
 			return false;

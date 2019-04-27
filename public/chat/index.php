@@ -282,7 +282,7 @@
       		.topBar-right {float: none;} 
       	}
 	</style>
-	<body>
+	<body onload="joinChat()">
 		<header id="header">
 			<div class="topBar">
 				<div style="float: left">
@@ -307,7 +307,7 @@
 			<div class="chat" id="chatContainer">
 
 			</div>
-			<input class="textarea" id="chatMessage" type="text" placeholder="Napisz wiadomość" onkeypress="sendMessage(event)" onload="joinChat()"/>
+			<input class="textarea" id="chatMessage" type="text" placeholder="Napisz wiadomość" onkeypress="sendMessage(event)"/>
 		</div>
   	<script>
   		Pusher.logToConsole = false;
