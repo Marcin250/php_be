@@ -248,14 +248,7 @@
 		    background-color: #c1c1c1;
 		    border: none;
 		    color: black;
-		    text-align: center;
-		    font-size: 16px;
-		    margin-left: 70px;
-		    margin-top: 30px;
-		    display: block;
-		    float: left;
 		    width: 100%;
-		    transition: all 0.5s;
 		    cursor: pointer;
 		}
 
@@ -405,7 +398,7 @@
 
 	    function loadPastMessages()
 	    {
-			fetch('/get-past-messages?chat=' + channelName + '&from=' + pastMessagesFrom + '&quantity=5')
+			fetch('/chat/get-past-messages?chat=' + channelName + '&from=' + pastMessagesFrom + '&quantity=5')
   				.then((resp) => resp.json())
   				.then(function(data) {
   					console.log(data);
