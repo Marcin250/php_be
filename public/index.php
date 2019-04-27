@@ -2,21 +2,12 @@
 	require_once __DIR__ . '../../vendor/autoload.php';
 
 	use Config\GoogleClient;
-	use Dotenv\Dotenv as Dotenv;
+	//use Dotenv\Dotenv as Dotenv;
 
-	$dotenv = Dotenv::create(__DIR__ . '/..');
-	$dotenv->load();
+	//$dotenv = Dotenv::create(__DIR__ . '/..');
+	//$dotenv->load();
 
 	if(!isset($_SESSION)) { session_start(); }
-
-	$_SESSION['id'] = 1;
-		$_SESSION['name'] = 'test1';
-		$_SESSION['email'] = 'test1';
-		$_SESSION['image'] = 'test1';
-		$_SESSION['createdAt'] = 'test1';
-		$_SESSION['status'] = 'test1';
-		$_SESSION['privielege'] = 'test1';
-		$_SESSION['tier'] = 'test1';
 
 	if(isset($_SESSION['id']))
 		$titleURL = 'Wyloguj';
