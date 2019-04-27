@@ -45,7 +45,7 @@
 		}
 
 		::-webkit-scrollbar-track {
-  			background: #f1f1f1; 
+  			background: #ececec; 
 		}
 
 		::-webkit-scrollbar-thumb {
@@ -53,7 +53,7 @@
 		}
 
 		::-webkit-scrollbar-thumb:hover {
-  			background: #000000;
+  			background: #ea5800;
 		}
 
 		body {
