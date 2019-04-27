@@ -52,7 +52,7 @@
 
 <html>
 	<head>
-		<title>Chat-room <?php echo $chatName; ?></title>
+		<title>Simple chatting application - <?php echo $chatName; ?></title>
 		<link rel="icon" type="image/png" href="/favicon.png"/>
 	</head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
