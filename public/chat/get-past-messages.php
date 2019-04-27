@@ -19,6 +19,8 @@
 		$chat->ChatName = $_GET['chat'];
 		$result = $chat->getChatPastMessages($_GET['from'], $_GET['quantity']);
 
+		$pastMessagesCount = $chat->getTotalPastMessages();
+
 		$num = $result->rowCount();
 
 		if($num > 0)

@@ -58,5 +58,21 @@
 				return $stmt;
 			return false;
 		}
+
+		function getTotalPastMessages()
+		{
+			$query = "SELECT count(ChatName) as total_messages" .
+					" FROM " . $this->tableName .
+					" WHERE ChatName=:ChatName";
+			$stmt = $this->dbConnection->prepare($query);
+			$stmt->bindParam(":ChatName", $this->ChatName);
+			if($stmt->execute())
+			{
+				$row = $stmt->fetch(PDO::FETCH_ASSOC);
+				echo $row->total_messages;
+				return $row->total_messages;
+			}
+			return false;
+		}
 	}
 ?>
