@@ -298,8 +298,7 @@
 		<div class="wrapper">
 			<div class="chat" id="chatContainer">
 			<?php
-				getenv('APP_URL') . '/chat/get-past-messages?chat=' . $_SESSION['chat'];
-				$url = 'http://localhost/plain_php/public/chat/get-past-messages?chat=chat1131&from=0&quantity=5';
+				$url = getenv('APP_URL') . '/chat/get-past-messages?chat=' . $_SESSION['chat'] . '&from=0&quantity=5';
 				$dataPastMessages = get_content($url);
 				$danePastMessages = json_decode($dataPastMessages);
 				if($danePastMessages->totalMessages > 0) echo '<p>' . $danePastMessages->totalMessages . '</p>';
