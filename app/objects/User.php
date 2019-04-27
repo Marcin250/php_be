@@ -8,20 +8,30 @@
 	{
 		private $dbConnection;
 		private $tableName = "users";		
-		public $id;
-		public $name;
-		public $email;
-		public $provider;
-		public $providerId;
-		public $image;
-		public $createdAt;
-		public $status;
-		public $privilege;
+		private $id;
+		private $name;
+		private $email;
+		private $provider;
+		private $providerId;
+		private $image;
+		private $createdAt;
+		private $status;
+		private $privilege;
 		
 		public function __construct($connection)
 		{
 			$this->dbConnection = $connection;
 		}
+		
+		public function __set($name, $value)
+    	{
+        	$this->$name = $value;
+    	}
+
+    	public function __get($name)
+    	{
+    		return $this->$name;
+    	}
 		
 		function list()
 		{

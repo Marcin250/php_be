@@ -8,16 +8,26 @@
 	{
 		private $dbConnection;
 		private $tableName = "chats";		
-		public $idChat;
-		public $ChatName;
-		public $idUser;
-		public $Message;
-		public $createdAt;
+		private $idChat;
+		private $ChatName;
+		private $idUser;
+		private $Message;
+		private $createdAt;
 
 		public function __construct($connection)
 		{
 			$this->dbConnection = $connection;
 		}
+
+		public function __set($name, $value)
+    	{
+        	$this->$name = $value;
+    	}
+
+    	public function __get($name)
+    	{
+    		return $this->$name;
+    	}
 		
 		function store()
 		{
