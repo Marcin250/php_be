@@ -41,4 +41,6 @@
 		else
 			echo json_encode(array("message" => "Błąd wyszukiwania."));
 	}
+	else
+		echo json_encode(array("message" => "Brak autoryzacji."));
 ?>
