@@ -3,6 +3,7 @@
 
 	//use Dotenv\Dotenv as Dotenv;
 	use Pusher\Pusher as Pusher;
+	use App\Objects\Chat;
 
 	if(!isset($_SESSION)) { session_start(); }
 
@@ -298,11 +299,12 @@
 		<div class="wrapper">
 			<div class="chat" id="chatContainer">
 			<?php
-				$urlPastMessages = getenv('APP_URL') . '/chat/get-past-messages?chat=' . $_SESSION['chat'] . '&from=0&quantity=5';
-				$dataPastMessages = get_content($urlPastMessages);
-				$danePastMessages = json_decode($dataPastMessages);
-				if($danePastMessages->totalMessages > 0) echo '<p>' . $danePastMessages->totalMessages . '</p>';
-				var_dump($danePastMessages);
+				$dbConnection = new DatabaseConnection();
+				$connetion = $dbConnection->getConnection();
+				$chat = new Chat($connetion);
+				$chat->ChatName = $_SESSION['chat'];
+				$pastMessagesCount = $chat->getTotalPastMessages();
+				if($pastMessagesCount > 0) echo '<p>' . $pastMessagesCount . '</p>';
 			?>
 			</div>
 			<input class="textarea" id="chatMessage" type="text" placeholder="Napisz wiadomość" onkeypress="sendMessage(event)"/>
