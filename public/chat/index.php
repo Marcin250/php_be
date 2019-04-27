@@ -57,6 +57,22 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script rel="javascript" type="text/javascript" href="js/jquery-1.11.3.min.js"></script>
 	<style>
+		::-webkit-scrollbar {
+  			width: 4px;
+		}
+
+		::-webkit-scrollbar-track {
+  			background: #ececec; 
+		}
+
+		::-webkit-scrollbar-thumb {
+  			background: #ea5800; 
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+  			background: #ea5800;
+		}
+
 		body {
 			margin: 0;
 			background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
