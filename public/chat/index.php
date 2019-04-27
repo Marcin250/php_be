@@ -302,6 +302,7 @@
 				$dataPastMessages = get_content($urlPastMessages);
 				$danePastMessages = json_decode($dataPastMessages);
 				if($danePastMessages->totalMessages > 0) echo '<p>' . $danePastMessages->totalMessages . '</p>';
+				var_dump($danePastMessages);
 			?>
 			</div>
 			<input class="textarea" id="chatMessage" type="text" placeholder="Napisz wiadomość" onkeypress="sendMessage(event)"/>
