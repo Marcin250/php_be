@@ -49,11 +49,11 @@
 		}
 
 		::-webkit-scrollbar-thumb {
-  			background: #888; 
+  			background: #ea5800; 
 		}
 
 		::-webkit-scrollbar-thumb:hover {
-  			background: #555; 
+  			background: #000000;
 		}
 
 		body {
