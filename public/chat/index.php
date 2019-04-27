@@ -341,7 +341,7 @@
 				$chat = new Chat($connetion);
 				$chat->ChatName = $_SESSION['chat'];
 				$pastMessagesCount = $chat->getTotalPastMessages();
-				if($pastMessagesCount > 0) echo '<button class="wrapperbtn" onclick="loadPastMessages()"> Wczytaj poprzednie wiadomości </button>';
+				if($pastMessagesCount > 0) echo '<button class="wrapperbtn" onclick="loadPastMessages()"> <span> Wczytaj poprzednie wiadomości </span> </button>';
 			?>
 			</div>
 			<input class="textarea" id="chatMessage" type="text" placeholder="Napisz wiadomość" onkeypress="sendMessage(event)"/>
@@ -354,6 +354,7 @@
   		var previousUser = null;
   		var dynamicId = 1;
   		var pastMessagesFrom = 0;
+  		var pastMessagesCount = <?php echo '"' . $pastMessagesCount . '"'; ?>;
 
 	    var pusher = new Pusher('ff71283c9ea50e531f55', {
 	      	cluster: 'eu',
@@ -398,12 +399,16 @@
 
 	    function loadPastMessages()
 	    {
-			fetch('/chat/get-past-messages?chat=' + channelName + '&from=' + pastMessagesFrom + '&quantity=5')
-  				.then((resp) => resp.json())
-  				.then(function(data) {
-  					console.log(data);
-			})
+	    	if(pastMessagesCount > 0)
+	    	{
+				fetch('/chat/get-past-messages?chat=' + channelName + '&from=' + pastMessagesFrom + '&quantity=5')
+	  				.then((resp) => resp.json())
+	  				.then(function(data) {
+	  					console.log(data);
+				})
+  			}
   			pastMessagesFrom += 5;
+  			pastMessagesCount -= 5;
 	    }
 
 	    function sendMessage(event)
