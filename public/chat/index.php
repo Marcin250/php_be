@@ -282,7 +282,7 @@
       		.topBar-right {float: none;} 
       	}
 	</style>
-	<body onload="joinChat()">
+	<body>
 		<header id="header">
 			<div class="topBar">
 				<div style="float: left">
@@ -309,6 +309,7 @@
 			</div>
 			<input class="textarea" id="chatMessage" type="text" placeholder="Napisz wiadomość" onkeypress="sendMessage(event)"/>
 		</div>
+		<div onload="joinChat()"></div>
   	<script>
   		Pusher.logToConsole = false;
   		var channelName = <?php echo '"' . $chatName . '"'; ?>;
