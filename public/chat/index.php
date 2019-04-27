@@ -66,11 +66,11 @@
 		}
 
 		::-webkit-scrollbar-thumb {
-  			background: #000000; 
+  			background: #c1c1c1; 
 		}
 
 		::-webkit-scrollbar-thumb:hover {
-  			background: #000000;
+  			background: #c1c1c1;
 		}
 
 		body {
@@ -146,7 +146,7 @@
   			border: none;
   			outline: none;
   			color: #dd4b39;
-  			padding: 14px 16px;
+  			padding: 14px 8px;
   			background-color: inherit;
   			font-family: inherit;
   			margin: 0;
