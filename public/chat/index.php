@@ -37,9 +37,9 @@
 		die;
 	}
 
-	$url = getenv('APP_URL') . '/user/?id=' . $_SESSION['recipient'];
-	$data = get_content($url);
-	$dane = json_decode($data);
+	$urlUser = getenv('APP_URL') . '/user/?id=' . $_SESSION['recipient'];
+	$dataUser = get_content($urlUser);
+	$daneUser = json_decode($dataUser);
 ?>
 
 <html>
@@ -278,7 +278,7 @@
 		<header id="header">
 			<div class="topBar">
 				<div style="float: left">
-					<?php if (is_array($dane) || is_object($dane)) echo '<b>Rozmowa z użytkownikiem: ' . $dane->name . '</b>'; ?>
+					<?php if (is_array($daneUser) || is_object($daneUser)) echo '<b>Rozmowa z użytkownikiem: ' . $daneUser->name . '</b>'; ?>
 				</div>
 				<div class="dropdown">
 					<button class="dropbtn"> <?php echo $_SESSION['email']; ?>
@@ -298,8 +298,8 @@
 		<div class="wrapper">
 			<div class="chat" id="chatContainer">
 			<?php
-				$url = getenv('APP_URL') . '/chat/get-past-messages?chat=' . $_SESSION['chat'] . '&from=0&quantity=5';
-				$dataPastMessages = get_content($url);
+				$urlPastMessages = getenv('APP_URL') . '/chat/get-past-messages?chat=' . $_SESSION['chat'] . '&from=0&quantity=5';
+				$dataPastMessages = get_content($urlPastMessages);
 				$danePastMessages = json_decode($dataPastMessages);
 				if($danePastMessages->totalMessages > 0) echo '<p>' . $danePastMessages->totalMessages . '</p>';
 			?>
@@ -328,7 +328,7 @@
 	    	}
 	    	else
 	    	{
-	    		var image = <?php echo '"' . $dane->image . '"'; ?>;
+	    		var image = <?php echo '"' . $daneUser->image . '"'; ?>;
 	    		var classContainer = "container";
 	    	}
 
