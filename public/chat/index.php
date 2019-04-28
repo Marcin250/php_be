@@ -365,7 +365,7 @@
 				$chat = new Chat($connetion);
 				$chat->ChatName = $_SESSION['chat'];
 				$pastMessagesCount = $chat->getTotalPastMessages();
-				if($pastMessagesCount > 0) echo '<button id="wrapperbutton" class="wrapperbtn" onclick="loadPastMessages()"> <span> Wczytaj poprzednie wiadomości </span> </button>';
+				if($pastMessagesCount > 0) echo '<button id="wrapperbutton" class="wrapperbtn" onclick="loadPastMessages()"> <span> Wczytaj poprzednie wiadomości (' . $pastMessagesCount . ') </span> </button>';
 			?>
 			<div class="chat" id="chatContainer">
 				<hr id="wrapperhr"> </hr>
@@ -482,6 +482,7 @@
   			}
   			pastMessagesFrom += 5;
   			pastMessagesCount -= 5;
+  			document.getElementById('wrapperbutton').innerHTML = '<span> Wczytaj poprzednie wiadomości (' + pastMessagesCount + ') </span>';
 	    }
 
 	    function sendMessage(event)
