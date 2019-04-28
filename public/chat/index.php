@@ -444,8 +444,8 @@
 				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById("wrapperbutton"));
 				    	else
 				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById('container' + previousPastMessageId));
-				    	//if(previousUser == entry.author)
-				    	//	document.getElementById('container' + previousPastMessageId).removeChild(document.getElementById('img' + previousPastMessageId));
+				    	if(previousUser == entry.author && previousUser != null)
+				    		document.getElementById('container' + previousPastMessageId).removeChild(document.getElementById('img' + previousPastMessageId));
 				    	var newImg = document.createElement('img');
 						newImg.src = image;
 						newImg.id = 'img' + currentId;
