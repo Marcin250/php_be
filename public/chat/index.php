@@ -439,7 +439,7 @@
 				    	var newDiv = document.createElement('div');
 				    	newDiv.id = 'containeer' + currentId;
 				    	newDiv.className = classContainer;
-				    	if(pastMessagesCount == 1)
+				    	if(pastMessagesCount > 1)
 				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById('p' + (pastMessagesCount - 1)));
 				    	else
 				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById("wrapperbutton"));
