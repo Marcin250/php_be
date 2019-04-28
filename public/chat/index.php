@@ -445,7 +445,7 @@
 				    	if(dynamidPastMessagesId == 1)
 				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById("wrapperbutton"));
 				    	else
-				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById('p' + previousPastMessageId));
+				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById('containerp' + previousPastMessageId));
 				    	if(previousUser != entry.author)
 				    	{
 				    		var newImg = document.createElement('img');
