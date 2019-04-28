@@ -480,10 +480,16 @@
 					});
 				})
   			}
-  			pastMessagesFrom += 5;
-  			pastMessagesCount -= 5;
   			if(pastMessagesCount > 0)
-  				document.getElementById('wrapperbutton').innerHTML = '<span> Wczytaj poprzednie wiadomości (' + pastMessagesCount + ') </span>';
+  			{
+  				if(pastMessagesCount > 0 && pastMessagesCount < 5)
+  					reduceValue = 5 - pastMessagesCount;
+  				else
+  					reduceValue = 5;
+  				pastMessagesFrom += 5;
+  				pastMessagesCount -= reduceValue;
+  			}
+  			document.getElementById('wrapperbutton').innerHTML = '<span> Wczytaj poprzednie wiadomości (' + pastMessagesCount + ') </span>';
 	    }
 
 	    function sendMessage(event)
