@@ -255,7 +255,7 @@
 		.chat {
 			overflow: scroll;
 		    width: 100%;
-		    height: 94.3%;
+		    height: 91.5%;
 		    overflow-x: hidden;;
 		}
 
