@@ -373,7 +373,7 @@
   		var pastMessagesCount = <?php echo '"' . $pastMessagesCount . '"'; ?>;
   		var userImage = <?php echo '"' . $_SESSION['image'] . '"'; ?>;
   		var otherImage = <?php echo '"' . $daneUser->image . '"'; ?>;
-  		var pastMessagesCount = 1;
+  		var dynamidPastMessagesId = 1;
 
 	    var pusher = new Pusher('ff71283c9ea50e531f55', {
 	      	cluster: 'eu',
@@ -394,7 +394,7 @@
 	    	}
 
 	    	var newDiv = document.createElement('div');
-	    	newDiv.id = 'containeer' + dynamicId;
+	    	newDiv.id = 'container' + dynamicId;
 	    	newDiv.className = classContainer;
 	    	document.getElementById('chatContainer').appendChild(newDiv);
 	    	if(previousUser != data.author)
@@ -424,7 +424,7 @@
 	  			.then((resp) => resp.json())
 	  			.then(function(data) {
 	  				data.messages.forEach(function(entry) {
-	  					currentId = 'p' + pastMessagesCount;
+	  					currentId = 'p' + dynamidPastMessagesId;
 	  					if(entry.author == channelUser)
 				    	{
 				    		var image = userImage;
@@ -437,7 +437,7 @@
 				    	}
 
 				    	var newDiv = document.createElement('div');
-				    	newDiv.id = 'containeer' + currentId;
+				    	newDiv.id = 'container' + currentId;
 				    	newDiv.className = classContainer;
 				    	if(pastMessagesCount > 1)
 				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById('p' + (pastMessagesCount - 1)));
@@ -459,7 +459,7 @@
 				    	var newTime = document.createElement('time');
 				    	newTime.innerHTML = entry.createdAt;
 				    	document.getElementById(newDiv.id).appendChild(newTime);
-				    	pastMessagesCount++;
+				    	dynamidPastMessagesId++;
 					});
 				})
   			}
