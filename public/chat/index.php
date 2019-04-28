@@ -423,9 +423,7 @@
 				fetch('/chat/get-past-messages?chat=' + channelName + '&from=' + pastMessagesFrom + '&quantity=5')
 	  			.then((resp) => resp.json())
 	  			.then(function(data) {
-	  				messagesArray = data.messages;
-	  				messagesArray.reverse();
-	  				messagesArray.forEach(function(entry) {
+	  				data.messages.forEach(function(entry) {
 	  					currentId = 'p' + dynamidPastMessagesId;
 	  					if(entry.author == channelUser)
 				    	{
