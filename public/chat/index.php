@@ -443,7 +443,6 @@
 				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById('p' + (pastMessagesCount - 1)));
 				    	else
 				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById("wrapperbutton"));
-				    	$( "chatContainer" ).prepend(newDiv);
 				    	if(previousUser != entry.author)
 				    	{
 				    		var newImg = document.createElement('img');
