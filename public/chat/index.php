@@ -350,7 +350,6 @@
 			</div>
 		</header>
 		<div class="wrapper">
-			<div class="chat" id="chatContainer">
 			<?php
 				$dbConnection = new DatabaseConnection();
 				$connetion = $dbConnection->getConnection();
@@ -359,6 +358,7 @@
 				$pastMessagesCount = $chat->getTotalPastMessages();
 				if($pastMessagesCount > 0) echo '<button id="wrapperbutton" class="wrapperbtn" onclick="loadPastMessages()"> <span> Wczytaj poprzednie wiadomości </span> </button>';
 			?>
+			<div class="chat" id="chatContainer">
 			</div>
 			<input class="textarea" id="chatMessage" type="text" placeholder="Napisz wiadomość" onkeypress="sendMessage(event)"/>
 		</div>
