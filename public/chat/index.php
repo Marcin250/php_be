@@ -441,10 +441,11 @@
 				    	var newDiv = document.createElement('div');
 				    	newDiv.id = 'container' + currentId;
 				    	newDiv.className = classContainer;
+				    	previousPastMessageId = dynamidPastMessagesId - 1;
 				    	if(dynamidPastMessagesId == 1)
 				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById("wrapperbutton"));
 				    	else
-				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById('p' + (dynamidPastMessagesId - 1)));
+				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById('p' + previousPastMessageId));
 				    	if(previousUser != entry.author)
 				    	{
 				    		var newImg = document.createElement('img');
