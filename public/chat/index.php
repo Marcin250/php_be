@@ -324,9 +324,9 @@
 
 		hr {
 			height: 2px;
-		    border-top: 1px solid #000;
+		    border-top: 1px solid #c1c1c1;
 		    margin: 0;
-		    background-color: black;
+		    background-color: #c1c1c1;
 		}
 
       	@media screen and (max-width: 700px) {
