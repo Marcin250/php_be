@@ -479,10 +479,10 @@
 				    	dynamidPastMessagesId++;
 					});
 				})
+				document.getElementById('wrapperbutton').innerHTML = '<span> Wczytaj poprzednie wiadomości (' + pastMessagesCount + ') </span>';
   			}
   			pastMessagesFrom += 5;
   			pastMessagesCount -= 5;
-  			document.getElementById('wrapperbutton').innerHTML = '<span> Wczytaj poprzednie wiadomości (' + pastMessagesCount + ') </span>';
 	    }
 
 	    function sendMessage(event)
