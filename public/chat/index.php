@@ -502,6 +502,7 @@
 				};
 				$.ajax(settings);
 				document.getElementById("chatMessage").value = "";
+				document.getElementById(document.getElementById("chat").lastChild).scrollIntoView();
 			}
 	    }
 
