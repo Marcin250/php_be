@@ -425,6 +425,7 @@
 	  			.then(function(data) {
 	  				data.messages.forEach(function(entry) {
 	  					currentId = 'p' + dynamidPastMessagesId;
+	  					previousPastMessageId = 'p' + (dynamidPastMessagesId - 1);
 	  					if(entry.author == channelUser)
 				    	{
 				    		var image = userImage;
@@ -439,20 +440,20 @@
 				    	var newDiv = document.createElement('div');
 				    	newDiv.id = 'container' + currentId;
 				    	newDiv.className = classContainer;
-				    	previousPastMessageId = dynamidPastMessagesId - 1;
 				    	if(dynamidPastMessagesId == 1)
 				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById("wrapperbutton"));
 				    	else
-				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById('containerp' + previousPastMessageId));
-				    	if(previousUser != entry.author)
-				    	{
-				    		var newImg = document.createElement('img');
-						    newImg.src = image;
-						    if(classContainer == "container")
-						    	newImg.className = 'right';
-						    document.getElementById(newDiv.id).appendChild(newImg);
-						    previousUser = entry.author;
-				    	}
+				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById('container' + previousPastMessageId));
+				    	if(previousUser == entry.author)
+				    		document.getElementById('container' + previousPastMessageId).removeChild(document.getElementById('img' + previousPastMessageId));
+				    	var newImg = document.createElement('img');
+						newImg.src = image;
+						newImg.id = 'img' + currentId;
+						if(classContainer == "container")
+						    newImg.className = 'right';
+						document.getElementById(newDiv.id).appendChild(newImg);
+						previousUser = entry.author;
+
 				    	var newPar = document.createElement('p');
 				    	newPar.innerHTML = entry.message;
 				    	document.getElementById(newDiv.id).appendChild(newPar);
