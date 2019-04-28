@@ -385,9 +385,8 @@
   		var otherImage = <?php echo '"' . $daneUser->image . '"'; ?>;
   		var dynamidPastMessagesId = 1;
 
-  		if (location.protocol != 'https:')
-		{
-		 	location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+  		if (location.protocol !== "https:") {
+		  	location.protocol = "https:";
 		}
 
 	    var pusher = new Pusher('ff71283c9ea50e531f55', {
