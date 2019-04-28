@@ -371,6 +371,9 @@
   		var dynamicId = 1;
   		var pastMessagesFrom = 0;
   		var pastMessagesCount = <?php echo '"' . $pastMessagesCount . '"'; ?>;
+  		var userImage = <?php echo '"' . $_SESSION['image'] . '"'; ?>;
+  		var otherImage = <?php echo '"' . $daneUser->image . '"'; ?>;
+  		var pastMessagesCount = 1;
 
 	    var pusher = new Pusher('ff71283c9ea50e531f55', {
 	      	cluster: 'eu',
@@ -381,12 +384,12 @@
 	    channel.bind('chat', function(data) {
 	    	if(data.author == channelUser)
 	    	{
-	    		var image = <?php echo '"' . $_SESSION['image'] . '"'; ?>;
+	    		var image = userImage;
 	    		var classContainer = "container darker";
 	    	}
 	    	else
 	    	{
-	    		var image = <?php echo '"' . $daneUser->image . '"'; ?>;
+	    		var image = otherImage;
 	    		var classContainer = "container";
 	    	}
 
@@ -418,9 +421,43 @@
 	    	if(pastMessagesCount > 0)
 	    	{
 				fetch('/chat/get-past-messages?chat=' + channelName + '&from=' + pastMessagesFrom + '&quantity=5')
-	  				.then((resp) => resp.json())
-	  				.then(function(data) {
-	  					console.log(data);
+	  			.then((resp) => resp.json())
+	  			.then(function(data) {
+	  				data.messages.forEach(function(entry) {
+	  					currentId = 'p' + pastMessagesCount;
+	  					if(entry.author == channelUser)
+				    	{
+				    		var image = userImage;
+				    		var classContainer = "container darker";
+				    	}
+				    	else
+				    	{
+				    		var image = otherImage;
+				    		var classContainer = "container";
+				    	}
+
+				    	var newDiv = document.createElement('div');
+				    	newDiv.id = 'containeer' + currentId;
+				    	newDiv.className = classContainer;
+				    	document.getElementById('chatContainer').appendChild(newDiv);
+				    	if(previousUser != entry.author)
+				    	{
+				    		var newImg = document.createElement('img');
+						    newImg.src = image;
+						    if(classContainer == "container")
+						    	newImg.className = 'right';
+						    document.getElementById(newDiv.id).appendChild(newImg);
+						    previousUser = entry.author;
+				    	}
+				    	var newPar = document.createElement('p');
+				    	newPar.innerHTML = entry.message;
+				    	document.getElementById(newDiv.id).appendChild(newPar);
+
+				    	var newTime = document.createElement('time');
+				    	newTime.innerHTML = entry.createdAt;
+				    	document.getElementById(newDiv.id).appendChild(newTime);
+				    	pastMessagesCount++;
+					});
 				})
   			}
   			pastMessagesFrom += 5;
