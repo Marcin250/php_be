@@ -439,7 +439,7 @@
 				    	var newDiv = document.createElement('div');
 				    	newDiv.id = 'containeer' + currentId;
 				    	newDiv.className = classContainer;
-				    	document.getElementById('chatContainer').appendChild(newDiv);
+				    	document.getElementById("chatContainer").childNodes.addAt(0, newDiv);
 				    	if(previousUser != entry.author)
 				    	{
 				    		var newImg = document.createElement('img');
