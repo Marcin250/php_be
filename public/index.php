@@ -40,6 +40,8 @@
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<script src="https://js.pusher.com/4.4/pusher.min.js"></script>
 	<style>
+		button:focus {outline:0;}
+		
 		::-webkit-scrollbar {
   			width: 4px;
 		}

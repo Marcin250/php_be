@@ -57,6 +57,8 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script rel="javascript" type="text/javascript" href="js/jquery-1.11.3.min.js"></script>
 	<style>
+		button:focus {outline:0;}
+
 		::-webkit-scrollbar {
   			width: 4px;
 		}
