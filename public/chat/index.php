@@ -425,7 +425,7 @@
 	  			.then(function(data) {
 	  				messagesArray = data.messages;
 	  				messagesArray.reverse();
-	  				data.messages.forEach(function(entry) {
+	  				messagesArray.forEach(function(entry) {
 	  					currentId = 'p' + dynamidPastMessagesId;
 	  					if(entry.author == channelUser)
 				    	{
