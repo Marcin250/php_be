@@ -483,7 +483,7 @@
   			if(pastMessagesCount > 0)
   			{
   				if(pastMessagesCount > 0 && pastMessagesCount < 5)
-  					reduceValue = 5 - pastMessagesCount;
+  					reduceValue = pastMessagesCount;
   				else
   					reduceValue = 5;
   				pastMessagesFrom += 5;
