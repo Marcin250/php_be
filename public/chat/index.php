@@ -439,7 +439,7 @@
 				    	var newDiv = document.createElement('div');
 				    	newDiv.id = 'containeer' + currentId;
 				    	newDiv.className = classContainer;
-				    	//document.getElementById("chatContainer").childNodes.addAt(0, newDiv);
+				    	document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById('p' + (pastMessagesCount - 1)));
 				    	$( "chatContainer" ).prepend(newDiv);
 				    	if(previousUser != entry.author)
 				    	{
