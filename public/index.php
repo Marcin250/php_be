@@ -461,7 +461,7 @@
 
 		function goChat()
 		{
-			window.location = '/chat?u=' + userId;
+			window.location = 'https://php-ws.herokuapp.com/chat?u=' + userId;
 		}
 
 		Pusher.logToConsole = false;
