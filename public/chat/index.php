@@ -357,7 +357,7 @@
 				$chat = new Chat($connetion);
 				$chat->ChatName = $_SESSION['chat'];
 				$pastMessagesCount = $chat->getTotalPastMessages();
-				if($pastMessagesCount > 0) echo '<button class="wrapperbtn" onclick="loadPastMessages()"> <span> Wczytaj poprzednie wiadomości </span> </button>';
+				if($pastMessagesCount > 0) echo '<button id="wrapperbutton" class="wrapperbtn" onclick="loadPastMessages()"> <span> Wczytaj poprzednie wiadomości </span> </button>';
 			?>
 			</div>
 			<input class="textarea" id="chatMessage" type="text" placeholder="Napisz wiadomość" onkeypress="sendMessage(event)"/>
@@ -439,7 +439,10 @@
 				    	var newDiv = document.createElement('div');
 				    	newDiv.id = 'containeer' + currentId;
 				    	newDiv.className = classContainer;
-				    	document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById('p' + (pastMessagesCount - 1)));
+				    	if(pastMessagesCount == 1)
+				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById('p' + (pastMessagesCount - 1)));
+				    	else
+				    		document.getElementById("chatContainer").insertBefore(newDiv, "wrapperbutton");
 				    	$( "chatContainer" ).prepend(newDiv);
 				    	if(previousUser != entry.author)
 				    	{
