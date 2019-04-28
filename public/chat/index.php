@@ -322,6 +322,13 @@
 			font-size: 9px;
 		}
 
+		hr {
+			height: 2px;
+		    border-top: 1px solid #000;
+		    margin: 0;
+		    background-color: black;
+		}
+
       	@media screen and (max-width: 700px) {
       		.topBar {margin: 0px; margin-left: 0px;} 
       		.topBar a {float: none; display: block; text-align: left; background-color: #333; text-align: center;} 
@@ -359,6 +366,7 @@
 				if($pastMessagesCount > 0) echo '<button id="wrapperbutton" class="wrapperbtn" onclick="loadPastMessages()"> <span> Wczytaj poprzednie wiadomości </span> </button>';
 			?>
 			<div class="chat" id="chatContainer">
+				<hr id="wrapperhr"> </hr>
 			</div>
 			<input class="textarea" id="chatMessage" type="text" placeholder="Napisz wiadomość" onkeypress="sendMessage(event)"/>
 		</div>
@@ -441,7 +449,7 @@
 				    	newDiv.id = 'container' + currentId;
 				    	newDiv.className = classContainer;
 				    	if(dynamidPastMessagesId == 1)
-				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById("wrapperbutton"));
+				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById("wrapperhr"));
 				    	else
 				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById('container' + previousPastMessageId));
 				    	var element =  document.getElementById('img' + previousPastMessageId);
