@@ -442,7 +442,7 @@
 				    	if(pastMessagesCount == 1)
 				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById('p' + (pastMessagesCount - 1)));
 				    	else
-				    		document.getElementById("chatContainer").insertBefore(newDiv, "wrapperbutton");
+				    		document.getElementById("chatContainer").insertBefore(newDiv, document.getElementById("wrapperbutton"));
 				    	$( "chatContainer" ).prepend(newDiv);
 				    	if(previousUser != entry.author)
 				    	{
