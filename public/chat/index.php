@@ -347,7 +347,7 @@
 					<button class="dropbtn"> <?php echo $_SESSION['email']; ?>
 						<i class="fa fa-caret-down"></i>
 					</button>
-					<div class="dropdown-content">
+					<div class="dropdown-content" style="width: 100%;">
 						<a href="/" onclick="leaveChat()"> Powrót
       						<i class="fas fa-sign-in-alt"></i>
       					</a>

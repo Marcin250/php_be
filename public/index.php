@@ -345,7 +345,7 @@
 					<button class="dropbtn">' . $titleURL . '
 						<i class="fas fa-sign-in-alt"></i>
 					</button>
-					<div class="dropdown-content">
+					<div class="dropdown-content" style="width: 100%;">
       					<a href="' . $loginURL . '"> Google </a>
     				</div>
 				</div>';
@@ -355,7 +355,7 @@
 					<button class="dropbtn">' . $_SESSION['email'] . '
 						<i class="fa fa-caret-down"></i>
 					</button>
-					<div class="dropdown-content">
+					<div class="dropdown-content" style="width: 100%;">
       					<a href="/user/google-logout.php">' . $titleURL . '
       						<i class="fas fa-sign-in-alt"></i>
       					</a>
